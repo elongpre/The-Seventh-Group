@@ -1,0 +1,2 @@
+serviceClass: com.appspot.t_gecko_764.client.GreetingService
+path: 33A221064A1E50222888B1AE90B423A1.gwt.rpc
