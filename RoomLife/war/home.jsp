@@ -2,7 +2,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
 <%@ page import="com.appspot.t_gecko_764.Bill" %>
-<%@ page import="com.appspot.t_gecko_764.client.HomeController" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
