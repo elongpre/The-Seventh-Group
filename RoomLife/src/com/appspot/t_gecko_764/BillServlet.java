@@ -17,18 +17,20 @@ import com.googlecode.objectify.Objectify;
 
 public class BillServlet extends HttpServlet{
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
-		Person x = ofy().load().type(Person.class).filter("name","Guillermo Nunez").first().now();
-		String name= x.getName();
-		resp.sendRedirect("/TaskComplete.jsp?name="+name);
-		
-		
-	}
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
+    String billName = req.getParameter("name");
+    String billAmount = req.getParameter("amount");
+    
+    
+    if (user.getEmail()!=null){
+    Person person=ofy().load().type(Person.class).filter("email",user.getEmail()).first().now();
+    }
+    
+   
 
     // We have one entity group per Guestbook with all Greetings residing
     // in the same entity group as the Guestbook to which they belong.
@@ -39,7 +41,7 @@ public class BillServlet extends HttpServlet{
     
     //ofy().save().entity(person).now();
 
-    resp.sendRedirect("/TaskComplete.jsp?name=");
+    resp.sendRedirect("/TaskComplete.jsp");
 }
 	
 	
