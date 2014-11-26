@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Person {
 	private String name;
+	private String email;
 	private ArrayList<Person> roommates;
 	private ArrayList<Group> groups;
 	
