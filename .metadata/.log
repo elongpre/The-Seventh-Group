@@ -2007,3 +2007,11 @@ Binding(CTRL+SHIFT+M,
 
 !ENTRY com.android.ide.eclipse.adt 1 0 2014-11-25 19:36:32.467
 !MESSAGE No valid Android XML Editor Delegate found for file /RoomLife/src/com/appspot/t_gecko_764/RoomLife.gwt.xml [Res null, type null]
+
+!ENTRY org.eclipse.ui.ide 4 4 2014-11-25 19:55:00.336
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2014-11-25 19:55:00.336
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2014-11-25 19:55:00.336
+!MESSAGE The project description file (.project) for 'RemoteSystemsTempFiles' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
