@@ -2,12 +2,3 @@
 /.metadata
 /RoomLife/gwt-unitCache/*
 /RoomLife/.settings/*
-/RoomLife/bin/*
-/RoomLife/src/META-INF/*
-/RoomLife/src/log4j.properties
-/RoomLife/test-classes/*
-/RoomLife/war/roomlife/*
-/RoomLife/war/classes/*
-/RoomLife/war/logging.properties
-/RoomLife/war/deploy/*
-
