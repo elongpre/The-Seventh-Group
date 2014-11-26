@@ -28,5 +28,33 @@
 				
 			</div>
 		</div>
+		<div class="container-fluid">
+			<div class="col-md-8">
+				<%
+				List<Debts> debtList = HomeController.getBills();
+				for (Bill bill : billList){
+					pageContext.setAttribute("bill_name", bill.getName());
+				%>
+					<p>
+						<span class="bill-name">${fn:escapeXml(bill_name)}</span>
+					</p>
+				<% } %>
+				
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="col-md-8">
+				<%
+				List<Bill> billList = HomeController.getBills();
+				for (Bill bill : billList){
+					pageContext.setAttribute("bill_name", bill.getName());
+				%>
+					<p>
+						<span class="bill-name">${fn:escapeXml(bill_name)}</span>
+					</p>
+				<% } %>
+				
+			</div>
+		</div>
 	</body>
 </html>
