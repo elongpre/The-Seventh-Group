@@ -37,7 +37,7 @@ public class BillServlet extends HttpServlet{
 	    Double split_amount = total_amount/(owner.getRoommates().size());
 	    
 	    // create bill and update all those affected, which should be the current user and his/her roommates
-	    Bill bill = new Bill(bill_name, split_amount, owner);
+	    Bill bill = new Bill.Builder(bill_name, split_amount, owner).build();
 	    distributeBill(bill, owner);
 
     }
