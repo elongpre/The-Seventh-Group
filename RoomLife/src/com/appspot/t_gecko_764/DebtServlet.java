@@ -43,7 +43,7 @@ public class DebtServlet extends HttpServlet {
 	    Person debtor = ofy().load().type(Person.class).filter("email", debtor_email).first().now();
 	    
 	    // construct new Debt object
-	    Debt debt = new Debt(debt_name, amount, owner, debtor, date_created);
+	    Debt debt = new Debt.Builder(debt_name, amount, owner, debtor).build();
 	    
 	    // push new debt to the datastore
 	    ofy().save().entity(debt).now();
