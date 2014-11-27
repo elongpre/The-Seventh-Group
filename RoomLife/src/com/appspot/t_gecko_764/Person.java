@@ -14,6 +14,7 @@ public class Person {
 	private ArrayList<Person> roommates;
 	private ArrayList<Group> groups;
 	private ArrayList<Bill> bills;
+	private ArrayList<MaintenanceRequest> maintenanceReq;
 	
 	public Person(String name, String email){
 		this.name = name;
@@ -55,6 +56,10 @@ public class Person {
 	}	
 	public void addBill(Bill bill) {
 		this.bills.add(bill);
+	}
+	
+	public void addMaintenanceRequest(MaintenanceRequest mainreq){
+		this.maintenanceReq.add(mainreq);
 	}
 	
 }
