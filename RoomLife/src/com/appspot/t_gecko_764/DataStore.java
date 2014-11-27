@@ -18,11 +18,11 @@ public class DataStore {
 		return uniqueInstance;
 	}
 	
-	Person getPerson(String email){
+	public Person getPerson(String email){
 		 return ofy().load().type(Person.class).filter("email", email).first().now();
 	}
 	
-	Person getPersonviaId(Person person){
+	public Person getPersonviaId(Person person){
 		return ofy().load().type(Person.class).id(person.id).now();
 	}
 	
@@ -43,5 +43,19 @@ public class DataStore {
 	
 	public void saveGroup(Group group){
 		ofy().save().entity(group).now();
+	}
+	
+	public void saveBill (Bill bill){
+		ofy().save().entity(bill).now();
+	}
+	
+	public void saveDebt(Debt debt){
+		ofy().save().entity(debt).now();
+		
+	}
+	
+	public void saveMaintenanceRequest(MaintenanceRequest request){
+		ofy().save().entity(request).now();
+		
 	}
 }
