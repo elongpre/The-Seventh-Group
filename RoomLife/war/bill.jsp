@@ -4,7 +4,7 @@
     <p>Input your bill info via the two options</p>
     
     <b> Option 1: Split cost evenly</b>
-    <form action="/req" method="post">
+    <form action="BillEntry" method="POST">
         <input type="text" name="bill" value="Bill name"><br>
         <input type="text" name="amount" value="Amount"><br>
         <input type="submit" value="Submit">
@@ -13,7 +13,7 @@
     <br>
     <br>
     <b>Option 2: Charge one person independently</b>
-    <form action="/breq" method= "post">
+    <form action="/breq" method= "POST">
         <input type="text" name="bill" value="Bill name"><br>
         <select name="roommate">
             <option value="volvo">John</option>
@@ -24,7 +24,5 @@
         <input type="text" name="amount" value="Amount"><br>
         <input type="submit" value="submit">
     </form>
-    
-    
     
 </html>
