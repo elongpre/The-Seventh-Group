@@ -15,6 +15,11 @@ public class Person {
 	private ArrayList<Group> groups;
 	private ArrayList<Bill> bills;
 	
+	public Person(String name, String email){
+		this.name = name;
+		this.email = email;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -30,16 +35,24 @@ public class Person {
 	public ArrayList<Person> getRoommates() {
 		return roommates;
 	}
-	public void setRoommates(ArrayList<Person> roommates) {
-		this.roommates = roommates;
+	public void addRoommate(Person roommate) {
+		roommates.add(roommate);
+	}
+	public void removeRoommates(Person roommate){
+		roommates.remove(roommate);
 	}
 	public ArrayList<Group> getGroups() {
 		return groups;
 	}
-	public void setGroups(ArrayList<Group> groups) {
-		this.groups = groups;
+	public void addGroup(Group group) {
+		if(!groups.contains(group)){
+			groups.add(group);
+		}
+
 	}
-	
+	public void removeGroup(Group group) {
+		groups.remove(group);
+	}	
 	public void addBill(Bill bill) {
 		this.bills.add(bill);
 	}

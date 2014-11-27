@@ -8,6 +8,12 @@ public class Group {
 	private ArrayList<Person> members;
 	private int building;
 	
+	public Group(String name, Person member){
+		this.name = name;
+		this.members = new ArrayList<Person>();
+		members.add(member);
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -23,8 +29,15 @@ public class Group {
 	public ArrayList<Person> getMembers() {
 		return members;
 	}
-	public void setMembers(ArrayList<Person> members) {
-		this.members = members;
+	public void addMember(Person member) {
+		if(!members.contains(member)){
+			members.add(member);
+			member.addGroup(this);
+		}	
+	}
+	public void removeMember(Person member){
+		members.remove(member);
+		member.removeGroup(this);
 	}
 	public int getBuilding() {
 		return building;
