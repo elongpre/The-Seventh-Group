@@ -12,6 +12,7 @@ public class Bill {
 	private Date dateDeadline;
 	private Date dateCreated;
 	private Date datePaid;
+	
 	public String getName() {
 		return name;
 	}

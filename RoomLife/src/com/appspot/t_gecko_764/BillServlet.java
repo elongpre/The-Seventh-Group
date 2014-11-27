@@ -24,9 +24,8 @@ public class BillServlet extends HttpServlet{
 	    UserService userService = UserServiceFactory.getUserService();
 	    User user = userService.getCurrentUser();
 	    
-	    String billName = req.getParameter("name");
-	    double billAmount = Double.parseDouble(req.getParameter("amount"));
-	    String roommate = req.getParameter("roommate");
+	    String billName = req.getParameter("billName");
+	    double billAmount = Double.parseDouble(req.getParameter("billAmount"));
 	    
 	    resp.setContentType("text/plain");
 	    resp.getWriter().println("TEST");
