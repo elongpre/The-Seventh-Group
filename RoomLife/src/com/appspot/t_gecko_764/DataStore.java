@@ -36,4 +36,8 @@ public class DataStore {
 		}
 		return null;
 	}
+	
+	public void saveGroup(Group group){
+		ofy().save().entity(group).now();
+	}
 }

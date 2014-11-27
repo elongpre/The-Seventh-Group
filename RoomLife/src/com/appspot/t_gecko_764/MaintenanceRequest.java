@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MaintenanceRequest {
-	//private String name;
+	private String name;
 	private String priority;
 	private String location;
 	private String details;
@@ -12,16 +12,16 @@ public class MaintenanceRequest {
 	private Person owner;
 	private Group group;
 	
-<<<<<<< HEAD
+
 	public MaintenanceRequest(String priority, String location, String details){
 		this.priority=priority;
 		this.location=location;
 		this.details=details;
 		
 	}
-=======
+
 	private MaintenanceRequest(){}
->>>>>>> 5cd294053977f2071925c377ab7a54900af5991c
+
 	
 	public String getName() {
 		return name;
@@ -66,7 +66,7 @@ public class MaintenanceRequest {
 		this.group = group;
 	}
 	
-	public class Builder{
+	public static class Builder{
 		private String name;
 		private String priority = "low";
 		private String location = "unnammed";
