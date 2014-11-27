@@ -7,18 +7,38 @@
 
   <!-- Servlets -->
   <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.appspot.t_gecko_764.server.GreetingServiceImpl</servlet-class>
+    <servlet-name>billServlet</servlet-name>
+    <servlet-class>com.appspot.t_gecko_764.BillServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/roomlife/greet</url-pattern>
+    <servlet-name>billServlet</servlet-name>
+    <url-pattern>/BillEntry</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>homeServlet</servlet-name>
+    <servlet-class>com.appspot.t_gecko_764.HomeServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>homeServlet</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>ObjectifyFilter</filter-name>
+    <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>ObjectifyFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>RoomLife.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
