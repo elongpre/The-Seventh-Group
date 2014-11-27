@@ -7,6 +7,29 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Create a user</h1>
+<form action="/registerUser" method = "post">
+First name: 
+<input type="text" name="firstname">
+<br>
+
+Last name:
+<input type="text" name="secondname">
+<br>
+
+Group:
+<input type="text" name="group">
+
+
+
+
+
+
+
+
+
+
+</form>
 
 </body>
 </html>

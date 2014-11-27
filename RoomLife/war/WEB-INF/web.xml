@@ -10,23 +10,32 @@
         <servlet-name>maintenanceServlet</servlet-name>
         <servlet-class>com.appspot.t_gecko_764.MaintenanceServlet</servlet-class>
     </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>billServlet</servlet-name>
-    <url-pattern>/BillEntry</url-pattern>
-  </servlet-mapping>
-  
-
     
+    <servlet-mapping>
+   	 	<servlet-name>maintenanceServlet</servlet-name>
+    	<url-pattern>/mreq</url-pattern>
+  	</servlet-mapping>
+    
+  
+ 	<servlet>	
      	<servlet-name>billServlet</servlet-name>
      	<servlet-class>com.appspot.t_gecko_764.BillServlet</servlet-class>
     </servlet>
+    
    	<servlet-mapping>
    	 	<servlet-name>billServlet</servlet-name>
     	<url-pattern>/BillEntry</url-pattern>
   	</servlet-mapping>
-  
-
+  	
+   	<servlet>
+   	<servlet-name>RegisterUserServlet</servlet-name>
+     	<servlet-class>com.appspot.t_gecko_764.RegisterUserServlet</servlet-class>
+    </servlet>
+    
+   	<servlet-mapping>
+   	 	<servlet-name>RegisterUserServlet</servlet-name>
+    	<url-pattern>/registerUser</url-pattern>
+  	</servlet-mapping>
   
     <servlet>
    	 	<servlet-name>homeServlet</servlet-name>
@@ -65,7 +74,7 @@
         <url-pattern>/*</url-pattern>
 	</filter-mapping>
   
-
+<!--  
   <servlet>
     <servlet-name>homeServlet</servlet-name>
     <servlet-class>com.appspot.t_gecko_764.HomeServlet</servlet-class>
@@ -85,6 +94,8 @@
     <servlet-name>debtServlet</servlet-name>
     <url-pattern>/DebtEntry</url-pattern>
   </servlet-mapping>
+  
+  -->
   
   <filter>
     <filter-name>ObjectifyFilter</filter-name>
