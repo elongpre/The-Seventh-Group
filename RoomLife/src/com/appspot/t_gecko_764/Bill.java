@@ -69,7 +69,7 @@ public class Bill {
 		this.datePaid = datePaid;
 	}
 	
-	public static class Builder{
+	public class Builder{
 		private String name;
 		private double amount;
 		private Person owner;
@@ -116,10 +116,6 @@ public class Bill {
 
 		public Builder setGroup(Group group) {
 			this.group = group;
-			this.peeps = new ArrayList<Person>();
-			for(Person person : group.getMembers()){
-				this.peeps.add(person);
-			}
 			return this;
 		}
 
