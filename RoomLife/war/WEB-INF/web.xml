@@ -16,9 +16,19 @@
     <url-pattern>/roomlife/greet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>homeServlet</servlet-name>
+    <servlet-class>com.appspot.t_gecko_764.HomeServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>homeServlet</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>RoomLife.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

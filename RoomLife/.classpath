@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="/Users/guillermonunez/Downloads/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="/Users/guillermonunez/Downloads/objectify-5.1.jar"/>
-=======
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
->>>>>>> ffab7458eed4e1f0adc621b5f5f2d9170f7510fa
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.1.1.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

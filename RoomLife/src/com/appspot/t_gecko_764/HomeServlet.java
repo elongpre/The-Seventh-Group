@@ -1,27 +1,34 @@
 package com.appspot.t_gecko_764;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class HomeServlet extends HttpServlet{
 
-		public void doGet(HttpServletRequest req, HttpServletResponse resp){
-			
+		public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
+			req.setAttribute("BillList", getBills());
+			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
 		}
-		public static ArrayList<Bill> getBills(){
+		private ArrayList<Bill> getBills(){
 			ArrayList<Bill> bills = new ArrayList<Bill>();
-			bills.add(new Bill ());
-			bills.add(new Bill ());
+			for(int i=1; i <= 20; i++){
+				Bill bill = new Bill();
+				bill.setName("Bill " + i);
+				bills.add(bill);
+			}
 			return bills;
 		}
 		
-		public static ArrayList<Debt> getDebts(){
+		private ArrayList<Debt> getDebts(){
 			return new ArrayList<Debt>();
 		}
-		public static ArrayList<MaintenanceRequest> getRequests(){
+		private ArrayList<MaintenanceRequest> getRequests(){
 			return new ArrayList<MaintenanceRequest>();
 		}
 }
