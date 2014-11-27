@@ -11,10 +11,40 @@
     <servlet-class>com.appspot.t_gecko_764.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
+    <servlet>
+        <serlet-name>billreq</serlet-name>
+        <servlet-class>guestbook.BillRequest</servlet-class>
+    </servlet>  
+    <servlet>
+        <servlet-name>mainreq</servlet-name>
+        <servlet-class>guestbook.MaintenanceRequest</servlet-class>
+    </servlet>
+  
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/roomlife/greet</url-pattern>
   </servlet-mapping>
+  
+  
+      <servlet-mapping>
+        <servlet-name>billreq</servlet-name>
+        <url-pattern>/breq</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>mainreq</servlet-name>
+        <url-pattern>/mreq</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+        <filter-name>ObjectifyFilter</filter-name>
+        <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+        <filter-name>ObjectifyFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+	</filter-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>
