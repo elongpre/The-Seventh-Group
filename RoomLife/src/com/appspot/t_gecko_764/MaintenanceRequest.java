@@ -12,6 +12,7 @@ public class MaintenanceRequest {
 	private Person owner;
 	private Group group;
 	
+<<<<<<< HEAD
 
 	public MaintenanceRequest(String priority, String location, String details){
 		this.priority=priority;
@@ -22,6 +23,9 @@ public class MaintenanceRequest {
 
 	private MaintenanceRequest(){}
 
+=======
+	private MaintenanceRequest(){}
+>>>>>>> c0acf0e3e7bd17cd30482ad86e5ba957913a5d41
 	
 	public String getName() {
 		return name;
