@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.1.1.jar"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
-=======
-	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/geronimo-jpa_2.0_spec-1.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.1.1.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
->>>>>>> c0acf0e3e7bd17cd30482ad86e5ba957913a5d41
 </classpath>

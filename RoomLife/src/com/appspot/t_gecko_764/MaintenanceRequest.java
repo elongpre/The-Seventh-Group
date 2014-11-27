@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MaintenanceRequest {
+	private String name;
 	private String priority;
 	private String location;
 	private String details;
@@ -15,6 +16,12 @@ public class MaintenanceRequest {
 	
 	private MaintenanceRequest(){}
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getPriority() {
 		return priority;
 	}
@@ -53,6 +60,7 @@ public class MaintenanceRequest {
 	}
 	
 	public static class Builder{
+		private String name;
 		private String priority = "low";
 		private String location = "unnammed";
 		private String details = "no details";
@@ -60,7 +68,8 @@ public class MaintenanceRequest {
 		private Person owner;
 		private Group group;
 		
-		public Builder(Person owner, Group group){
+		public Builder(String name, Person owner, Group group){
+			this.name = name;
 			this.owner = owner;
 			this.group = group;
 			this.dateCreated = new GregorianCalendar();
@@ -68,6 +77,7 @@ public class MaintenanceRequest {
 		
 		public MaintenanceRequest build(){
 			MaintenanceRequest request = new MaintenanceRequest();
+			request.setName(name);
 			request.setPriority(this.priority);
 			request.setLocation(this.location);
 			request.setDetails(this.details);
@@ -77,6 +87,11 @@ public class MaintenanceRequest {
 			return request;
 		}
 
+		public Builder setName(String name) {
+			this.name = name;
+			return this;
+		}
+		
 		public Builder setPriority(String priority) {
 			this.priority = priority;
 			return this;

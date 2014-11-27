@@ -43,9 +43,9 @@ public class CannedDataServlet extends HttpServlet{
 		Debt debt5 = new Debt.Builder("debt4", 55.55, bob, candice).build();
 		Debt debt6 = new Debt.Builder("debt4", 66.66, bob, danny).build();		
 		
-		MaintenanceRequest request1 = new MaintenanceRequest.Builder(alice, group).setLocation("room1").setPriority("priority1")
+		MaintenanceRequest request1 = new MaintenanceRequest.Builder("request1", alice, group).setLocation("room1").setPriority("priority1")
 				.setDetails("Details1Details1Details1Details1Details1Details1Details1 Details1Details1Details1Details1Details1Details1Details1\nDetails1Details1Details1Details1Details1Details1Details1").build();
-		MaintenanceRequest request2 = new MaintenanceRequest.Builder(bob, group).setLocation("room2").setPriority("priority2")
+		MaintenanceRequest request2 = new MaintenanceRequest.Builder("request1", bob, group).setLocation("room2").setPriority("priority2")
 				.setDetails("Details2Details2Details2Details2Details2Details2Details2 Details2Details2Details2Details2Details2Details2Details2\nDetails2Details2Details2Details2Details2Details2Details2").build();
 		
 		resp.getWriter().println("Finished loading data");
