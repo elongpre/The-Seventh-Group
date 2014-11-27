@@ -22,6 +22,10 @@ public class DataStore {
 		 return ofy().load().type(Person.class).filter("email", email).first().now();
 	}
 	
+	Person getPersonviaId(Person person){
+		return ofy().load().type(Person.class).id(person.id).now();
+	}
+	
 	public void savePerson(Person person){
 		ofy().save().entity(person).now();
 	}
