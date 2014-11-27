@@ -8,11 +8,12 @@ import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Person {
-	@Id private Long id;
+	@Id Long id;
 	private String name;
 	@Index private String email;
 	private ArrayList<Person> roommates;
 	private ArrayList<Group> groups;
+	private ArrayList<Bill> bills;
 	
 	public String getName() {
 		return name;
@@ -37,6 +38,10 @@ public class Person {
 	}
 	public void setGroups(ArrayList<Group> groups) {
 		this.groups = groups;
+	}
+	
+	public void addBill(Bill bill) {
+		this.bills.add(bill);
 	}
 	
 }
