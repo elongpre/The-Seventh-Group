@@ -14,7 +14,6 @@ public class MaintenanceRequest {
 	private Person owner;
 	private Group group;
 	
-<<<<<<< HEAD
 
 
 	public MaintenanceRequest(String priority, String location, String details){
@@ -24,14 +23,10 @@ public class MaintenanceRequest {
 		
 	}
 
+
+
+
 	private MaintenanceRequest(){}
-
-
-
-
-=======
-	private MaintenanceRequest(){}
->>>>>>> 28b81a7a423566ceb136f7f8b53274fb9cc52416
 	
 	public String getName() {
 		return name;
