@@ -1,16 +1,27 @@
 package com.appspot.t_gecko_764;
 
-import java.util.ArrayList;
 import java.util.Date;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Debt {
+	@Id private Long id;
 	private String name;
 	private Double amount;
 	private Person owner;
 	private Person debtor;
-	private Date dateDeadline;
-	private Date dateCreated;
+	private long dateCreated;
 	private Date datePaid;
+	
+	public Debt(String name, Double amount, Person owner, Person debtor, long dateCreated) {
+		this.name = name;
+		this.amount = amount;
+		this.owner = owner;
+		this.debtor = debtor;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -35,16 +46,10 @@ public class Debt {
 	public void setDebtor(Person debtor) {
 		this.debtor = debtor;
 	}
-	public Date getDateDeadline() {
-		return dateDeadline;
-	}
-	public void setDateDeadline(Date dateDeadline) {
-		this.dateDeadline = dateDeadline;
-	}
-	public Date getDateCreated() {
+	public long getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(long dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 	public Date getDatePaid() {
@@ -53,6 +58,5 @@ public class Debt {
 	public void setDatePaid(Date datePaid) {
 		this.datePaid = datePaid;
 	}
-
 	
 }
