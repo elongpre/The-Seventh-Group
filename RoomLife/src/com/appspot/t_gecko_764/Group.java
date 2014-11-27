@@ -7,6 +7,7 @@ public class Group {
 	private String address;
 	private ArrayList<Person> members;
 	private Building building;
+	private ArrayList<MaintenanceRequest> mainreq;
 	
 	public Group(String name, Person member){
 		this.name = name;
@@ -44,6 +45,18 @@ public class Group {
 	}
 	public void setBuilding(Building building) {
 		this.building = building;
+	}
+	
+	public void addMaintenanceRequest(MaintenanceRequest req){
+		this.mainreq.add(req);
+	}
+
+	public ArrayList<MaintenanceRequest> getMainreq() {
+		return mainreq;
+	}
+
+	public void setMainreq(ArrayList<MaintenanceRequest> mainreq) {
+		this.mainreq = mainreq;
 	}
 	
 	
