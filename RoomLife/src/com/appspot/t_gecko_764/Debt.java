@@ -1,6 +1,8 @@
 package com.appspot.t_gecko_764;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -12,8 +14,8 @@ public class Debt {
 	private Double amount;
 	private Person owner;
 	private Person debtor;
-	private Date dateCreated;
-	private Date datePaid;
+	private Calendar dateCreated;
+	private Calendar datePaid;
 	
 	private Debt(){}
 	
@@ -41,16 +43,16 @@ public class Debt {
 	public void setDebtor(Person debtor) {
 		this.debtor = debtor;
 	}
-	public Date getDateCreated() {
+	public Calendar getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(Calendar dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Date getDatePaid() {
+	public Calendar getDatePaid() {
 		return datePaid;
 	}
-	public void setDatePaid(Date datePaid) {
+	public void setDatePaid(Calendar datePaid) {
 		this.datePaid = datePaid;
 	}
 	
@@ -59,15 +61,15 @@ public class Debt {
 		private Double amount;
 		private Person owner;
 		private Person debtor;
-		private Date dateCreated;
-		private Date datePaid;
+		private Calendar dateCreated;
+		private Calendar datePaid;
 		
 		public Builder(String name, Double amount, Person owner, Person debtor) {
 			this.name = name;
 			this.amount = amount;
 			this.owner = owner;
 			this.debtor = debtor;
-			this.dateCreated = new Date();
+			this.dateCreated = new GregorianCalendar();
 		}
 		
 		public Debt build(){
@@ -100,12 +102,12 @@ public class Debt {
 			return this;
 		}
 
-		public Builder setDateCreated(Date dateCreated) {
+		public Builder setDateCreated(Calendar dateCreated) {
 			this.dateCreated = dateCreated;
 			return this;
 		}
 
-		public Builder setDatePaid(Date datePaid) {
+		public Builder setDatePaid(Calendar datePaid) {
 			this.datePaid = datePaid;
 			return this;
 		}

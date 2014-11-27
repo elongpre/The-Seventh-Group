@@ -1,7 +1,9 @@
 package com.appspot.t_gecko_764;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -14,9 +16,9 @@ public class Bill {
 	private Person owner;
 	private Group group;
 	private ArrayList<Person> peeps;
-	private Date dateDeadline;
-	private Date dateCreated;
-	private Date datePaid;
+	private Calendar dateDeadline;
+	private Calendar dateCreated;
+	private Calendar datePaid;
 	
 	private Bill(){}
 	
@@ -50,22 +52,22 @@ public class Bill {
 	public void setPeeps(ArrayList<Person> peeps) {
 		this.peeps = peeps;
 	}
-	public Date getDateDeadline() {
+	public Calendar getDateDeadline() {
 		return dateDeadline;
 	}
-	public void setDateDeadline(Date dateDeadline) {
+	public void setDateDeadline(Calendar dateDeadline) {
 		this.dateDeadline = dateDeadline;
 	}
-	public Date getDateCreated() {
+	public Calendar getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(Calendar dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Date getDatePaid() {
+	public Calendar getDatePaid() {
 		return datePaid;
 	}
-	public void setDatePaid(Date datePaid) {
+	public void setDatePaid(Calendar datePaid) {
 		this.datePaid = datePaid;
 	}
 	
@@ -75,15 +77,15 @@ public class Bill {
 		private Person owner;
 		private Group group;
 		private ArrayList<Person> peeps;
-		private Date dateDeadline;
-		private Date dateCreated;
-		private Date datePaid;
+		private Calendar dateDeadline;
+		private Calendar dateCreated;
+		private Calendar datePaid;
 		
 		public Builder(String name, Double amount, Person owner) {
 			this.name = name;
 			this.amount = amount;
 			this.owner = owner;
-			this.dateCreated = new Date();
+			this.dateCreated = new GregorianCalendar();
 		}	
 		
 		public Bill build(){
@@ -128,17 +130,17 @@ public class Bill {
 			return this;
 		}
 
-		public Builder setDateDeadline(Date dateDeadline) {
+		public Builder setDateDeadline(Calendar dateDeadline) {
 			this.dateDeadline = dateDeadline;
 			return this;
 		}
 
-		public Builder setDateCreated(Date dateCreated) {
+		public Builder setDateCreated(Calendar dateCreated) {
 			this.dateCreated = dateCreated;
 			return this;
 		}
 
-		public Builder setDatePaid(Date datePaid) {
+		public Builder setDatePaid(Calendar datePaid) {
 			this.datePaid = datePaid;
 			return this;
 		}

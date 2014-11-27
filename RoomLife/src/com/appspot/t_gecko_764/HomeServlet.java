@@ -2,6 +2,8 @@ package com.appspot.t_gecko_764;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,9 +19,11 @@ public class HomeServlet extends HttpServlet{
 		}
 		private ArrayList<Bill> getBills(){
 			ArrayList<Bill> bills = new ArrayList<Bill>();
+			Person alice = new Person("Alice", "alice@example.com");
 			for(int i=1; i <= 20; i++){
-				Bill bill = new Bill();
-				bill.setName("Bill " + i);
+				Calendar deadline = new GregorianCalendar();
+				deadline.add(Calendar.DAY_OF_MONTH, 5);
+				Bill bill = new Bill.Builder("Water", 11.11, alice).setDateDeadline(deadline).build();
 				bills.add(bill);
 			}
 			return bills;
