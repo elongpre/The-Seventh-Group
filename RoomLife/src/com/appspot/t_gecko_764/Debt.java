@@ -54,7 +54,7 @@ public class Debt {
 		this.datePaid = datePaid;
 	}
 	
-	public class Builder{
+	public static class Builder{
 		private String name;
 		private Double amount;
 		private Person owner;

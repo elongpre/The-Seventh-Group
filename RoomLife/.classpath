@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
-=======
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
->>>>>>> 1c6e4db49ae307fba1ca8df15a6c1a932eb30a8c
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="/Users/guillermonunez/Downloads/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="/Users/guillermonunez/Downloads/objectify-5.1.jar"/>
-=======
 	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-18.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.1.1.jar"/>
->>>>>>> 1c6e4db49ae307fba1ca8df15a6c1a932eb30a8c
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
