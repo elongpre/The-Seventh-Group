@@ -10,4 +10,4 @@
 /RoomLife/war/classes/*
 /RoomLife/war/logging.properties
 /RoomLife/war/deploy/*
-
+/RoomLife/.classpath
