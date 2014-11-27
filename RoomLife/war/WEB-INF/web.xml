@@ -26,6 +26,16 @@
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>debtServlet</servlet-name>
+    <servlet-class>com.appspot.t_gecko_764.DebtServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>debtServlet</servlet-name>
+    <url-pattern>/DebtEntry</url-pattern>
+  </servlet-mapping>
+  
   <filter>
     <filter-name>ObjectifyFilter</filter-name>
     <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
