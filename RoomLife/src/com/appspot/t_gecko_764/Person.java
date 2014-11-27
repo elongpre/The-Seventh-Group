@@ -19,6 +19,9 @@ public class Person {
 	public Person(String name, String email){
 		this.name = name;
 		this.email = email;
+		this.bills = new ArrayList<Bill>();
+		this.groups = new ArrayList<Group>();
+		this.roommates = new ArrayList<Person>();
 	}
 	
 	public String getName() {

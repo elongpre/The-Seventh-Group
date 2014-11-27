@@ -1,17 +1,20 @@
 package com.appspot.t_gecko_764;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class MaintenanceRequest {
 	private String name;
 	private String priority;
 	private String location;
 	private String details;
-	private Date dateCreated;
+	private Calendar dateCreated;
 	private Person owner;
 	private Group group;
 	
+<<<<<<< HEAD
 
 
 	public MaintenanceRequest(String priority, String location, String details){
@@ -26,6 +29,9 @@ public class MaintenanceRequest {
 
 
 
+=======
+	private MaintenanceRequest(){}
+>>>>>>> 28b81a7a423566ceb136f7f8b53274fb9cc52416
 	
 	public String getName() {
 		return name;
@@ -51,10 +57,10 @@ public class MaintenanceRequest {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	public Date getDateCreated() {
+	public Calendar getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(Calendar dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 	public Person getOwner() {
@@ -75,7 +81,7 @@ public class MaintenanceRequest {
 		private String priority = "low";
 		private String location = "unnammed";
 		private String details = "no details";
-		private Date dateCreated;
+		private Calendar dateCreated;
 		private Person owner;
 		private Group group;
 		
@@ -83,12 +89,12 @@ public class MaintenanceRequest {
 			this.name = name;
 			this.owner = owner;
 			this.group = group;
-			this.dateCreated = new Date();
+			this.dateCreated = new GregorianCalendar();
 		}
 		
 		public MaintenanceRequest build(){
 			MaintenanceRequest request = new MaintenanceRequest();
-			request.setName(this.name);
+			request.setName(name);
 			request.setPriority(this.priority);
 			request.setLocation(this.location);
 			request.setDetails(this.details);
@@ -97,12 +103,12 @@ public class MaintenanceRequest {
 			request.setGroup(this.group);
 			return request;
 		}
-		
+
 		public Builder setName(String name) {
 			this.name = name;
 			return this;
 		}
-
+		
 		public Builder setPriority(String priority) {
 			this.priority = priority;
 			return this;
@@ -118,7 +124,7 @@ public class MaintenanceRequest {
 			return this;
 		}
 
-		public Builder setDateCreated(Date dateCreated) {
+		public Builder setDateCreated(Calendar dateCreated) {
 			this.dateCreated = dateCreated;
 			return this;
 		}

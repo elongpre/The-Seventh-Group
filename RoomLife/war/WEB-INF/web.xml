@@ -6,12 +6,8 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-  <servlet>
-    <servlet-name>billServlet</servlet-name>
-    <servlet-class>com.appspot.t_gecko_764.BillServlet</servlet-class>
-  </servlet>
-  
     <servlet>
+<<<<<<< HEAD
         <servlet-name>maintenanceServlet</servlet-name>
         <servlet-class>com.appspot.t_gecko_764.MaintenanceServlet</servlet-class>
     </servlet>
@@ -23,20 +19,73 @@
   
 
     
+=======
+     	<servlet-name>billServlet</servlet-name>
+     	<servlet-class>com.appspot.t_gecko_764.BillServlet</servlet-class>
+    </servlet>
+   	<servlet-mapping>
+   	 	<servlet-name>billServlet</servlet-name>
+    	<url-pattern>/BillEntry</url-pattern>
+  	</servlet-mapping>
+  
+   	<!--  
+   	<servlet>
+        <serlet-name>billreq</serlet-name>
+        <servlet-class>guestbook.BillRequest</servlet-class>
+    </servlet>  
+   	<servlet-mapping>
+     	<servlet-name>billreq</servlet-name>
+     	<url-pattern>/breq</url-pattern>
+    </servlet-mapping>
+    
+   	 <servlet>
+        <servlet-name>mainreq</servlet-name>
+        <servlet-class>guestbook.MaintenanceRequest</servlet-class>
+    </servlet>
+>>>>>>> 28b81a7a423566ceb136f7f8b53274fb9cc52416
     <servlet-mapping>
         <servlet-name>maintenanceServlet</servlet-name>
         <url-pattern>/mreq</url-pattern>
     </servlet-mapping>
-    
+    -->
+  
+    <servlet>
+   	 	<servlet-name>homeServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.HomeServlet</servlet-class>
+  	</servlet> 
+  	<servlet-mapping>
+    	<servlet-name>homeServlet</servlet-name>
+    	<url-pattern>/home</url-pattern>
+  	</servlet-mapping>
+  
+  	<servlet>
+    	<servlet-name>debtServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.DebtServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>debtServlet</servlet-name>
+    	<url-pattern>/DebtEntry</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>cannedDataServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.CannedDataServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>cannedDataServlet</servlet-name>
+    	<url-pattern>/canneddata</url-pattern>
+  	</servlet-mapping>
+  	
+  	
     <filter>
         <filter-name>ObjectifyFilter</filter-name>
         <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
-	</filter>
-	
+	</filter>	
 	<filter-mapping>
         <filter-name>ObjectifyFilter</filter-name>
         <url-pattern>/*</url-pattern>
 	</filter-mapping>
+<<<<<<< HEAD
   
 
   <servlet>
@@ -68,8 +117,9 @@
     <filter-name>ObjectifyFilter</filter-name>
     <url-pattern>/*</url-pattern>
 </filter-mapping>
+=======
+>>>>>>> 28b81a7a423566ceb136f7f8b53274fb9cc52416
 
->>>>>>> 1c6e4db49ae307fba1ca8df15a6c1a932eb30a8c
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>RoomLife.html</welcome-file>

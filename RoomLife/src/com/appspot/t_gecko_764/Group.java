@@ -6,7 +6,7 @@ public class Group {
 	private String name;
 	private String address;
 	private ArrayList<Person> members;
-	private int building;
+	private Building building;
 	private ArrayList<MaintenanceRequest> mainreq;
 	
 	public Group(String name, Person member){
@@ -40,10 +40,10 @@ public class Group {
 		members.remove(member);
 		member.removeGroup(this);
 	}
-	public int getBuilding() {
+	public Building getBuilding() {
 		return building;
 	}
-	public void setBuilding(int building) {
+	public void setBuilding(Building building) {
 		this.building = building;
 	}
 	

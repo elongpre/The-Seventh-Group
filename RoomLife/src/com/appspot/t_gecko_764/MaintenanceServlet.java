@@ -1,6 +1,6 @@
 package com.appspot.t_gecko_764;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class MaintenanceServlet extends HttpServlet {
     	User user = userService.getCurrentUser();
     	
     	
-	    // get the name and total amount of the debt, as well as the associated roommate
+	    // get parameters for maintenance request
 	    String name = req.getParameter("name");
     	String priority = req.getParameter("priority");
 	    String place = req.getParameter("place");
@@ -34,14 +34,14 @@ public class MaintenanceServlet extends HttpServlet {
 	    Group group= datastore.getGroup(owner, groupName);
 
 	    
-	    // construct new Debt object
+	    // construct new maintenance request object using Builder
 	    MaintenanceRequest mainreq = new MaintenanceRequest.Builder(groupName, owner, group).setName(name).setPriority(priority).setLocation(place)
 	    		.setDetails(description).build();
 	    
+	    // add request to group and add group to datastore
 	    group.addMaintenanceRequest(mainreq);
 	    datastore.saveGroup(group);
-	    // push new maintenancerequest to the datastore
-	    ofy().save().entity(owner).now();
+
     }
     
 
