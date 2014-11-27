@@ -3,7 +3,12 @@ package com.appspot.t_gecko_764;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Bill {
+	@Id private Long id;
 	private String name;
 	private double amount;
 	private Person owner;
@@ -12,6 +17,13 @@ public class Bill {
 	private Date dateDeadline;
 	private Date dateCreated;
 	private Date datePaid;
+	
+	public Bill(String name, Double amount, Person owner) {
+		this.name = name;
+		this.amount = amount;
+		this.owner = owner;
+	}
+	
 	public String getName() {
 		return name;
 	}
