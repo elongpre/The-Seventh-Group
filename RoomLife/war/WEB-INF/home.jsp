@@ -7,10 +7,10 @@
 <html>
 	<head>
 		<!-- Bootstrap Core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	    <!-- Sidebar CSS -->
-	    <link href="css/simple-sidebar.css" rel="stylesheet">
+	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
 	    
 		<script src="/Bootstrap/js/bootstrap.js"></script>
 		
@@ -18,25 +18,48 @@
 	<body>
 		<div id="wrapper">
 		<!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" style="overflow-y:auto;overflow-x:hidden">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="/home">
-                        Home
+                        Bills
                     </a>
                 </li>
+                <li class="divider"></li>
                 <%
 					List<Bill> billList = (List<Bill>) request.getAttribute("BillList");
-					for(int i = 0; i < 10; i++){
-						for (Bill bill : billList){
-							pageContext.setAttribute("bill_name", bill.getName());
-							pageContext.setAttribute("bill_amount", bill.getAmount());
+                	int i = 0;
+					for (Bill bill : billList){
+						pageContext.setAttribute("bill_name", bill.getName());
+						pageContext.setAttribute("bill_amount", bill.getAmount());
+						
 				%>
 					<li>
-						<a href="#" class="bill-name">${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
+						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
 					</li>
 				<%
+						i++;
+						if(i == 5){
+							break;
 						}
+					}
+				%>
+                <li class="sidebar-brand">
+                    <a href="/home">
+                        Debts
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <%
+	                List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
+					for (Debt debt: DebtList){
+						pageContext.setAttribute("debt_name", debt.getName());
+						pageContext.setAttribute("debt_amount", debt.getAmount());
+				%>
+					<li>
+						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
+					</li>
+				<%
 					}
 				%>
                 <li>
@@ -44,7 +67,7 @@
                 </li>
             </ul>
         </div>
-        
+      
         <!-- Page Content -->
         <div id="page-content-wrapper">
         	<div class="container-fluid">
@@ -55,7 +78,6 @@
 					<div class="container-fluid">
 						<div class="col-md-8" style="height:35%; width:25%;overflow:auto;">
 							<%
-								List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
 								for (Debt debt: DebtList){
 									pageContext.setAttribute("debt_name", debt.getName());
 									pageContext.setAttribute("debt_amount", debt.getAmount());

@@ -1,3 +1,2 @@
 # Module roomlife
 # RPC service class, partial path of RPC policy file
-com.appspot.t_gecko_764.client.GreetingService, 33A221064A1E50222888B1AE90B423A1.gwt.rpc

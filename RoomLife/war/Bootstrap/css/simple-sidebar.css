@@ -63,6 +63,13 @@
     line-height: 40px;
 }
 
+.divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #999999;
+}
+
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
@@ -82,7 +89,7 @@
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 60px;
 }
 
