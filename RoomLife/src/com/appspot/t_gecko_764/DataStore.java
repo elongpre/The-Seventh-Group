@@ -1,20 +1,29 @@
 package com.appspot.t_gecko_764;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
+
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static com.googlecode.objectify.ObjectifyService.ofy;
+import com.googlecode.objectify.ObjectifyService;
 
 
 public class DataStore {
-	private static DataStore uniqueInstance;
-	private DataStore(){
-		
-	}
+	static {
+		ObjectifyService.register(Person.class);
+//		ObjectifyService.register(Group.class);
+//		
+//		ObjectifyService.register(Bill.class);
+//		ObjectifyService.register(Debt.class);
+//		ObjectifyService.register(MaintenanceRequest.class);
+    }
+	
+	private static DataStore uniqueInstance = new DataStore();
+	
+	private DataStore(){}
 	
 	public static DataStore getInstance(){
-		if (uniqueInstance==null){
-			uniqueInstance= new DataStore();
-		}
 		return uniqueInstance;
 	}
 	
@@ -48,10 +57,15 @@ public class DataStore {
 	public void saveBill (Bill bill){
 		ofy().save().entity(bill).now();
 	}
+	public List<Bill> getBills(Person person){
+		return ofy().load().type(Bill.class).filter("owner", person).list();
+	}
 	
 	public void saveDebt(Debt debt){
 		ofy().save().entity(debt).now();
-		
+	}
+	public List<Debt> getDebts(Person person){
+		return ofy().load().type(Debt.class).filter("owner", person).list();
 	}
 	
 	public void saveMaintenanceRequest(MaintenanceRequest request){

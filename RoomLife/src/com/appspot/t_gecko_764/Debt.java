@@ -6,13 +6,14 @@ import java.util.GregorianCalendar;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Debt {
 	@Id private Long id;
 	private String name;
 	private Double amount;
-	private Person owner;
+	@Index private Person owner;
 	private Person debtor;
 	private Calendar dateCreated;
 	private Calendar datePaid;

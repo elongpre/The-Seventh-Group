@@ -7,13 +7,14 @@ import java.util.GregorianCalendar;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Bill {
 	@Id private Long id;
 	private String name;
 	private double amount;
-	private Person owner;
+	@Index private Person owner;
 	private Group group;
 	private ArrayList<Person> peeps;
 	private Calendar dateDeadline;

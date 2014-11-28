@@ -19,9 +19,10 @@
 					List<Bill> billList = (List<Bill>) request.getAttribute("BillList");
 						for (Bill bill : billList){
 							pageContext.setAttribute("bill_name", bill.getName());
+							pageContext.setAttribute("bill_amount", bill.getAmount());
 				%>
 					<p>
-						<span class="bill-name">${fn:escapeXml(bill_name)}</span>
+						<span class="bill-name">${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</span>
 					</p>
 				<%
 					}

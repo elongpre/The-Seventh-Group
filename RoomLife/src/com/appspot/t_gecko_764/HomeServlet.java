@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,9 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeServlet extends HttpServlet{
 
 		public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
-			req.setAttribute("BillList", getBills());
+			DataStore datastore = DataStore.getInstance();
+			Person alice = datastore.getPerson("alice@example.com");
+			List<Bill> bills = datastore.getBills(alice);
+			req.setAttribute("BillList", bills);
 			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
 		}
+		
 		private ArrayList<Bill> getBills(){
 			ArrayList<Bill> bills = new ArrayList<Bill>();
 			Person alice = new Person("Alice", "alice@example.com");
