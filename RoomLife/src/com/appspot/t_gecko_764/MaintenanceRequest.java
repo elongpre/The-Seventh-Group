@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class MaintenanceRequest {
@@ -13,7 +14,7 @@ public class MaintenanceRequest {
 	private String location;
 	private String details;
 	private Date dateCreated;
-	private String owner;
+	@Index private String owner;
 	private Long group;
 
 	private MaintenanceRequest(){}

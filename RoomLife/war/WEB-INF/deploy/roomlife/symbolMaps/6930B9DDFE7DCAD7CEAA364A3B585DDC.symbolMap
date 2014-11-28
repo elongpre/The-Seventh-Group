@@ -40,7 +40,7 @@ db,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1::RoomLife$1MyHandler$1(L
 a,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1::val$closeButton,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1,val$closeButton,com/appspot/t_gecko_764/client/RoomLife.java,123,-1
 b,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1::val$dialogBox,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1,val$dialogBox,com/appspot/t_gecko_764/client/RoomLife.java,123,-1
 c,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1::val$serverResponseLabel,com.appspot.t_gecko_764.client.RoomLife$1MyHandler$1,val$serverResponseLabel,com/appspot/t_gecko_764/client/RoomLife.java,123,-1
-eb,com.appspot.t_gecko_764.shared.FieldVerifier::isValidName(Ljava/lang/String;)Z,com.appspot.t_gecko_764.shared.FieldVerifier,isValidName,com/appspot/t_gecko_764/shared/FieldVerifier.java,36,0
+eb,com.appspot.t_gecko_764.shared.FieldVerifier::isValidName(Ljava/lang/String;)Z,com.appspot.t_gecko_764.shared.FieldVerifier,isValidName,com/appspot/t_gecko_764/shared/FieldVerifier.java,37,0
 fb,,com.google.gwt.animation.client.Animation,,com/google/gwt/animation/client/Animation.java,27,-1
 gb,com.google.gwt.animation.client.Animation::$cancel(Lcom/google/gwt/animation/client/Animation;)V,com.google.gwt.animation.client.Animation,$cancel,com/google/gwt/animation/client/Animation.java,105,0
 hb,com.google.gwt.animation.client.Animation::$run(Lcom/google/gwt/animation/client/Animation;IDLcom/google/gwt/dom/client/Element;)V,com.google.gwt.animation.client.Animation,$run,com/google/gwt/animation/client/Animation.java,186,0

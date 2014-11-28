@@ -58,6 +58,8 @@ public class DataStore {
 	
 	public void saveMaintenanceRequest(MaintenanceRequest request){
 		OfyService.ofy().save().entity(request).now();
-		
+	}
+	public List<MaintenanceRequest> getMaintenanceRequests(Person person){
+		return ofy().load().type(MaintenanceRequest.class).filter("owner", person.getEmail()).list();
 	}
 }
