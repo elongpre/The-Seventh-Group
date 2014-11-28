@@ -16,6 +16,8 @@ public class Person {
 	private ArrayList<Bill> bills;
 	private ArrayList<MaintenanceRequest> maintenanceReq;
 	
+	private Person(){}
+	
 	public Person(String name, String email){
 		this.name = name;
 		this.email = email;

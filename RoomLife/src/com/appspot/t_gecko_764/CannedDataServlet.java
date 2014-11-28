@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CannedDataServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		System.out.println("start");
 		DataStore datastore = DataStore.getInstance();
+		System.out.println("obtained datastore");
 		Person alice = new Person("Alice", "alice@example.com");
+		System.out.println("created Alice");
 		datastore.savePerson(alice);
+		System.out.println("Saved Alice");
 		Person bob = new Person("Bob", "bob@example.com");
 		datastore.savePerson(bob);
 		Person candice = new Person("Candice", "candice@example.com");
