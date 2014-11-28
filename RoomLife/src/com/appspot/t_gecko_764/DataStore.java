@@ -9,7 +9,7 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 
-
+import static com.appspot.t_gecko_764.OfyService.ofy;
 
 public class DataStore {
 	private static final DataStore uniqueInstance = new DataStore();
@@ -22,44 +22,38 @@ public class DataStore {
 	}
 	
 	public Person getPerson(String email){
-		 return OfyService.ofy().load().type(Person.class).filter("email", email).first().now();
+		 return ofy().load().type(Person.class).filter("email", email).first().now();
 	}
 	
 	public Person getPersonviaId(Person person){
-		return OfyService.ofy().load().type(Person.class).id(person.id).now();
+		return ofy().load().type(Person.class).id(person.id).now();
 	}
 	
 	public void savePerson(Person person){
-		OfyService.ofy().save().entity(person).now();
+		ofy().save().entity(person).now();
 	}
 	
-	public Group getGroup(Person person, String groupName){
-		ArrayList<Group> x= person.getGroups();
-		for(Group name: x ){
-			String findGroup= name.getName();
-			if (findGroup.equals(groupName)){
-				return name;
-			}
-		}
-		return null;
+	public Group getGroup(Long id){
+		return ofy().load().type(Group.class).id(id).now();
 	}
 	
 	public void saveGroup(Group group){
-		OfyService.ofy().save().entity(group).now();
+		ofy().save().entity(group).now();
 	}
 	
 	public void saveBill (Bill bill){
-		OfyService.ofy().save().entity(bill).now();
+		ofy().save().entity(bill).now();
 	}
+	
 	public List<Bill> getBills(Person person){
-		return OfyService.ofy().load().type(Bill.class).filter("owner", person).list();
+		return ofy().load().type(Bill.class).filter("owner", person.getEmail()).list();
 	}
 	
 	public void saveDebt(Debt debt){
-		OfyService.ofy().save().entity(debt).now();
+		ofy().save().entity(debt).now();
 	}
 	public List<Debt> getDebts(Person person){
-		return OfyService.ofy().load().type(Debt.class).filter("owner", person).list();
+		return ofy().load().type(Debt.class).filter("owner", person.getEmail()).list();
 	}
 	
 	public void saveMaintenanceRequest(MaintenanceRequest request){

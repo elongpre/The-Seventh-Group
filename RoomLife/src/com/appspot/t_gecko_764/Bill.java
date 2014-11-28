@@ -1,9 +1,7 @@
 package com.appspot.t_gecko_764;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -14,12 +12,13 @@ public class Bill {
 	@Id private Long id;
 	private String name;
 	private double amount;
-	@Index private Person owner;
-	private Group group;
-	private ArrayList<Person> peeps;
-	private Calendar dateDeadline;
-	private Calendar dateCreated;
-	private Calendar datePaid;
+	@Index private String owner;
+	private Long group;
+	private ArrayList<String> peeps;
+	private Date dateDeadline;
+	private Date dateCreated;
+	private Date datePaid;
+	
 	
 	private Bill(){}
 	
@@ -35,58 +34,58 @@ public class Bill {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public Person getOwner() {
+	public String getOwner() {
 		return owner;
 	}
-	public void setOwner(Person owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-	public Group getGroup() {
+	public Long getGroup() {
 		return group;
 	}
-	public void setGroup(Group group) {
+	public void setGroup(Long group) {
 		this.group = group;
 	}
-	public ArrayList<Person> getPeeps() {
+	public ArrayList<String> getPeeps() {
 		return peeps;
 	}
-	public void setPeeps(ArrayList<Person> peeps) {
+	public void setPeeps(ArrayList<String> peeps) {
 		this.peeps = peeps;
 	}
-	public Calendar getDateDeadline() {
+	public Date getDateDeadline() {
 		return dateDeadline;
 	}
-	public void setDateDeadline(Calendar dateDeadline) {
+	public void setDateDeadline(Date dateDeadline) {
 		this.dateDeadline = dateDeadline;
 	}
-	public Calendar getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Calendar dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Calendar getDatePaid() {
+	public Date getDatePaid() {
 		return datePaid;
 	}
-	public void setDatePaid(Calendar datePaid) {
+	public void setDatePaid(Date datePaid) {
 		this.datePaid = datePaid;
 	}
 	
 	public static class Builder{
 		private String name;
 		private double amount;
-		private Person owner;
-		private Group group;
-		private ArrayList<Person> peeps;
-		private Calendar dateDeadline;
-		private Calendar dateCreated;
-		private Calendar datePaid;
+		private String owner;
+		private Long group;
+		private ArrayList<String> peeps;
+		private Date dateDeadline;
+		private Date dateCreated;
+		private Date datePaid;
 		
 		public Builder(String name, Double amount, Person owner) {
 			this.name = name;
 			this.amount = amount;
-			this.owner = owner;
-			this.dateCreated = new GregorianCalendar();
+			this.owner = owner.getEmail();
+			this.dateCreated = new Date();
 		}	
 		
 		public Bill build(){
@@ -113,35 +112,33 @@ public class Bill {
 		}
 
 		public Builder setOwner(Person owner) {
-			this.owner = owner;
+			this.owner = owner.getEmail();
 			return this;
 		}
 
 		public Builder setGroup(Group group) {
-			this.group = group;
-			this.peeps = new ArrayList<Person>();
-			for(Person person : group.getMembers()){
-				this.peeps.add(person);
-			}
+			this.group = group.getId();
+			this.peeps = new ArrayList<String>();
+			this.peeps = group.getMembers();
 			return this;
 		}
 
-		public Builder setPeeps(ArrayList<Person> peeps) {
+		public Builder setPeeps(ArrayList<String> peeps) {
 			this.peeps = peeps;
 			return this;
 		}
 
-		public Builder setDateDeadline(Calendar dateDeadline) {
+		public Builder setDateDeadline(Date dateDeadline) {
 			this.dateDeadline = dateDeadline;
 			return this;
 		}
 
-		public Builder setDateCreated(Calendar dateCreated) {
+		public Builder setDateCreated(Date dateCreated) {
 			this.dateCreated = dateCreated;
 			return this;
 		}
 
-		public Builder setDatePaid(Calendar datePaid) {
+		public Builder setDatePaid(Date datePaid) {
 			this.datePaid = datePaid;
 			return this;
 		}

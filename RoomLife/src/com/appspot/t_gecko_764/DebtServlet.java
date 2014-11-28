@@ -50,16 +50,15 @@ public class DebtServlet extends HttpServlet {
     }
     
     private String findRoommate(Person owner, String name) {
-    	ArrayList<Person> roommates = owner.getRoommates();
-    	String email = null;
-    	
-    	// search the list of roommates for the name pulled from the debt input page
-    	for(Person roommate : roommates) {
-    		if (roommate.getName() == name) {
-    			email = roommate.getEmail();
+    	ArrayList<Person> roommates = new ArrayList<Person>();
+    	DataStore datastore = DataStore.getInstance();
+    	for(String email: owner.getRoommates()){
+    		Person person = datastore.getPerson(email);
+    		if( person.getName() == name){
+    			return email;
     		}
     	}
-    	return email;
+    	return null;
     }
     
 }

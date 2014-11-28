@@ -11,19 +11,16 @@ public class Person {
 	@Id Long id;
 	private String name;
 	@Index private String email;
-	private ArrayList<Person> roommates;
-	private ArrayList<Group> groups;
-	private ArrayList<Bill> bills;
-	private ArrayList<MaintenanceRequest> maintenanceReq;
+	private ArrayList<String> roommates;
+	private ArrayList<Long> groups;
 	
 	private Person(){}
 	
 	public Person(String name, String email){
 		this.name = name;
 		this.email = email;
-		this.bills = new ArrayList<Bill>();
-		this.groups = new ArrayList<Group>();
-		this.roommates = new ArrayList<Person>();
+		this.groups = new ArrayList<Long>();
+		this.roommates = new ArrayList<String>();
 	}
 	
 	public String getName() {
@@ -38,33 +35,24 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public ArrayList<Person> getRoommates() {
+	public ArrayList<String> getRoommates() {
 		return roommates;
 	}
 	public void addRoommate(Person roommate) {
-		roommates.add(roommate);
+		roommates.add(roommate.getEmail());
 	}
 	public void removeRoommates(Person roommate){
-		roommates.remove(roommate);
+		roommates.remove(roommate.getEmail());
 	}
-	public ArrayList<Group> getGroups() {
+	public ArrayList<Long> getGroups() {
 		return groups;
 	}
 	public void addGroup(Group group) {
-		if(!groups.contains(group)){
-			groups.add(group);
+		if(!groups.contains(group.getId())){
+			groups.add(group.getId());
 		}
-
 	}
 	public void removeGroup(Group group) {
-		groups.remove(group);
-	}	
-	public void addBill(Bill bill) {
-		this.bills.add(bill);
-	}
-	
-	public void addMaintenanceRequest(MaintenanceRequest mainreq){
-		this.maintenanceReq.add(mainreq);
-	}
-	
+		groups.remove(group.getId());
+	}		
 }

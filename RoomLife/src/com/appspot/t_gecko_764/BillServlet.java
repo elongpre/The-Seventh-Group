@@ -38,19 +38,5 @@ public class BillServlet extends HttpServlet{
 	    
 	    // create bill and update all those affected, which should be the current user and his/her roommates
 	    Bill bill = new Bill.Builder(bill_name, split_amount, owner).build();
-	    distributeBill(bill, owner);
-
     }
-    
-	public void distributeBill(Bill bill, Person owner) {
-		ArrayList<Person> roommates = owner.getRoommates();
-		
-		for(Person roommate : roommates) {
-			Person p = datastore.getPersonviaId(roommate);
-			p.addBill(bill);
-			datastore.savePerson(p);;
-		}
-	}
-	
-
 }

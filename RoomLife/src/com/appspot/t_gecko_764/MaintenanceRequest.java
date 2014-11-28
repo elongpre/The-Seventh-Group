@@ -1,33 +1,32 @@
 package com.appspot.t_gecko_764;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class MaintenanceRequest {
+	@Id private Long id;
 	private String name;
 	private String priority;
 	private String location;
 	private String details;
-	private Calendar dateCreated;
-	private Person owner;
-	private Group group;
-	
-
-
-	public MaintenanceRequest(String priority, String location, String details){
-		this.priority=priority;
-		this.location=location;
-		this.details=details;
-		
-	}
-
-
-
+	private Date dateCreated;
+	private String owner;
+	private Long group;
 
 	private MaintenanceRequest(){}
 	
+	public MaintenanceRequest(String name, String owner, Long group){
+		this.name = name;
+		this.owner = owner;
+		this.group = group;	
+	}
+
+	public Long getId(){
+		return this.id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -52,22 +51,22 @@ public class MaintenanceRequest {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	public Calendar getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Calendar dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Person getOwner() {
+	public String getOwner() {
 		return owner;
 	}
-	public void setOwner(Person owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-	public Group getGroup() {
+	public Long getGroup() {
 		return group;
 	}
-	public void setGroup(Group group) {
+	public void setGroup(Long group) {
 		this.group = group;
 	}
 	
@@ -76,19 +75,19 @@ public class MaintenanceRequest {
 		private String priority = "low";
 		private String location = "unnammed";
 		private String details = "no details";
-		private Calendar dateCreated;
-		private Person owner;
-		private Group group;
+		private Date dateCreated;
+		private String owner;
+		private Long group;
 		
 		public Builder(String name, Person owner, Group group){
 			this.name = name;
-			this.owner = owner;
-			this.group = group;
-			this.dateCreated = new GregorianCalendar();
+			this.owner = owner.getEmail();
+			this.group = group.getId();
+			this.dateCreated = new Date();
 		}
 		
 		public MaintenanceRequest build(){
-			MaintenanceRequest request = new MaintenanceRequest();
+			MaintenanceRequest request = new MaintenanceRequest(name, owner, group);
 			request.setName(name);
 			request.setPriority(this.priority);
 			request.setLocation(this.location);
@@ -119,18 +118,18 @@ public class MaintenanceRequest {
 			return this;
 		}
 
-		public Builder setDateCreated(Calendar dateCreated) {
+		public Builder setDateCreated(Date dateCreated) {
 			this.dateCreated = dateCreated;
 			return this;
 		}
 
 		public Builder setOwner(Person owner) {
-			this.owner = owner;
+			this.owner = owner.getEmail();
 			return this;
 		}
 
 		public Builder setGroup(Group group) {
-			this.group = group;
+			this.group = group.getId();
 			return this;
 		}
 

@@ -22,16 +22,10 @@ public class HomeServlet extends HttpServlet{
 			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
 		}
 		
-		private ArrayList<Bill> getBills(){
-			ArrayList<Bill> bills = new ArrayList<Bill>();
-			Person alice = new Person("Alice", "alice@example.com");
-			for(int i=1; i <= 20; i++){
-				Calendar deadline = new GregorianCalendar();
-				deadline.add(Calendar.DAY_OF_MONTH, 5);
-				Bill bill = new Bill.Builder("Water", 11.11, alice).setDateDeadline(deadline).build();
-				bills.add(bill);
-			}
-			return bills;
+		private List<Bill> getBills(){
+			DataStore datastore = DataStore.getInstance();
+			Person alice = datastore.getPerson("alice@example.com");
+			return datastore.getBills(alice);
 		}
 		
 		private ArrayList<Debt> getDebts(){

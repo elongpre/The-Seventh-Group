@@ -2,19 +2,30 @@ package com.appspot.t_gecko_764;
 
 import java.util.ArrayList;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
 public class Group {
-	private String name;
+	@Id private Long id;
+	@Index private String name;
 	private String address;
-	private ArrayList<Person> members;
-	private Building building;
-	private ArrayList<MaintenanceRequest> mainreq;
+	private ArrayList<String> members;
+	//private Building building;
+	private ArrayList<Long> mainreq;
+	
+	private Group(){}
 	
 	public Group(String name, Person member){
 		this.name = name;
-		this.members = new ArrayList<Person>();
-		members.add(member);
+		this.members = new ArrayList<String>();
+		members.add(member.getEmail());
 	}
 	
+	public Long getId() {
+		return id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -27,35 +38,35 @@ public class Group {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public ArrayList<Person> getMembers() {
+	public ArrayList<String> getMembers() {
 		return members;
 	}
 	public void addMember(Person member) {
-		if(!members.contains(member)){
-			members.add(member);
+		if(!members.contains(member.getEmail())){
+			members.add(member.getEmail());
 			member.addGroup(this);
 		}	
 	}
 	public void removeMember(Person member){
-		members.remove(member);
+		members.remove(member.getEmail());
 		member.removeGroup(this);
 	}
-	public Building getBuilding() {
-		return building;
-	}
-	public void setBuilding(Building building) {
-		this.building = building;
-	}
+//	public Building getBuilding() {
+//		return building;
+//	}
+//	public void setBuilding(Building building) {
+//		this.building = building;
+//	}
 	
 	public void addMaintenanceRequest(MaintenanceRequest req){
-		this.mainreq.add(req);
+		this.mainreq.add(req.getId());
 	}
 
-	public ArrayList<MaintenanceRequest> getMainreq() {
+	public ArrayList<Long> getMainreq() {
 		return mainreq;
 	}
 
-	public void setMainreq(ArrayList<MaintenanceRequest> mainreq) {
+	public void setMainreq(ArrayList<Long> mainreq) {
 		this.mainreq = mainreq;
 	}
 	
