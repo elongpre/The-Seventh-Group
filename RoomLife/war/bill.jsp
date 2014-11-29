@@ -14,7 +14,7 @@
 	    		<label class="field" for="Name">Bill Name:</label>
 		        <p><input type="text" name="billName"></p>
 		        <label class="field" for="Amount">Amount:</label>
-		        <p><input type="text" name="billAmount" value="Amount"></p>
+		        <p><input type="text" name="billAmount"></p>
 		        <input type="submit" value="Submit">
 	        </fieldset>
 	    </form>
