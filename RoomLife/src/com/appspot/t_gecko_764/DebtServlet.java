@@ -42,6 +42,9 @@ public class DebtServlet extends HttpServlet {
 	    
 	    // push new debt to the datastore
 	    datastore.saveDebt(debt);
+	    
+	    resp.sendRedirect("TaskComplete.html");
+	    
     }
     
     private String findRoommate(Person owner, String name) {

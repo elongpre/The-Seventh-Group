@@ -18,6 +18,7 @@
 		        <input type="submit" value="Submit">
 	        </fieldset>
 	    </form>
+	    
 	    <br>
 	    <br>
 	    
@@ -26,7 +27,7 @@
 	    		<legend>New Debt (charge a single roommate)</legend>
 	    		
 		    	<label class="field" for="Name">Bill Name:</label>
-			    <p><input type="text" name="billName"></p>
+			    <p><input type="text" name="debtName"></p>
 			    <label class="field" for="RoommateName">Roommate Name:</label>
 			    <p><input type="text" name="roommate"></p>
 			    <label class="field" for="Amount">Amount:</label>

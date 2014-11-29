@@ -28,13 +28,15 @@ public class BillServlet extends HttpServlet{
 	    Double total_amount = Double.parseDouble(req.getParameter("billAmount"));
 	    
 	    // calculate amount for each roommate
-	    Double split_amount = total_amount/(owner.getRoommates().size());
+	    Double split_amount = total_amount /(owner.getRoommates().size());
 	    
 	    // create bill and update all those affected, which should be the current user and his/her roommates
 	    Bill bill = new Bill.Builder(bill_name, split_amount, owner).build();
 	    
 	    // save bill to the Datastore
 	    datastore.saveBill(bill);
+	    
+	    resp.sendRedirect("TaskComplete.html");
 	    
     }
 }
