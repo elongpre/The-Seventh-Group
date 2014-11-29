@@ -26,6 +26,8 @@
 			<p>Hello!
 			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
 			to include your name with greetings you post.</p>
+			<p> current login emails are alice@example.com, bob@example.com, candice@example.com, and danny@example.com </p>
+			<p> the canned data intends only alice and bob to be used - entries are sparce (sparcer) for candice and danny </p>
 		<%
 		    }
 		%>

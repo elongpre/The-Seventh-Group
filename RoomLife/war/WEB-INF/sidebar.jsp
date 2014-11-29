@@ -20,10 +20,8 @@
 		<!-- Sidebar -->
         <div id="sidebar-wrapper" style="overflow-y:auto;overflow-x:hidden">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="/home">
-                        Bills
-                    </a>
+                <li class="sidebar-brand">    
+                	<div style="color:#999999">Bills</div>
                 </li>
                 <li class="divider"></li>
                 <%
@@ -32,10 +30,11 @@
 					for (Bill bill : billList){
 						pageContext.setAttribute("bill_name", bill.getName());
 						pageContext.setAttribute("bill_amount", bill.getAmount());
+						pageContext.setAttribute("bill_id", bill.getId());
 						
 				%>
 					<li>
-						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
+						<a href="/detailservlet/bill/${bill_id}" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
 					</li>
 				<%
 						i++;
@@ -45,9 +44,7 @@
 					}
 				%>
                 <li class="sidebar-brand">
-                    <a href="/home">
-                        Debts
-                    </a>
+                    <div style="color:#999999">Debts</div>
                 </li>
                 <li class="divider"></li>
                 <%
@@ -63,9 +60,7 @@
 					}
 				%>
 				<li class="sidebar-brand">
-                    <a href="/home">
-                        Maintenance Requests
-                    </a>
+                    <div style="color:#999999">Maintenance Requests</div>
                 </li>
                 <li class="divider"></li>
                 <%

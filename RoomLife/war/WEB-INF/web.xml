@@ -64,6 +64,15 @@
     	<url-pattern>/canneddata</url-pattern>
   	</servlet-mapping>
   	
+  	<servlet>
+    	<servlet-name>detailServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.DetailServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>detailServlet</servlet-name>
+    	<url-pattern>/detailservlet/*</url-pattern>
+  	</servlet-mapping>
+  	
   	
     <filter>
         <filter-name>ObjectifyFilter</filter-name>

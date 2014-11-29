@@ -22,6 +22,9 @@ public class Bill {
 	
 	private Bill(){}
 	
+	public Long getId(){
+		return this.id;
+	}
 	public String getName() {
 		return name;
 	}
