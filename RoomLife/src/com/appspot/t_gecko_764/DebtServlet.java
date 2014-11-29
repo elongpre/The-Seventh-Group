@@ -17,7 +17,6 @@ public class DebtServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
     	
-    	// establish the creation date for the current debt
     	//Date date = new Date();
     	//long date_created = date.getTime();
     	
