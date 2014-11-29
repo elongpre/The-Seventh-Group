@@ -5,8 +5,10 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Oswald|Titillium+Web:600' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="RoomLife.css">
-		<title>Insert title here</title>
+		<title>User Registration</title>
 	</head>
 	
 	<body>
