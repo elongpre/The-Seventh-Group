@@ -5,33 +5,30 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="RoomLife.css">
 		<title>Insert title here</title>
 	</head>
 	
 	<body>
 		<h1>New user</h1>
 		<form action="/registerUser" method = "POST">
-			First name: 
-			<input type="text" name="firstname">
-			<br>
-			<br>
-			
-			Last name:
-			<input type="text" name="secondname">
-			<br>
-			<br>
-			
-			Group:
-			<input type="text" name="group">
-			<br>
-			<br>
-			
-			Email:
-			<input type="text" name="email">
-			<br>
-			<br>
-			
-			<input type="submit" value="Submit">
+			<fieldset>
+				<legend>User Information</legend>
+				
+				<label class="field" for="firstName">First Name:</label>
+				<p><input type="text" name="firstname"></p>
+				
+				<label class="field" for="lastName">Last Name:</label>
+				<p><input type="text" name="secondname"></p>
+				
+				<label class="field" for="Group">Group:</label>
+				<p><input type="text" name="group"></p>
+				
+				<label class="field" for="Email">Email:</label>
+				<p><input type="text" name="email"></p>
+				
+				<input type="submit" value="Register">
+			</fieldset>
 		
 		</form>
 	</body>
