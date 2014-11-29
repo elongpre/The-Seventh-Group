@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <h3>Welcome to Roommate</h3>
-    <p>Input your bill info via the two options</p>
+    <h3>Submit New Bill</h3>
+    <p>Please input your bill information</p>
+    
+    <br>
     
     <b> Option 1: Split cost evenly</b>
     <form action="BillEntry" method="POST">
@@ -12,6 +14,7 @@
     
     <br>
     <br>
+    
     <b>Option 2: Charge one person independently</b>
     <form action="DebtEntry" method= "POST">
         <input type="text" name="debtName" value="Bill name"><br>

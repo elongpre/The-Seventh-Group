@@ -16,14 +16,10 @@ public class RegisterUserServlet extends HttpServlet{
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
     	
-    	// obtain current user so the correct data can be pulled from the datastore
-	    UserService userService = UserServiceFactory.getUserService();
-	    User user = userService.getCurrentUser();
-	    
 	    // get parameters from post
 	    String name = req.getParameter("firstname") + req.getParameter("secondname");
 	    String groupName = req.getParameter("group");
-	    String email = user.getEmail();
+	    String email = req.getParameter("email");
 	    
 	    // create person and group
 	    Person person = new Person(name,email);
@@ -34,6 +30,8 @@ public class RegisterUserServlet extends HttpServlet{
 	    DataStore datastore = DataStore.getInstance();
 	    datastore.saveGroup(group);
 	    datastore.savePerson(person);
+	    
+	    resp.sendRedirect("/LoginPage.jsp");
 
     }
 
