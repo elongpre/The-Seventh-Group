@@ -1,9 +1,6 @@
 package com.appspot.t_gecko_764;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;

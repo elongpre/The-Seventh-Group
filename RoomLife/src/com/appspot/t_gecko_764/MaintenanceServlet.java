@@ -20,7 +20,6 @@ public class MaintenanceServlet extends HttpServlet {
     	UserService userService = UserServiceFactory.getUserService();
     	User user = userService.getCurrentUser();
     	
-    	
 	    // get parameters for maintenance request
 	    String name = req.getParameter("name");
     	String priority = req.getParameter("priority");
@@ -39,8 +38,6 @@ public class MaintenanceServlet extends HttpServlet {
 	    	}
 	    }
 	    
-
-	    
 	    // construct new maintenance request object using Builder
 	    MaintenanceRequest mainreq = new MaintenanceRequest.Builder(groupName, owner, group).setName(name).setPriority(priority).setLocation(place)
 	    		.setDetails(description).build();
@@ -50,7 +47,5 @@ public class MaintenanceServlet extends HttpServlet {
 	    datastore.saveGroup(group);
 
     }
-    
-
     
 }

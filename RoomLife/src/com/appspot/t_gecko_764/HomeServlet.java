@@ -21,6 +21,7 @@ public class HomeServlet extends HttpServlet{
 		public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
 			UserService userService = UserServiceFactory.getUserService();
 		    User user = userService.getCurrentUser();
+		    
 		    if( user == null){
 		    	resp.sendRedirect("/LoginPage.jsp");
 		    }

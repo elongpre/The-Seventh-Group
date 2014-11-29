@@ -1,21 +1,13 @@
 package com.appspot.t_gecko_764;
 
-
-
-import java.util.ArrayList;
 import java.util.List;
-
-import com.googlecode.objectify.Objectify;
-import com.googlecode.objectify.ObjectifyFactory;
-import com.googlecode.objectify.ObjectifyService;
 
 import static com.appspot.t_gecko_764.OfyService.ofy;
 
 public class DataStore {
 	private static final DataStore uniqueInstance = new DataStore();
 	
-	private DataStore(){
-	}
+	private DataStore(){}
 	
 	public static DataStore getInstance(){
 		return uniqueInstance;

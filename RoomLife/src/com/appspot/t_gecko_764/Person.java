@@ -54,5 +54,6 @@ public class Person {
 	}
 	public void removeGroup(Group group) {
 		groups.remove(group.getId());
-	}		
+	}
+	
 }

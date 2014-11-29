@@ -1,10 +1,6 @@
 package com.appspot.t_gecko_764;
 
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.googlecode.objectify.Objectify;
-import com.googlecode.objectify.Result;
 
+@SuppressWarnings("serial")
 public class BillServlet extends HttpServlet{
-	DataStore datastore = DataStore.getInstance();
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
@@ -38,5 +32,9 @@ public class BillServlet extends HttpServlet{
 	    
 	    // create bill and update all those affected, which should be the current user and his/her roommates
 	    Bill bill = new Bill.Builder(bill_name, split_amount, owner).build();
+	    
+	    // save bill to the Datastore
+	    datastore.saveBill(bill);
+	    
     }
 }

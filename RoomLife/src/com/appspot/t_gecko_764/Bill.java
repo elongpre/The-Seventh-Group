@@ -19,7 +19,6 @@ public class Bill {
 	private Date dateCreated;
 	private Date datePaid;
 	
-	
 	private Bill(){}
 	
 	public Long getId(){

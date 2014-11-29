@@ -10,6 +10,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+@SuppressWarnings("serial")
 public class RegisterUserServlet extends HttpServlet{
 	
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -20,22 +21,19 @@ public class RegisterUserServlet extends HttpServlet{
 	    User user = userService.getCurrentUser();
 	    
 	    // get parameters from post
-	    String name= req.getParameter("firstname") + req.getParameter("secondname");
-	    String groupName= req.getParameter("group");
-	    String email=user.getEmail();
+	    String name = req.getParameter("firstname") + req.getParameter("secondname");
+	    String groupName = req.getParameter("group");
+	    String email = user.getEmail();
 	    
 	    // create person and group
 	    Person person = new Person(name,email);
-	    Group group=new Group(groupName,person);
+	    Group group = new Group(groupName,person);
 	    person.addGroup(group);
 	    
 	    // add person and group to database
 	    DataStore datastore = DataStore.getInstance();
 	    datastore.saveGroup(group);
 	    datastore.savePerson(person);
-	    
-
-
 
     }
 

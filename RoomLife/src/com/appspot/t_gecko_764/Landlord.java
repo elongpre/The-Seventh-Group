@@ -19,5 +19,4 @@ public class Landlord {
 		this.units = units;
 	}
 	
-	
 }

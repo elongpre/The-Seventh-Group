@@ -133,12 +133,7 @@ public class MaintenanceRequest {
 			this.group = group.getId();
 			return this;
 		}
-
-		
-		
-		
 		
 	}
-	
 	
 }

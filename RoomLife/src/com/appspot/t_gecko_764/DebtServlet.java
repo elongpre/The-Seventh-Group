@@ -1,12 +1,8 @@
 package com.appspot.t_gecko_764;
 
-import static com.googlecode.objectify.ObjectifyService.ofy;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,17 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.googlecode.objectify.Objectify;
 
 @SuppressWarnings("serial")
 public class DebtServlet extends HttpServlet {
-
+	
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
     	
     	// establish the creation date for the current debt
-    	Date date = new Date();
-    	long date_created = date.getTime();
+    	//Date date = new Date();
+    	//long date_created = date.getTime();
     	
     	// obtain current user
 	    UserService userService = UserServiceFactory.getUserService();
@@ -36,17 +31,18 @@ public class DebtServlet extends HttpServlet {
 	    String roommate = req.getParameter("roommate");
 	    
 	    // get owner(current user) from the datastore
-	    Person owner = ofy().load().type(Person.class).filter("email", user.getEmail()).first().now();
+	    DataStore datastore = DataStore.getInstance();
+	    Person owner = datastore.getPerson(user.getEmail());
 	    
 	    //get debtor(roommate) from the datastore
 	    String debtor_email = findRoommate(owner, roommate);
-	    Person debtor = ofy().load().type(Person.class).filter("email", debtor_email).first().now();
+	    Person debtor = datastore.getPerson(debtor_email);
 	    
 	    // construct new Debt object
 	    Debt debt = new Debt.Builder(debt_name, amount, owner, debtor).build();
 	    
 	    // push new debt to the datastore
-	    ofy().save().entity(debt).now();
+	    datastore.saveDebt(debt);
     }
     
     private String findRoommate(Person owner, String name) {

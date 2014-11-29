@@ -2,14 +2,15 @@ package com.appspot.t_gecko_764;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@SuppressWarnings("serial")
 public class CannedDataServlet extends HttpServlet{
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		DataStore datastore = DataStore.getInstance();
 		Person alice = new Person("Alice", "alice@example.com");
@@ -63,6 +64,5 @@ public class CannedDataServlet extends HttpServlet{
 				.setDetails("Details2Details2Details2Details2Details2Details2Details2 Details2Details2Details2Details2Details2Details2Details2\nDetails2Details2Details2Details2Details2Details2Details2").build();
 		datastore.saveMaintenanceRequest(request2);
 		resp.getWriter().println("Finished loading data");
-		
 	}
 }
