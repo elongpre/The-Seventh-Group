@@ -23,6 +23,70 @@
         <div id="page-content-wrapper">
         	<div class="container-fluid">
                 Welcome to RoomLife!
+                <% 
+                MaintenanceRequest mainReq = (MaintenanceRequest) request.getAttribute("Request");
+                pageContext.setAttribute("req_name", mainReq.getName());
+                pageContext.setAttribute("req_date", mainReq.getDateCreated());
+                pageContext.setAttribute("req_location", mainReq.getLocation());
+                pageContext.setAttribute("req_description", mainReq.getDetails());
+                pageContext.setAttribute("req_priority",mainReq.getPriority());
+                
+                %>
+                <h1>${fn:escapeXml(debt_name)}</h1> 
+               
+              	<% if(mainReq.getCompleted() == null) {
+              		
+              	%>
+              		<div>${fn:escapeXml(req_name)} has not been completed]</div>
+              	<%
+              	} else {
+                    pageContext.setAttribute("req_complete", mainReq.getCompleted());
+                %>
+                	<div>${fn:escapeXml(req_name)} was completed on ${fn:escapeXml(req_complete)}</div>
+                <%
+              	}
+              	%>
+              	
+              	<div>Maintenance Request Info</div>
+              	
+              	<%
+              	String name = (String) request.getAttribute("debtor");
+              	pageContext.setAttribute("name", name);
+              	%>
+              	<table>
+              		<tr>
+              			<td>
+              				<div>${fn:escapeXml(req_priority)}</div>
+              			</td>
+              			<td>
+              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+              			</td>
+              			<td>
+              				<div>${fn:escapeXml(req_location)}</div>
+              			</td>
+              			<td>
+              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+              			</td>
+              			<td>
+              				<div>${fn:escapeXml(req_date)}</div>
+              			</td>
+              			<td>
+              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+              			</td>
+              			<td>
+              				<div>${fn:escapeXml(req_location)}</div>
+              			</td>
+              			<td>
+              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+              			</td>
+              			<td>
+              				<div style = "margin:20px; padding:20px" >${fn:escapeXml(req_description)}</div>
+              			</td>
+              		</tr>
+              	
+              	</table>
+                
+                
 			</div>
 		</div>
 		</div>

@@ -14,6 +14,7 @@ public class MaintenanceRequest {
 	private String location;
 	private String details;
 	private Date dateCreated;
+	private Date completed;
 	@Index private String owner;
 	private Long group;
 
@@ -71,6 +72,14 @@ public class MaintenanceRequest {
 		this.group = group;
 	}
 	
+	public Date getCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(Date completed) {
+		this.completed = completed;
+	}
+
 	public static class Builder{
 		private String name;
 		private String priority = "low";

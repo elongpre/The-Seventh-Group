@@ -61,6 +61,7 @@ public class DetailServlet extends HttpServlet{
 				break;
 			case "debt":	Debt debt = datastore.getDebt(id);
 				req.setAttribute("Debt", debt);
+				req.setAttribute("debtor", debt.getDebtor());
 				req.getRequestDispatcher("/WEB-INF/showDebt.jsp").forward(req, resp);
 				break;
 			case "request":	MaintenanceRequest request = datastore.getMaintenanceRequest(id);
