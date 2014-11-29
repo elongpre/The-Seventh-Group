@@ -36,17 +36,4 @@ public class HomeServlet extends HttpServlet{
 			req.setAttribute("RequestList", requests);
 			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
 		}
-		
-		private List<Bill> getBills(){
-			DataStore datastore = DataStore.getInstance();
-			Person alice = datastore.getPerson("alice@example.com");
-			return datastore.getBills(alice);
-		}
-		
-		private ArrayList<Debt> getDebts(){
-			return new ArrayList<Debt>();
-		}
-		private ArrayList<MaintenanceRequest> getRequests(){
-			return new ArrayList<MaintenanceRequest>();
-		}
 }

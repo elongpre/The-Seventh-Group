@@ -36,6 +36,7 @@ public class CannedDataServlet extends HttpServlet{
 		datastore.saveBill(bill1);
 		deadline.add(Calendar.DAY_OF_MONTH, 5);
 		Bill bill2 = new Bill.Builder("Electricity", 22.22, alice).setGroup(group).setDateDeadline(deadline.getTime()).build();
+		bill2.getPeeps().remove(1);
 		datastore.saveBill(bill2);
 		deadline.add(Calendar.DAY_OF_MONTH, 5);
 		Bill bill3 = new Bill.Builder("Gas", 33.33, bob).setGroup(group).setDateDeadline(deadline.getTime()).build();

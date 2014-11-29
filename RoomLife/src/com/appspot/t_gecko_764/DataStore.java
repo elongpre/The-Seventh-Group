@@ -40,6 +40,9 @@ public class DataStore {
 	public List<Bill> getBills(Person person){
 		return ofy().load().type(Bill.class).filter("owner", person.getEmail()).list();
 	}
+	public Bill getBill(Long id){
+		return ofy().load().type(Bill.class).id(id).now();
+	}
 	
 	public void saveDebt(Debt debt){
 		ofy().save().entity(debt).now();
@@ -47,11 +50,17 @@ public class DataStore {
 	public List<Debt> getDebts(Person person){
 		return ofy().load().type(Debt.class).filter("owner", person.getEmail()).list();
 	}
+	public Debt getDebt(Long id){
+		return ofy().load().type(Debt.class).id(id).now();
+	}
 	
 	public void saveMaintenanceRequest(MaintenanceRequest request){
 		OfyService.ofy().save().entity(request).now();
 	}
 	public List<MaintenanceRequest> getMaintenanceRequests(Person person){
 		return ofy().load().type(MaintenanceRequest.class).filter("owner", person.getEmail()).list();
+	}
+	public MaintenanceRequest getMaintenanceRequest(Long id){
+		return ofy().load().type(MaintenanceRequest.class).id(id).now();
 	}
 }
