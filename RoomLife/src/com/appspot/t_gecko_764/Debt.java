@@ -58,9 +58,7 @@ public class Debt {
 		this.datePaid = datePaid;
 	}
 	
-	public Long getId() {
-		return id;
-	}
+
 	
 	public static class Builder{
 		private String name;
