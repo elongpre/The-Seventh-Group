@@ -1,7 +1,5 @@
 package com.appspot.t_gecko_764;
 
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 
