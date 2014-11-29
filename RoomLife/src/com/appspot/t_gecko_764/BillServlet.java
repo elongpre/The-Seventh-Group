@@ -36,7 +36,7 @@ public class BillServlet extends HttpServlet{
 	    // save bill to the Datastore
 	    datastore.saveBill(bill);
 	    
-	    resp.sendRedirect("TaskComplete.html");
+	    //resp.sendRedirect("TaskComplete.html");
 	    
     }
 }

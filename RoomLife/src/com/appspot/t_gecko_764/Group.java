@@ -12,7 +12,6 @@ public class Group {
 	@Index private String name;
 	private String address;
 	private ArrayList<String> members;
-	//private Building building;
 	private ArrayList<Long> mainreq;
 	
 	private Group(){}
@@ -51,13 +50,6 @@ public class Group {
 		members.remove(member.getEmail());
 		member.removeGroup(this);
 	}
-//	public Building getBuilding() {
-//		return building;
-//	}
-//	public void setBuilding(Building building) {
-//		this.building = building;
-//	}
-	
 	public void addMaintenanceRequest(MaintenanceRequest req){
 		this.mainreq.add(req.getId());
 	}

@@ -18,6 +18,7 @@ public class CannedDataServlet extends HttpServlet{
 		Person bob = new Person("Bob", "bob@example.com");
 		datastore.savePerson(bob);
 		Person candice = new Person("Candice", "candice@example.com");
+		candice.addRoommate(bob);
 		datastore.savePerson(candice);
 		Person danny = new Person("Danny", "danny@example.com");
 		datastore.savePerson(danny);
