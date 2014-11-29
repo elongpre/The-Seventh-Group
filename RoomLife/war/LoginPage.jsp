@@ -20,11 +20,7 @@
 		    User user = userService.getCurrentUser();
 		    if (user != null) {
 		      pageContext.setAttribute("user", user);
-		%>
-		
-			<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-			<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-			<%
+		      response.sendRedirect("/home");
 			} else {
 		%>
 			<p>Hello!

@@ -13,68 +13,16 @@
 	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
 	    
 		<script src="/Bootstrap/js/bootstrap.js"></script>
-		
 	</head>
 	<body>
+		<%@include file="header.jsp" %> 
 		<div id="wrapper">
-		<!-- Sidebar -->
-        <div id="sidebar-wrapper" style="overflow-y:auto;overflow-x:hidden">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="/home">
-                        Bills
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <%
-					List<Bill> billList = (List<Bill>) request.getAttribute("BillList");
-                	int i = 0;
-					for (Bill bill : billList){
-						pageContext.setAttribute("bill_name", bill.getName());
-						pageContext.setAttribute("bill_amount", bill.getAmount());
-						
-				%>
-					<li>
-						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
-					</li>
-				<%
-						i++;
-						if(i == 5){
-							break;
-						}
-					}
-				%>
-                <li class="sidebar-brand">
-                    <a href="/home">
-                        Debts
-                    </a>
-                </li>
-                <li class="divider"></li>
-                <%
-	                List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
-					for (Debt debt: DebtList){
-						pageContext.setAttribute("debt_name", debt.getName());
-						pageContext.setAttribute("debt_amount", debt.getAmount());
-				%>
-					<li>
-						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
-					</li>
-				<%
-					}
-				%>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-      
+		
+      	<%@include file="sidebar.jsp" %> 
         <!-- Page Content -->
         <div id="page-content-wrapper">
         	<div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1> RoomLife: <small>make life simpler</small></h1>
-                    </div>
+                <div class="row">                   
 					<div class="container-fluid">
 						<div class="col-md-8" style="height:35%; width:25%;overflow:auto;">
 							<%
@@ -94,8 +42,8 @@
 					<div class="container-fluid">
 						<div class="col-md-8" style="height:25%; width:25%;overflow:auto;">
 							<%
-								List<MaintenanceRequest> RequestList = (List<MaintenanceRequest>) request.getAttribute("RequestList");
-									for (MaintenanceRequest maintenanceRequest: RequestList){
+								List<MaintenanceRequest> RequestList2 = (List<MaintenanceRequest>) request.getAttribute("RequestList");
+									for (MaintenanceRequest maintenanceRequest: RequestList2){
 										pageContext.setAttribute("request_name", maintenanceRequest.getName());
 										pageContext.setAttribute("request_priority", maintenanceRequest.getPriority());
 							%>
