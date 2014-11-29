@@ -52,9 +52,10 @@
 					for (Debt debt: DebtList){
 						pageContext.setAttribute("debt_name", debt.getName());
 						pageContext.setAttribute("debt_amount", debt.getAmount());
+						pageContext.setAttribute("debt_id", debt.getId());
 				%>
 					<li>
-						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
+						<a href="/detailservlet/debt/${debt_id}" class="debt-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
 					</li>
 				<%
 					}
@@ -68,9 +69,10 @@
 					for (MaintenanceRequest maintenanceRequest: RequestList){
 						pageContext.setAttribute("request_name", maintenanceRequest.getName());
 						pageContext.setAttribute("request_priority", maintenanceRequest.getPriority());
+						pageContext.setAttribute("req_id", maintenanceRequest.getId());
 				%>
 					<li>
-						<a href="#" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(request_name)}: ${fn:escapeXml(request_priority)}</a>
+						<a href="/detailservlet/request/${req_id}" class="req-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(request_name)}: ${fn:escapeXml(request_priority)}</a>
 					</li>
 				<%
 					}
