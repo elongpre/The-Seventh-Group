@@ -7,10 +7,10 @@
 <html>
 	<head>
 		<!-- Bootstrap Core CSS -->
-	    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+	    <link href="../../Bootstrap/css/bootstrap.css" rel="stylesheet">
 	
 	    <!-- Sidebar CSS -->
-	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
+	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
 	    
 		<script src="/Bootstrap/js/bootstrap.js"></script>
 	</head>
@@ -37,7 +37,7 @@
               	<% if(mainReq.getCompleted() == null) {
               		
               	%>
-              		<div>${fn:escapeXml(req_name)} has not been completed]</div>
+              		<div>${fn:escapeXml(req_name)} has not been completed</div>
               	<%
               	} else {
                     pageContext.setAttribute("req_complete", mainReq.getCompleted());
