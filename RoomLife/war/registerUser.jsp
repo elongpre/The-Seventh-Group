@@ -27,7 +27,10 @@
 				<p><input type="text" name="group"></p>
 				
 				<label class="field" for="Email">Email:</label>
-				<p><input type="text" name="email"></p>
+				<p>
+				<input type="text" name="email">
+					A Google email must be provided
+				</p>
 				
 				<input type="submit" value="Register">
 			</fieldset>

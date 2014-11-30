@@ -6355,4 +6355,40 @@ button.close {
     display: none !important;
   }
 }
+
+ul#menu{
+  font-family: Arial, Verdana;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul#menu li#dropdown {
+  display: block;
+  position: relative;
+  float: left;
+}
+ul#menu li#dropdown a#signout {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  border-top: 1px solid #ffffff;
+  padding: 5px 15px 5px 15px;
+  background: #000;
+  margin-left: 1px;
+  white-space: nowrap;
+}
+ul#menu li#dropdown a#signout:hover { background: #999999; }
+li#dropdown:hover ul#menu {
+  display: block;
+  position: absolute;
+}
+li#dropdown ul#menu { display: none; }
+li#dropdown:hover li#dropdown {
+  float: none;
+  font-size: 11px;
+}
+li#dropdown:hover a#signout { background: #999999; }
+li#dropdown:hover li#dropdown a#signout:hover { background: #999999; }
+
 /*# sourceMappingURL=bootstrap.css.map */

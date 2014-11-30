@@ -25,8 +25,12 @@
 				    } else {
 				      	pageContext.setAttribute("user", user);
 					%>
-						<ul class="nav navbar-nav navbar-right">
-			    			<li><a href="<%= userService.createLogoutURL("/LoginPage.jsp") %>">Sign out</a></li>
+						<ul id = "menu" class="nav navbar-nav navbar-right">
+							<li id ="dropdown"><a id="signout" href="">${fn:escapeXml(user)}</a>
+			    				<ul id ="menu">
+			    					<li id="dropdown"><a id="signout" href="<%= userService.createLogoutURL("/LoginPage.jsp") %>">Sign out</a></li>
+			    				</ul>
+			    			</li>
 			   			</ul>				 			
 					<% } %>
 				</div>
