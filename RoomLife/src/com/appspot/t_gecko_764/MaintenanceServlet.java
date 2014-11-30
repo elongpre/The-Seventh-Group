@@ -43,6 +43,8 @@ public class MaintenanceServlet extends HttpServlet {
 	    // add request to group and add group to datastore
 	    group.addMaintenanceRequest(mainreq);
 	    datastore.saveGroup(group);
+	    
+	    resp.sendRedirect("/TaskComplete.html");
 
     }
     
