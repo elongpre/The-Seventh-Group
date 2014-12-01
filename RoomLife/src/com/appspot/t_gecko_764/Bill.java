@@ -144,7 +144,6 @@ public class Bill {
 			this.datePaid = datePaid;
 			return this;
 		}
-
-		
 	}	
+	
 }

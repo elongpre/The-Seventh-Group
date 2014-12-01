@@ -14,19 +14,38 @@ public class CannedDataServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		DataStore datastore = DataStore.getInstance();
 		Person alice = new Person("Alice", "alice@example.com");
-		datastore.savePerson(alice);
+		//datastore.savePerson(alice);
 		Person bob = new Person("Bob", "bob@example.com");
-		datastore.savePerson(bob);
+		//datastore.savePerson(bob);
 		Person candice = new Person("Candice", "candice@example.com");
 		candice.addRoommate(bob);
-		datastore.savePerson(candice);
+		//datastore.savePerson(candice);
 		Person danny = new Person("Danny", "danny@example.com");
-		datastore.savePerson(danny);
+		//datastore.savePerson(danny);
 		Group group = new Group("TestGroup", alice);
 		group.addMember(bob);
 		group.addMember(candice);
 		group.addMember(danny);
-		datastore.saveGroup(group);
+		
+		String s = "test";
+		
+		datastore.saveGroup(group); //id should be auto-generated here
+		alice.addGroup(s);
+		
+		//alice.addGroup(new Long(group.getId()));
+		//bob.addGroup(group.getId());
+		//candice.addGroup(group.getId());
+		//danny.addGroup(group.getId());
+		
+		// save mock users to the datastore
+		datastore.savePerson(alice);
+		datastore.getPerson(alice.getEmail());
+	
+		
+		datastore.savePerson(bob);
+		datastore.savePerson(candice);
+		datastore.savePerson(danny);
+		
 		Group guysGroup = new Group("GuysGroup", bob);
 		guysGroup.addMember(danny);	
 		datastore.saveGroup(guysGroup);

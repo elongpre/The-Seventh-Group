@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.annotation.OnSave;
 
 @Entity
 public class Group {
@@ -43,7 +44,7 @@ public class Group {
 	public void addMember(Person member) {
 		if(!members.contains(member.getEmail())){
 			members.add(member.getEmail());
-			member.addGroup(this);
+			//member.addGroup(this);
 		}	
 	}
 	public void removeMember(Person member){
@@ -61,7 +62,5 @@ public class Group {
 	public void setMainreq(ArrayList<Long> mainreq) {
 		this.mainreq = mainreq;
 	}
-	
-	
 	
 }

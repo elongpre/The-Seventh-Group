@@ -24,7 +24,7 @@ public class RegisterUserServlet extends HttpServlet{
 	    // create person and group
 	    Person person = new Person(name,email);
 	    Group group = new Group(groupName,person);
-	    person.addGroup(group);
+	    //person.addGroup(group.getId());
 	    
 	    // add person and group to database
 	    DataStore datastore = DataStore.getInstance();

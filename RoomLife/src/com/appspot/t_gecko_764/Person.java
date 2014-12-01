@@ -2,6 +2,8 @@ package com.appspot.t_gecko_764;
 
 import java.util.ArrayList;
 
+import javax.jdo.annotations.Persistent;
+
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -9,17 +11,18 @@ import com.googlecode.objectify.annotation.Index;
 @Entity
 public class Person {
 	@Id Long id;
-	private String name;
 	@Index private String email;
+	private String name;
 	private ArrayList<String> roommates;
-	private ArrayList<Long> groups;
+	private String group;
+	
 	
 	private Person(){}
 	
 	public Person(String name, String email){
 		this.name = name;
 		this.email = email;
-		this.groups = new ArrayList<Long>();
+		//this.groups = new ArrayList<Long>();
 		this.roommates = new ArrayList<String>();
 	}
 	
@@ -44,16 +47,21 @@ public class Person {
 	public void removeRoommates(Person roommate){
 		roommates.remove(roommate.getEmail());
 	}
-	public ArrayList<Long> getGroups() {
-		return groups;
+	public String getGroup() {
+		return group;
 	}
-	public void addGroup(Group group) {
+	public void addGroup(String id) {
+		/*
 		if(!groups.contains(group.getId())){
 			groups.add(group.getId());
 		}
+		*/
+		this.group = id;
 	}
 	public void removeGroup(Group group) {
-		groups.remove(group.getId());
+		//groups.remove(group.getId());
+		
+		this.group = null;
 	}
 	
 }

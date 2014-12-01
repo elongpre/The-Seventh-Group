@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -17,7 +17,7 @@
 		        <p><input type="text" name="billName"></p>
 		        <label class="field" for="Amount">Amount:</label>
 		        <p><input type="text" name="billAmount"></p>
-		        <input type="submit" value="Submit">
+		        <input type="submit" name="submitBill" value="Submit">
 	        </fieldset>
 	    </form>
 	    
@@ -34,7 +34,7 @@
 			    <p><input type="text" name="roommate"></p>
 			    <label class="field" for="Amount">Amount:</label>
 			    <p><input type="text" name="debtAmount"></p>
-		        <input type="submit" value="Submit">
+		        <input type="submit" name="submitDebt" value="Submit">
 	        </fieldset>
 	    </form>
     </body>
