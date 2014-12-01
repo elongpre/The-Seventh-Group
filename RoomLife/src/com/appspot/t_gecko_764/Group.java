@@ -44,7 +44,6 @@ public class Group {
 	public void addMember(Person member) {
 		if(!members.contains(member.getEmail())){
 			members.add(member.getEmail());
-			//member.addGroup(this);
 		}	
 	}
 	public void removeMember(Person member){
