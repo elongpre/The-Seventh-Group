@@ -17,11 +17,7 @@ public class Debt {
 	
 	private Debt(){}
 	
-<<<<<<< HEAD
 
-	
-=======
->>>>>>> 5d9849c70236e8519cc527d942eaa4fc7d675c5b
 	public String getName() {
 		return name;
 	}

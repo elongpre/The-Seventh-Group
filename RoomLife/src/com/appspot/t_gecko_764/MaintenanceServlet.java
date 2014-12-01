@@ -30,7 +30,7 @@ public class MaintenanceServlet extends HttpServlet {
 	    Person owner= datastore.getPerson(user.getEmail());
 	    Group group = datastore.getGroup(owner.getGroup());
 	    
-<<<<<<< HEAD
+
 	   //Group group = null;
 	   // for(Long id : owner.getGroups()){
 	   // 	group = datastore.getGroup(id);
@@ -39,7 +39,7 @@ public class MaintenanceServlet extends HttpServlet {
 	   // 	}
 	   // }
 	    
-=======
+
 	    /*
 	    for(Long id : owner.getGroups()){
 	    	group = datastore.getGroup(id);
@@ -47,7 +47,7 @@ public class MaintenanceServlet extends HttpServlet {
 	    		break;
 	    	}
 	    }*/
->>>>>>> 5d9849c70236e8519cc527d942eaa4fc7d675c5b
+
 	    
 	    // construct new maintenance request object using Builder
 	    MaintenanceRequest mainreq = new MaintenanceRequest.Builder(groupName, owner, group).setName(name).setPriority(priority).setLocation(place)

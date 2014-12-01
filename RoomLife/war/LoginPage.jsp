@@ -28,7 +28,7 @@
 		%>
 			<h1>Welcome to RoomLife!</h1>
 			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button>Sign in</button></a>
-			<p>New user? Click <a href="registerUser.jsp">here</a> to register.</p>
+			<p>New user? Click <a href="registerUser.jsp?failed=no">here</a> to register.</p>
 		<%
 		    }
 		%>
