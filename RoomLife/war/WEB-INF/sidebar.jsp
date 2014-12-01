@@ -37,7 +37,7 @@
 			               		</div>
                 			</td>
                 			<td align="right" >
-                				<a href="/bill.jsp" style="padding-right: 10px">
+                				<a href="/entry/bill" style="padding-right: 10px">
                						<span class="glyphicon glyphicon-plus"></span>
                					</a>            				
                 			</td>
@@ -81,7 +81,7 @@
 			               		</div>
                 			</td>
                 			<td align="right" >
-                				<a href="/bill.jsp" style="padding-right: 10px">
+                				<a href="/entry/debt" style="padding-right: 10px">
                						<span class="glyphicon glyphicon-plus"></span>
                					</a>            				
                 			</td>
@@ -120,7 +120,7 @@
 			               		</div>
                 			</td>
                 			<td align="right" >
-                				<a href="/bill.jsp" style="padding-right: 10px">
+                				<a href="/entry/request" style="padding-right: 10px">
                						<span class="glyphicon glyphicon-plus"></span>
                					</a>            				
                 			</td>
