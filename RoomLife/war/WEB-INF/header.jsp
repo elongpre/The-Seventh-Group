@@ -15,7 +15,12 @@
  	<div class="page-header">
  		<nav class="navbar navbar-default navbar-static">
  			<div class="container-fluid">
-		       	<div class="navbar-header"><h1>RoomLife: <small>make life simpler</small></h1></div>
+		       	<div class="navbar-header">
+		       		<h1>
+			       		<a href="/home" style="color: black">RoomLife: </a>
+			       		<small>make life simpler</small>
+	       			</h1>
+	       		</div>
 				<div class="collapse navbar-collapse">
 					<%
 				    UserService userService = UserServiceFactory.getUserService();
