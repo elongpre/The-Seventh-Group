@@ -12,17 +12,15 @@ import com.googlecode.objectify.annotation.Index;
 public class Person {
 	@Id Long id;
 	@Index private String email;
+	private Long group;
 	private String name;
 	private ArrayList<String> roommates;
-	private String group;
-	
 	
 	private Person(){}
 	
 	public Person(String name, String email){
 		this.name = name;
 		this.email = email;
-		//this.groups = new ArrayList<Long>();
 		this.roommates = new ArrayList<String>();
 	}
 	
@@ -47,21 +45,14 @@ public class Person {
 	public void removeRoommates(Person roommate){
 		roommates.remove(roommate.getEmail());
 	}
-	public String getGroup() {
+	public Long getGroup() {
 		return group;
 	}
-	public void addGroup(String id) {
-		/*
-		if(!groups.contains(group.getId())){
-			groups.add(group.getId());
-		}
-		*/
+	public void addGroup(Long id) {
 		this.group = id;
 	}
 	public void removeGroup(Group group) {
-		//groups.remove(group.getId());
-		
 		this.group = null;
 	}
-	
+
 }
