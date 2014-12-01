@@ -14,7 +14,7 @@ public class Person {
 	@Index private String email;
 	private String name;
 	private ArrayList<String> roommates;
-	private String group;
+	private Long group;
 	
 	
 	private Person(){}
@@ -47,10 +47,10 @@ public class Person {
 	public void removeRoommates(Person roommate){
 		roommates.remove(roommate.getEmail());
 	}
-	public String getGroup() {
+	public Long getGroup() {
 		return group;
 	}
-	public void addGroup(String id) {
+	public void addGroup(Long id) {
 		/*
 		if(!groups.contains(group.getId())){
 			groups.add(group.getId());

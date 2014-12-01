@@ -20,8 +20,29 @@
 		<!-- Sidebar -->
         <div id="sidebar-wrapper" style="overflow-y:auto;overflow-x:hidden">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">    
-                	<div style="color:#999999">Bills</div>
+                <li class="sidebar-brand">
+                	<table width="100%">
+                		<tr>
+                			<td>
+                				<div class="sidebar-header" style="height: 20px">
+			               		</div>
+                			</td>
+                			<td align="center">
+                			</td>
+                		</tr>
+                		<tr>
+                			<td>
+                				<div class="sidebar-header">
+			                		Bills
+			               		</div>
+                			</td>
+                			<td align="right" >
+                				<a href="/bill.jsp" style="padding-right: 10px">
+               						<span class="glyphicon glyphicon-plus"></span>
+               					</a>            				
+                			</td>
+                		</tr>
+                	</table>                  	
                 </li>
                 <li class="divider"></li>
                 <%
@@ -44,7 +65,28 @@
 					}
 				%>
                 <li class="sidebar-brand">
-                    <div style="color:#999999">Debts</div>
+                    <table width="100%">
+                		<tr>
+                			<td>
+                				<div class="sidebar-header" style="height: 20px">
+			               		</div>
+                			</td>
+                			<td align="center">
+                			</td>
+                		</tr>
+                		<tr>
+                			<td>
+                				<div class="sidebar-header">
+			                		Debts
+			               		</div>
+                			</td>
+                			<td align="right" >
+                				<a href="/bill.jsp" style="padding-right: 10px">
+               						<span class="glyphicon glyphicon-plus"></span>
+               					</a>            				
+                			</td>
+                		</tr>
+                	</table>
                 </li>
                 <li class="divider"></li>
                 <%
@@ -61,7 +103,29 @@
 					}
 				%>
 				<li class="sidebar-brand">
-                    <div style="color:#999999">Maintenance Requests</div>
+                    <table width="100%">
+                		<tr>
+                			<td>
+                				<div class="sidebar-header" style="height: 20px">
+			                		Maintenance
+			               		</div>
+                			</td>
+                			<td align="center">
+                			</td>
+                		</tr>
+                		<tr>
+                			<td>
+                				<div class="sidebar-header">
+			                		Requests
+			               		</div>
+                			</td>
+                			<td align="right" >
+                				<a href="/bill.jsp" style="padding-right: 10px">
+               						<span class="glyphicon glyphicon-plus"></span>
+               					</a>            				
+                			</td>
+                		</tr>
+                	</table>
                 </li>
                 <li class="divider"></li>
                 <%

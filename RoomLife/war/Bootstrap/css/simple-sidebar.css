@@ -70,6 +70,12 @@
   background-color: #999999;
 }
 
+.sidebar-header {
+	height: 65px;
+    font-size: 22px;
+    line-height: 60px;
+    color: #999999;
+}
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
