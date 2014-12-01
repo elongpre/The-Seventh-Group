@@ -13,39 +13,29 @@ public class CannedDataServlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		DataStore datastore = DataStore.getInstance();
-		if (datastore.getPerson("alice@example.com") == null){
+		if (datastore.getPerson("alice@example.com") == null){		
 			Person alice = new Person("Alice", "alice@example.com");
-			//datastore.savePerson(alice);
 			Person bob = new Person("Bob", "bob@example.com");
-			//datastore.savePerson(bob);
 			Person candice = new Person("Candice", "candice@example.com");
 			candice.addRoommate(bob);
-			//datastore.savePerson(candice);
 			Person danny = new Person("Danny", "danny@example.com");
-			//datastore.savePerson(danny);
+			
 			Group group = new Group("TestGroup", alice);
 			group.addMember(bob);
 			group.addMember(candice);
 			group.addMember(danny);
 			
-			String s = "test";
-			
 			datastore.saveGroup(group); //id should be auto-generated here
-			if(group.getId() != null){
-				System.out.println(group.getId());
-			}
-			alice.addGroup(group.getId());
+			Long id = group.getId();
 			
-			//alice.addGroup(new Long(group.getId()));
-			//bob.addGroup(group.getId());
-			//candice.addGroup(group.getId());
-			//danny.addGroup(group.getId());
+			// update group members
+			alice.addGroup(id);
+			bob.addGroup(id);
+			candice.addGroup(id);
+			danny.addGroup(id);
 			
 			// save mock users to the datastore
 			datastore.savePerson(alice);
-			datastore.getPerson(alice.getEmail());
-		
-			
 			datastore.savePerson(bob);
 			datastore.savePerson(candice);
 			datastore.savePerson(danny);
@@ -66,8 +56,7 @@ public class CannedDataServlet extends HttpServlet{
 			Bill bill3 = new Bill.Builder("Gas", 33.33, bob).setGroup(group).setDateDeadline(deadline.getTime()).build();
 			datastore.saveBill(bill3);
 			deadline.add(Calendar.DAY_OF_MONTH, 5);
-			Bill bill4 = new Bill.Builder("Porn", 44.44, bob).setGroup(guysGroup).setDateDeadline(deadline.getTime()).build();
-			datastore.saveBill(bill4);
+			
 			
 			Debt debt1 = new Debt.Builder("debt1", 11.11, alice, bob).build();
 			datastore.saveDebt(debt1);
