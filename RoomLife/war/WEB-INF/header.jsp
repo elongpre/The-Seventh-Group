@@ -7,10 +7,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
 <html>
-  	<link rel="stylesheet" href="/Bootstrap/css/bootstrap.css" />
-  	<link rel="stylesheet" href="Blog.css" />
+  	<link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css" />
   	<script src="http://code.jquery.com/jquery.js"></script>
- 	<script src="/Bootstrap/js/bootstrap.js"></script>
+ 	<script src="../../Bootstrap/js/bootstrap.js"></script>
  	
  	<div class="page-header">
  		<nav class="navbar navbar-default navbar-static">
