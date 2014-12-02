@@ -21,17 +21,22 @@ public class RegisterUserServlet extends HttpServlet{
 	    String groupName = req.getParameter("group");
 	    String email = req.getParameter("email");
 	    
-	    // create person and group
-	    Person person = new Person(name,email);
-	    Group group = new Group(groupName,person);
-	    //person.addGroup(group.getId());
-	    
-	    // add person and group to database
 	    DataStore datastore = DataStore.getInstance();
-	    datastore.saveGroup(group);
-	    datastore.savePerson(person);
 	    
-	    resp.sendRedirect("/LoginPage.jsp");
+	    if (datastore.getPerson(email)==null){
+		    Person person = new Person(name,email);
+		    Group group = new Group(groupName,person);
+		    datastore.saveGroup(group);
+		    person.addGroup(group.getId());
+		    datastore.savePerson(person);
+		    resp.sendRedirect("/LoginPage.jsp");
+	    }else{
+	    	resp.sendRedirect("/registerUser.jsp?failed=yes");
+	    }
+	    
+
+	    
+	  
 
     }
 

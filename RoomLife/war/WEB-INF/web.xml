@@ -13,7 +13,7 @@
     
     <servlet-mapping>
    	 	<servlet-name>maintenanceServlet</servlet-name>
-    	<url-pattern>/mreq</url-pattern>
+    	<url-pattern>/entry/mreq</url-pattern>
   	</servlet-mapping>
     
   
@@ -24,7 +24,7 @@
     
    	<servlet-mapping>
    	 	<servlet-name>billServlet</servlet-name>
-    	<url-pattern>/BillEntry</url-pattern>
+    	<url-pattern>/entry/BillEntry</url-pattern>
   	</servlet-mapping>
   	
    	<servlet>
@@ -45,6 +45,15 @@
     	<servlet-name>homeServlet</servlet-name>
     	<url-pattern>/home</url-pattern>
   	</servlet-mapping>
+  	
+  	<servlet>
+   	 	<servlet-name>entryServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.EntryServlet</servlet-class>
+  	</servlet> 
+  	<servlet-mapping>
+    	<servlet-name>entryServlet</servlet-name>
+    	<url-pattern>/entry/*</url-pattern>
+  	</servlet-mapping>
   
   	<servlet>
     	<servlet-name>debtServlet</servlet-name>
@@ -52,7 +61,7 @@
   	</servlet>
   	<servlet-mapping>
     	<servlet-name>debtServlet</servlet-name>
-    	<url-pattern>/DebtEntry</url-pattern>
+    	<url-pattern>/entry/DebtEntry</url-pattern>
   	</servlet-mapping>
   	
   	<servlet>

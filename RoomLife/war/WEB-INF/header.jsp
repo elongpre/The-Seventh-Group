@@ -7,15 +7,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
 <html>
-  	<link rel="stylesheet" href="/Bootstrap/css/bootstrap.css" />
-  	<link rel="stylesheet" href="Blog.css" />
+  	<link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css" />
   	<script src="http://code.jquery.com/jquery.js"></script>
- 	<script src="/Bootstrap/js/bootstrap.js"></script>
+ 	<script src="../../Bootstrap/js/bootstrap.js"></script>
  	
  	<div class="page-header">
  		<nav class="navbar navbar-default navbar-static">
  			<div class="container-fluid">
-		       	<div class="navbar-header"><h1>RoomLife: <small>make life simpler</small></h1></div>
+		       	<div class="navbar-header">
+		       		<h1>
+			       		<a href="/home" style="color: black">RoomLife: </a>
+			       		<small>make life simpler</small>
+	       			</h1>
+	       		</div>
 				<div class="collapse navbar-collapse">
 					<%
 				    UserService userService = UserServiceFactory.getUserService();

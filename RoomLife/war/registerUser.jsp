@@ -9,6 +9,10 @@
 		<link href='http://fonts.googleapis.com/css?family=Oswald|Titillium+Web:600' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="RoomLife.css">
 		<title>User Registration</title>
+		<%
+		String flag = request.getParameter("failed");
+		
+		%>
 	</head>
 	
 	<body>
@@ -16,7 +20,14 @@
 		<form action="/registerUser" method = "POST">
 			<fieldset>
 				<legend>User Information</legend>
-				
+				<%if (flag.equals("yes")){
+						pageContext.setAttribute("flag", flag);
+					
+				%>
+				<label class="field" for="error"></label>
+				<p>Email is in use</p>
+				<%}
+				%>
 				<label class="field" for="firstName">First Name:</label>
 				<p><input type="text" name="firstname"></p>
 				
