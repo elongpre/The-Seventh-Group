@@ -17,13 +17,10 @@ public class Debt {
 	
 	private Debt(){}
 	
-<<<<<<< HEAD
-
-=======
 	public Long getId(){
 		return id;
 	}
->>>>>>> 756ed542b6c88fcddb8d4861c2ab9186c75e2997
+
 	public String getName() {
 		return name;
 	}

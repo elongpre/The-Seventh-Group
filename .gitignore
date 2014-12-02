@@ -12,7 +12,7 @@
 /RoomLife/war/deploy/*
 /RoomLife/.classpath
 /RoomLife/war/WEB-INF/lib/*
-/RoomLife/war/WEB-INF/classes/**
+/RoomLife/war/WEB-INF/classes/*.class
 /RoomLife/war/WEB-INF/cl
 *.class
 *.classpath
