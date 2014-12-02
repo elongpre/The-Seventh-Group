@@ -16,3 +16,4 @@
 /RoomLife/war/WEB-INF/cl
 *.class
 *.classpath
+.recommenders/*
