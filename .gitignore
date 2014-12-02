@@ -12,6 +12,9 @@
 /RoomLife/war/deploy/*
 /RoomLife/.classpath
 /RoomLife/war/WEB-INF/lib/*
-/RoomLife/war/WEB-INF/classes/com/appspot/t_gecko_764/*
+/RoomLife/war/WEB-INF/classes/*.class
+/RoomLife/war/WEB-INF/cl
 *.class
 *.classpath
+.recommenders/*
+/RoomLife/war/WEB-INF/appengine-generated/*
