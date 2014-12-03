@@ -7,6 +7,7 @@
 <html>
 	<head>
 		<!-- Bootstrap Core CSS -->
+		
 	    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
 	
 	    <!-- Sidebar CSS -->

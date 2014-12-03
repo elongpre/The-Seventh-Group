@@ -41,7 +41,7 @@ public class DetailServlet extends HttpServlet{
 		switch (splitPath[length-2]) {
 			case "bill":	Bill bill = datastore.getBill(id);
 				req.setAttribute("Bill", bill);
-				Group group = datastore.getGroup(bill.getGroup());
+				Group group = datastore.getGroup(person.getGroup());
 				ArrayList<String> names = new ArrayList<String>();
 				ArrayList<Double> amount = new ArrayList<Double>();
 				double payment = bill.getAmount()/group.getMembers().size();

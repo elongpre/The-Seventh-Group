@@ -26,16 +26,17 @@ public class DebtServlet extends HttpServlet {
 	    
 	    // get the name and total amount of the debt, as well as the associated roommate
 	    String debt_name = req.getParameter("debtName");
-	    Double amount = Double.parseDouble(req.getParameter("debtAmount"));
 	    String roommate = req.getParameter("roommate");
+	    Double amount = Double.parseDouble(req.getParameter("debtAmount"));
 	    
 	    // get owner(current user) from the datastore
 	    DataStore datastore = DataStore.getInstance();
 	    Person owner = datastore.getPerson(user.getEmail());
 	    
+	    
 	    //get debtor(roommate) from the datastore
-	    String debtor_email = findRoommate(owner, roommate);
-	    Person debtor = datastore.getPerson(debtor_email);
+	    //String debtor_email = findRoommate(owner, roommate);
+	    Person debtor = datastore.getPerson(roommate);
 	    
 	    // construct new Debt object
 	    Debt debt = new Debt.Builder(debt_name, amount, owner, debtor).build();
@@ -43,7 +44,7 @@ public class DebtServlet extends HttpServlet {
 	    // push new debt to the datastore
 	    datastore.saveDebt(debt);
 	    
-	    resp.sendRedirect("TaskComplete.html");
+	    resp.sendRedirect("/TaskComplete.html");
 	    
     }
     

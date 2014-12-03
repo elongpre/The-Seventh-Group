@@ -49,9 +49,9 @@
 			    	<fieldset>
 			    		<legend>New Debt (charge a single roommate)</legend>
 			    		
-				    	<label class="field" for="Name">Bill Name:</label>
+				    	<label class="field" for="Name">Debt Name:</label>
 					    <p><input type="text" name="debtName"></p>
-					    <label class="field" for="RoommateName">Roommate Name:</label>
+					    <label class="field" for="RoommateName">Roommate's Email:</label>
 					    <p><input type="text" name="roommate"></p>
 					    <label class="field" for="Amount">Amount:</label>
 					    <p><input type="text" name="debtAmount"></p>
