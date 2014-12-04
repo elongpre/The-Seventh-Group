@@ -19,3 +19,4 @@
 .recommenders/*
 /RoomLife/war/WEB-INF/appengine-generated/*
 /RoomLife/war/WEB-INF/deploy/*
+/RoomLife/war/WEB-INF/classes/com/appspot/t_gecko_764/*
