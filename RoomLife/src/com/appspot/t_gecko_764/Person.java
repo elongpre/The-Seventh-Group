@@ -56,12 +56,6 @@ public class Person {
 		return group;
 	}
 	public void addGroup(Long id) {
-		/*
-		if(!groups.contains(group.getId())){
-			groups.add(group.getId());
-		}
-		*/
-
 		this.group = id;
 	}
 	public void removeGroup(Group group) {
