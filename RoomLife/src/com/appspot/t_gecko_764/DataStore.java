@@ -53,8 +53,14 @@ public class DataStore {
 	public List<Debt> getDebts(Person person){
 		return ofy().load().type(Debt.class).filter("owner", person.getEmail()).list();
 	}
+	public List<Debt> getDebtsEmail(String email){
+		return ofy().load().type(Debt.class).filter("owner", email).list();
+	}
 	public List<Debt> getDebtsDebtor(Person person){
 		return ofy().load().type(Debt.class).filter("debtor", person.getEmail()).list();
+	}
+	public List<Debt> getDebtsDebtorEmail(String email){
+		return ofy().load().type(Debt.class).filter("debtor", email).list();
 	}
 	public Debt getDebt(Long id){
 		return ofy().load().type(Debt.class).id(id).now();

@@ -36,7 +36,7 @@ public class DetailServlet extends HttpServlet{
 		}
 		int numRoommates = roommates.size();
 		ArrayList<Double> charges = new ArrayList<Double>();
-		List<Debt> debts = datastore.getDebts(person);
+		List<Debt> posDebts = datastore.getDebts(person);
 		for(String email : emails){
 			Double amount = 0.0;
 			List<Bill> billList = datastore.getBillsEmail(email);
@@ -50,9 +50,15 @@ public class DetailServlet extends HttpServlet{
 					amount += Math.ceil(bill.getAmount()*100/numRoommates)/100;
 				}
 			}
-			for(Debt debt: debts){
+			for(Debt debt: posDebts){
 				if(debt.getDebtor() == email){
 					amount += debt.getAmount();
+				}
+			}
+			List<Debt> negDebts = datastore.getDebtsDebtorEmail(email);
+			for(Debt debt: negDebts){
+				if(debt.getOwner() == email){
+					amount -= debt.getAmount();
 				}
 			}
 			charges.add(Math.ceil(amount*100)/100);
@@ -70,9 +76,10 @@ public class DetailServlet extends HttpServlet{
 		if( splitPath[length-1].contains("css")){
 			return;
 		}
-		Long id = Long.parseLong(splitPath[length-1], 10);
+		Long id;
 		switch (splitPath[length-2]) {
-			case "bill":	Bill bill = datastore.getBill(id);
+			case "bill":	id = Long.parseLong(splitPath[length-1], 10);
+				Bill bill = datastore.getBill(id);
 				req.setAttribute("Bill", bill);
 				Group group = datastore.getGroup(person.getGroup());
 				ArrayList<String> names = new ArrayList<String>();
@@ -92,12 +99,50 @@ public class DetailServlet extends HttpServlet{
 				req.setAttribute("amount", amount);
 				req.getRequestDispatcher("/WEB-INF/showBill.jsp").forward(req, resp);
 				break;
-			case "debt":	Debt debt = datastore.getDebt(id);
-				req.setAttribute("Debt", debt);
-				req.setAttribute("debtor", debt.getDebtor());
+			case "debt":	String name = splitPath[length-1];
+				Person debtor = null;
+				int index = 0;
+				for(String email : emails){
+					debtor = datastore.getPerson(email);
+					if(debtor.getName().equalsIgnoreCase(name)){
+						break;
+					} else {
+						index ++;
+					}
+				}				
+				Double debtAmount = charges.get(index);
+				ArrayList<Debt> debtList = new ArrayList<Debt>();
+				List<Bill> billList = datastore.getBills(debtor);
+				List<Debt> debtListz = datastore.getDebtsDebtor(person);
+				for(Bill billz : billList){
+					if(billz.getPeeps().contains(userEmail)){
+						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).build());	
+					}
+				}
+				for(Bill billz : bills){
+					if(billz.getPeeps().contains(debtor.getEmail())){
+						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).build());
+					}
+				}
+				for(Debt debt: posDebts){
+					if(debt.getDebtor() == debtor.getEmail()){
+						debtList.add(debt);
+					}
+				}
+				for(Debt debt: debtListz){
+					if(debt.getOwner() == debtor.getEmail()){
+						debtList.add(debt);
+					}
+				}
+				
+				req.setAttribute("DebtList", debtList);
+				req.setAttribute("debtor", name);
 				req.getRequestDispatcher("/WEB-INF/showDebt.jsp").forward(req, resp);
 				break;
-			case "request":	MaintenanceRequest request = datastore.getMaintenanceRequest(id);
+			case "request":	id = Long.parseLong(splitPath[length-1], 10);
+				MaintenanceRequest request = datastore.getMaintenanceRequest(id);
 				req.setAttribute("Request", request);
 				req.getRequestDispatcher("/WEB-INF/showRequest.jsp").forward(req, resp);
 				break;

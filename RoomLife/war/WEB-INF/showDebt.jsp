@@ -22,48 +22,21 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
         	<div class="container-fluid">
-                Welcome to RoomLife!
                 <% 
-                Debt debt = (Debt) request.getAttribute("Debt");
-                pageContext.setAttribute("debt_name", debt.getName());
-                pageContext.setAttribute("debt_amount", debt.getAmount());
-                
+                String debtor = (String) request.getAttribute("debtor");
+                List<Debt> debtList = (List<Debt>) request.getAttribute("DebtList");
+                pageContext.setAttribute("debtor", debtor);                
                 %>
-                <h1>${fn:escapeXml(debt_name)}</h1> 
+                <h1>${fn:escapeXml(debtor)}</h1> 
                
-              	<% if(debt.getDatePaid() == null) {
-              		
+              	<% for(Debt debt: debtList){
+              			pageContext.setAttribute("debt_name", debt.getName());
+              			pageContext.setAttribute("debt_amount", debt.getAmount());
               	%>
-              		<div>${fn:escapeXml(debt_name)} has not been paid</div>
+              		<div>${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</div>
               	<%
-              	} else {
-                    pageContext.setAttribute("bill_paid", debt.getDatePaid());
-                %>
-                	<div>${fn:escapeXml(bill_name)} was paid on ${fn:escapeXml(bill_paid)}</div>
-                <%
               	}
               	%>
-              	
-              	<div>Debtor</div>
-              	<table>
-              	<%
-              	String name = (String) request.getAttribute("debtor");
-              	pageContext.setAttribute("name", name);
-              	%>
-              	
-              	<tr>
-              		<td>
-              			<div>${fn:escapeXml(name)}  </div>
-              		</td>
-              		
-              		<td>
-              			<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              		</td>
-              		<td>
-              			<div>${fn:escapeXml(debt_amount) }</div>
-              		</td>
-              	</tr>
-              	</table>
                  
 			</div>
 		</div>
