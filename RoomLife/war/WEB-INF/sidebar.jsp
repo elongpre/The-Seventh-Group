@@ -92,6 +92,7 @@
                 </li>
                 <li class="divider"></li>
                 <%
+<<<<<<< HEAD
                 	
 	                	List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
                			if (DebtList!=null){
@@ -106,6 +107,34 @@
 				<%
 							}
                 		}
+=======
+	                List<String> DebtNames = (List<String>) request.getAttribute("DebtNames"); 
+                	List<Double> DebtAmounts = (List<Double>) request.getAttribute("DebtAmounts");  
+                	int k = 0;
+					for (String name : DebtNames){
+						
+						pageContext.setAttribute("debt_name", name);
+						pageContext.setAttribute("debt_amount", String.format("%.2f", DebtAmounts.get(k)));
+						if(DebtAmounts.get(k) < 0){				
+				%>
+							<li>
+								<a href="/detailservlet/debt/${debt_name}" class="debt-name">
+									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: red">${fn:escapeXml(debt_amount)}</span>
+								</a>
+							</li>
+				<%
+						} else {
+				%>
+							<li>
+								<a href="/detailservlet/debt/${debt_name}" class="debt-name">
+									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: green">${fn:escapeXml(debt_amount)}</span>
+								</a>
+							</li>
+				<%
+						}
+						k++;
+					}
+>>>>>>> c759f699f89fcc80ce8e434040acf25854e8d49a
 				%>
 				<li class="sidebar-brand">
                     <table width="100%">

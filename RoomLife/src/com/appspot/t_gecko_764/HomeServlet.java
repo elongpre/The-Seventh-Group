@@ -30,6 +30,7 @@ public class HomeServlet extends HttpServlet{
 			DataStore datastore = DataStore.getInstance();
 			Landlord landlord=datastore.getLandlord(user.getEmail());
 			Person person = datastore.getPerson("alice@example.com");
+<<<<<<< HEAD
 			
 			if(landlord!=null){
 				List<Long> buildingsKey=landlord.getBuildings();
@@ -45,6 +46,9 @@ public class HomeServlet extends HttpServlet{
 				req.getRequestDispatcher("/WEB-INF/landlordHome.jsp").forward(req, resp);
 				
 			}else if (person!=null){
+=======
+			String userEmail = person.getEmail();
+>>>>>>> c759f699f89fcc80ce8e434040acf25854e8d49a
 			List<Bill> bills = datastore.getBills(person);
 			
 			
@@ -64,6 +68,7 @@ public class HomeServlet extends HttpServlet{
 			
 			req.setAttribute("BillList", bills);
 			
+<<<<<<< HEAD
 			
 			
 			List<Debt> debts = datastore.getDebts(person);
@@ -78,6 +83,40 @@ public class HomeServlet extends HttpServlet{
 			}*/
 			
 			req.setAttribute("DebtList", debts);
+=======
+			List<String> emails = datastore.getGroup(person.getGroup()).getMembers();
+			emails.remove(person.getEmail());
+			ArrayList<String> roommates = new ArrayList<String>();
+			for(String email : emails){
+				roommates.add(datastore.getPerson(email).getName());
+			}
+			int numRoommates = roommates.size();
+			ArrayList<Double> charges = new ArrayList<Double>();
+			List<Debt> debts = datastore.getDebts(person);
+			for(String email : emails){
+				Double amount = 0.0;
+				List<Bill> billList = datastore.getBillsEmail(email);
+				for(Bill bill : billList){
+					if(bill.getPeeps().contains(userEmail)){
+						amount -= Math.ceil(bill.getAmount()*100/numRoommates)/100;
+					}
+				}
+				for(Bill bill : bills){
+					if(bill.getPeeps().contains(email)){
+						amount += Math.ceil(bill.getAmount()*100/numRoommates)/100;
+					}
+				}
+				for(Debt debt: debts){
+					if(debt.getDebtor() == email){
+						amount += debt.getAmount();
+					}
+				}
+				charges.add(Math.ceil(amount*100)/100);
+			}
+			
+			req.setAttribute("DebtNames", roommates);
+			req.setAttribute("DebtAmounts", charges);
+>>>>>>> c759f699f89fcc80ce8e434040acf25854e8d49a
 			
 			List<MaintenanceRequest> requests = datastore.getMaintenanceRequests(person);
 			/*MaintenanceRequest mRequest;
