@@ -11,7 +11,7 @@ public class Debt {
 	private String name;
 	private Double amount;
 	@Index private String owner;
-	private String debtor;
+	@Index private String debtor;
 	private Date dateCreated;
 	private Date datePaid;
 	

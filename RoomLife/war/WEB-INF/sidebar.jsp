@@ -90,16 +90,31 @@
                 </li>
                 <li class="divider"></li>
                 <%
-	                List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
-					for (Debt debt: DebtList){
-						pageContext.setAttribute("debt_name", debt.getName());
-						pageContext.setAttribute("debt_amount", debt.getAmount());
-						pageContext.setAttribute("debt_id", debt.getId());
+	                List<String> DebtNames = (List<String>) request.getAttribute("DebtNames"); 
+                	List<Double> DebtAmounts = (List<Double>) request.getAttribute("DebtAmounts");  
+                	int k = 0;
+					for (String name : DebtNames){
+						
+						pageContext.setAttribute("debt_name", name);
+						pageContext.setAttribute("debt_amount", String.format("%.2f", DebtAmounts.get(k)));
+						if(DebtAmounts.get(k) < 0){				
 				%>
-					<li>
-						<a href="/detailservlet/debt/${debt_id}" class="debt-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
-					</li>
+							<li>
+								<a href="/detailservlet/debt/${debt_name}" class="debt-name">
+									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: red">${fn:escapeXml(debt_amount)}</span>
+								</a>
+							</li>
 				<%
+						} else {
+				%>
+							<li>
+								<a href="/detailservlet/debt/${debt_name}" class="debt-name">
+									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: green">${fn:escapeXml(debt_amount)}</span>
+								</a>
+							</li>
+				<%
+						}
+						k++;
 					}
 				%>
 				<li class="sidebar-brand">
