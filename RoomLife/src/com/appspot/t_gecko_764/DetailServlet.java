@@ -146,7 +146,8 @@ public class DetailServlet extends HttpServlet{
 				req.setAttribute("Request", request);
 				req.getRequestDispatcher("/WEB-INF/showRequest.jsp").forward(req, resp);
 				break;
-			case "building": 	Building building = datastore.getBuilding(id);
+			case "building": 	id = Long.parseLong(splitPath[length-1], 10);
+				Building building = datastore.getBuilding(id);
 				req.setAttribute("building", building);
 				req.getRequestDispatcher("/WEB-INF/showBuilding.jsp").forward(req, resp);
 
