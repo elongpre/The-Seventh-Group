@@ -15,6 +15,9 @@ public class Person {
 	private Long group;
 	private String name;
 	private ArrayList<String> roommates;
+	@Index private ArrayList<Long> bills;
+	private ArrayList<Long> debts;
+	private ArrayList<Long> requests;
 
 	
 	private Person(){}
@@ -23,6 +26,9 @@ public class Person {
 		this.name = name;
 		this.email = email;
 		this.roommates = new ArrayList<String>();
+		this.bills= new ArrayList<Long>();
+		this.debts=new ArrayList<Long>();
+		this.requests= new ArrayList<Long>();
 	}
 	
 	public String getName() {
@@ -60,6 +66,42 @@ public class Person {
 	}
 	public void removeGroup(Group group) {
 		this.group = null;
+	}
+
+	public ArrayList<Long> getBills() {
+		return bills;
+	}
+
+	public void setBills(ArrayList<Long> bills) {
+		this.bills = bills;
+	}
+
+	public ArrayList<Long> getDebts() {
+		return debts;
+	}
+
+	public void setDebts(ArrayList<Long> debts) {
+		this.debts = debts;
+	}
+
+	public ArrayList<Long> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(ArrayList<Long> requests) {
+		this.requests = requests;
+	}
+	
+	public void addBill(Long bill){
+		this.bills.add(bill);
+	}
+	
+	public void addDebt(Long debt){
+		this.debts.add(debt);
+	}
+	
+	public void addRequest(Long req){
+		this.requests.add(req);
 	}
 
 }

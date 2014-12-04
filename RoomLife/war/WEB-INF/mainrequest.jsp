@@ -40,8 +40,12 @@
 						</select></p>
 		
 				        <label class="field" for="Priority">Priority:</label>
-				        <p><input type="text" name="priority"></p>
-				        
+				        <p><select name="priority">
+				        	<option value="Emergency">Emergency</option>
+				        	<option value="High">High</option>
+				        	<option value="Regular">Regular</option>
+				        	</select>
+				        </p>
 				        <label class="field" for="Place">Place:</label>
 				        <p><input type="text" name="place"></p>
 				        

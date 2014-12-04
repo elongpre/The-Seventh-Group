@@ -8,10 +8,11 @@ public class OfyService {
 	static {
         factory().register(Person.class);
         factory().register(Group.class);
-        
         factory().register(Bill.class);
         factory().register(Debt.class);
         factory().register(MaintenanceRequest.class);
+        factory().register(Landlord.class);
+        factory().register(Building.class);
     }
 
     public static Objectify ofy() {

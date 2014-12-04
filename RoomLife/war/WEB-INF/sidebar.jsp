@@ -92,7 +92,6 @@
                 </li>
                 <li class="divider"></li>
                 <%
-<<<<<<< HEAD
                 	
 	                	List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
                			if (DebtList!=null){
@@ -107,7 +106,6 @@
 				<%
 							}
                 		}
-=======
 	                List<String> DebtNames = (List<String>) request.getAttribute("DebtNames"); 
                 	List<Double> DebtAmounts = (List<Double>) request.getAttribute("DebtAmounts");  
                 	int k = 0;
@@ -134,7 +132,6 @@
 						}
 						k++;
 					}
->>>>>>> c759f699f89fcc80ce8e434040acf25854e8d49a
 				%>
 				<li class="sidebar-brand">
                     <table width="100%">

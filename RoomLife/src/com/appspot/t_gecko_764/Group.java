@@ -9,7 +9,7 @@ import com.googlecode.objectify.annotation.OnSave;
 
 @Entity
 public class Group {
-	@Id private Long id;
+	@Id Long id;
 	@Index private String name;
 	private String address;
 	private ArrayList<String> members;

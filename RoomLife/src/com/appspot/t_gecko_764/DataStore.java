@@ -76,8 +76,7 @@ public class DataStore {
 		return ofy().load().type(MaintenanceRequest.class).id(id).now();
 	}
 	public Landlord getLandlord(String email){
-		return new Landlord("Name","");
-		//return ofy().load().type(Landlord.class).filter("email", email).first().now();
+		 return ofy().load().type(Landlord.class).filter("email", email).first().now();
 	}
 	
 	public void saveLandlord(Landlord landlord){

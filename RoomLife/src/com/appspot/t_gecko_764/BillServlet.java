@@ -1,6 +1,7 @@
 package com.appspot.t_gecko_764;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,11 +34,29 @@ public class BillServlet extends HttpServlet{
 	    Double split_amount = total_amount /(group.getMembers().size());
 	    System.out.println(split_amount.toString());
 	    
-	    // create bill and update all those affected, which should be the current user and his/her roommates
-	    Bill bill = new Bill.Builder(bill_name, split_amount, owner).build();
-	    
+	    // create bill 
+	    Bill bill = new Bill.Builder(bill_name, split_amount, owner).setGroup(group).build();
 	    // save bill to the Datastore
 	    datastore.saveBill(bill);
+	    
+	   //  update all those affected, which should be the current user and his/her roommates
+	    ArrayList<String> peeps=group.getMembers();
+	    
+		for(String member:peeps){
+			if(!bill.getOwner().equals(member)){
+			Person roommate=datastore.getPerson(member);
+			if(roommate.getBills()==null)
+			{
+				ArrayList<Long> bills=new ArrayList<Long>();
+				roommate.setBills(bills);
+
+			}
+			roommate.addRequest(bill.getId());
+			datastore.savePerson(roommate);
+
+			}
+		}
+
 	    
 	    resp.sendRedirect("/TaskComplete.html");
 	    

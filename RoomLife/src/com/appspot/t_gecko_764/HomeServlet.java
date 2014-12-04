@@ -28,7 +28,8 @@ public class HomeServlet extends HttpServlet{
 	    
 	    // get bills where person is owner
 		DataStore datastore = DataStore.getInstance();
-		Landlord landlord=datastore.getLandlord(user.getEmail());
+		String emailString=user.getEmail();
+		Landlord landlord=datastore.getLandlord(emailString);
 		Person person = datastore.getPerson("alice@example.com");
 		
 		if(landlord!=null){
