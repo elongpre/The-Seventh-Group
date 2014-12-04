@@ -47,22 +47,24 @@
                 <li class="divider"></li>
                 <%
 					List<Bill> billList = (List<Bill>) request.getAttribute("BillList");
-                	int i = 0;
-					for (Bill bill : billList){
-						pageContext.setAttribute("bill_name", bill.getName());
-						pageContext.setAttribute("bill_amount", bill.getAmount());
-						pageContext.setAttribute("bill_id", bill.getId());
+                	if (billList!=null){
+                		int i = 0;
+						for (Bill bill : billList){
+							pageContext.setAttribute("bill_name", bill.getName());
+							pageContext.setAttribute("bill_amount", bill.getAmount());
+							pageContext.setAttribute("bill_id", bill.getId());
 						
 				%>
-					<li>
-						<a href="/detailservlet/bill/${bill_id}" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
-					</li>
+						<li>
+							<a href="/detailservlet/bill/${bill_id}" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
+						</li>
 				<%
-						i++;
-						if(i == 5){
-							break;
-						}
-					}
+							i++;
+								if(i == 5){
+									break;
+								}
+							}
+                		}
 				%>
                 <li class="sidebar-brand">
                     <table width="100%">
@@ -90,17 +92,20 @@
                 </li>
                 <li class="divider"></li>
                 <%
-	                List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
-					for (Debt debt: DebtList){
-						pageContext.setAttribute("debt_name", debt.getName());
-						pageContext.setAttribute("debt_amount", debt.getAmount());
-						pageContext.setAttribute("debt_id", debt.getId());
+                	
+	                	List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
+               			if (DebtList!=null){
+							for (Debt debt: DebtList){
+								pageContext.setAttribute("debt_name", debt.getName());
+								pageContext.setAttribute("debt_amount", debt.getAmount());
+								pageContext.setAttribute("debt_id", debt.getId());
 				%>
-					<li>
-						<a href="/detailservlet/debt/${debt_id}" class="debt-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
-					</li>
+							<li>
+								<a href="/detailservlet/debt/${debt_id}" class="debt-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
+							</li>
 				<%
-					}
+							}
+                		}
 				%>
 				<li class="sidebar-brand">
                     <table width="100%">
@@ -129,17 +134,20 @@
                 </li>
                 <li class="divider"></li>
                 <%
+                	
 	                List<MaintenanceRequest> RequestList = (List<MaintenanceRequest>) request.getAttribute("RequestList");
-					for (MaintenanceRequest maintenanceRequest: RequestList){
-						pageContext.setAttribute("request_name", maintenanceRequest.getName());
-						pageContext.setAttribute("request_priority", maintenanceRequest.getPriority());
-						pageContext.setAttribute("req_id", maintenanceRequest.getId());
+                	if(RequestList!=null){
+						for (MaintenanceRequest maintenanceRequest: RequestList){
+							pageContext.setAttribute("request_name", maintenanceRequest.getName());
+							pageContext.setAttribute("request_priority", maintenanceRequest.getPriority());
+							pageContext.setAttribute("req_id", maintenanceRequest.getId());
 				%>
-					<li>
-						<a href="/detailservlet/request/${req_id}" class="req-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(request_name)}: ${fn:escapeXml(request_priority)}</a>
-					</li>
+						<li>
+							<a href="/detailservlet/request/${req_id}" class="req-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(request_name)}: ${fn:escapeXml(request_priority)}</a>
+						</li>
 				<%
-					}
+						}
+                	}
 				%>                            
             </ul>
         </div>
