@@ -84,13 +84,13 @@ public class DetailServlet extends HttpServlet{
 				for(Bill billz : billList){
 					if(billz.getPeeps().contains(userEmail)){
 						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
-						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).build());	
+						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).setDateCreated(billz.getDateCreated()).build());	
 					}
 				}
 				for(Bill billz : bills){
 					if(billz.getPeeps().contains(debtor.getEmail())){
 						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
-						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).build());
+						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).setDateCreated(billz.getDateCreated()).build());
 					}
 				}
 				for(Debt debt: posDebts){

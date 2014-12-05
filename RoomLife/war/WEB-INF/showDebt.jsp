@@ -35,6 +35,7 @@
 			  		for(Debt debt: debtList){
               			pageContext.setAttribute("debtz_name", debt.getName());
               			pageContext.setAttribute("debtz_amount", debt.getAmount());
+              			pageContext.setAttribute("date", new SimpleDateFormat("MMM dd").format(debt.getDateCreated())); 
               			pageContext.setAttribute("num", num);
               	%>
            				<div class="panel panel-default">
@@ -44,11 +45,19 @@
 	            							<%
 				              			if(debt.getOwner().equals(userEmail)){					              				          			
 	            							%>						
-				          					<div>${fn:escapeXml(debtz_name)}: <span style="color: green">${fn:escapeXml(debtz_amount)}</span></div>
+				          					<div>
+				          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
+				          						<span style="color: green">${fn:escapeXml(debtz_amount)}</span>
+				          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
+			          						</div>
 				          			<% 
 				              			} else {
 		              				%>						
-				          					<div>${fn:escapeXml(debtz_name)}: <span style="color: red">-${fn:escapeXml(debtz_amount)}</span></div>
+				          					<div>
+				          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
+				          						<span style="color: red">-${fn:escapeXml(debtz_amount)}</span>
+				          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
+			          						</div>
 				          			<% 		
 				              			}
 				          			%>
@@ -57,7 +66,12 @@
 				    		</div>
 					    	<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
 					      		<div class="panel-body">
-					        		Debt Details Will Go Here
+					      			<button type="button" class="btn btn-primary">
+										<a href="/home" style="color: white"> Mark as Paid </a>
+									</button>
+									<button type="button" class="btn btn-primary">
+										Edit
+									</button>
 					    		</div>
 					  		</div>		 
 						</div>
