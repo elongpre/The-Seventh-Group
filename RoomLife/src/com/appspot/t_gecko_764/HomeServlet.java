@@ -28,19 +28,14 @@ public class HomeServlet extends HttpServlet{
 	    
 	    // obtain the datastore access object
 		DataStore datastore = DataStore.getInstance();
-<<<<<<< HEAD
 		String emailString=user.getEmail();
-=======
 		
-		// get the current user's email
-		String emailString = user.getEmail();
+
 		
 		// check the datastore for a landlord with the current email address
 		Landlord landlord = datastore.getLandlord(emailString);
 		
->>>>>>> 80f30256b2840df318db568a6072735d6f14e8f6
 		Person person = datastore.getPerson("alice@example.com");
-		Landlord landlord=datastore.getLandlordViaName("Evan");
 
 		
 		if (landlord != null) {
