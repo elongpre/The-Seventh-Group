@@ -120,7 +120,8 @@ public class Bill {
 
 		public Builder setGroup(Group group) {
 			this.group = group.getId();
-			this.peeps = group.getMembers();
+			this.peeps = new ArrayList<String>();
+			peeps.addAll(group.getMembers());
 			return this;
 		}
 

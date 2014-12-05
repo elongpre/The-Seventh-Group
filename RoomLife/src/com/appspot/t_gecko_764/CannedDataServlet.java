@@ -56,6 +56,7 @@ public class CannedDataServlet extends HttpServlet{
 			Calendar deadline = new GregorianCalendar();
 			deadline.add(Calendar.DAY_OF_MONTH, 5);
 			Bill bill1 = new Bill.Builder("Water", 11.11, alice).setGroup(group).setDateDeadline(deadline.getTime()).build();
+			bill1.getPeeps().remove(2);
 			System.out.println("start datastore save");
 			datastore.saveBill(bill1);		
 			System.out.println("end datastore save");
@@ -115,7 +116,7 @@ public class CannedDataServlet extends HttpServlet{
 			datastore.saveLandlord(evan);
 			
 			Landlord Pizza=datastore.getLandlord(evan.getEmail());
-			System.out.println(Pizza.toString());
+//			System.out.println(Pizza.toString());
 			
 			resp.getWriter().println("Finished loading data");
 		} else {
