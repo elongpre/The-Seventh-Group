@@ -72,26 +72,23 @@ public class CannedDataServlet extends HttpServlet{
 			datastore.saveBill(bill3);
 			deadline.add(Calendar.DAY_OF_MONTH, 5);
 			
+			Debt debt1 = new Debt.Builder("debt1", 11.11, alice, bob).build();
+			datastore.saveDebt(debt1);
+			
 			Debt debt2 = new Debt.Builder("debt2", 22.22, alice, candice).build();
 			datastore.saveDebt(debt2);
-			datastore.savePerson(candice);
 			
 			Debt debt3 = new Debt.Builder("debt3", 33.33, alice, danny).build();
 			datastore.saveDebt(debt3);
-			datastore.savePerson(danny);
-						
+
 			Debt debt4 = new Debt.Builder("debt4", 44.44, bob, alice).build();
-			datastore.saveDebt(debt4);
-			datastore.savePerson(alice);
-			
+			datastore.saveDebt(debt4);			
 			
 			Debt debt5 = new Debt.Builder("debt5", 55.55, bob, candice).build();
 			datastore.saveDebt(debt5);
-			datastore.savePerson(candice);
 			
 			Debt debt6 = new Debt.Builder("debt6", 66.66, bob, danny).build();
 			datastore.saveDebt(debt6);
-			datastore.savePerson(danny);
 			
 			MaintenanceRequest request1 = new MaintenanceRequest.Builder("request1", alice, group).setLocation("room1").setPriority("priority1")
 					.setDetails("Details1Details1Details1Details1Details1Details1Details1 Details1Details1Details1Details1Details1Details1Details1\nDetails1Details1Details1Details1Details1Details1Details1").build();

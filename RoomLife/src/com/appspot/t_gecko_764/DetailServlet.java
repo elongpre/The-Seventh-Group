@@ -37,6 +37,7 @@ public class DetailServlet extends HttpServlet{
 		int numRoommates = roommates.size();
 		ArrayList<Double> charges = new ArrayList<Double>();
 		List<Debt> posDebts = datastore.getDebts(person);
+		List<Debt> negDebts = datastore.getDebtsDebtor(person);
 		for(String email : emails){
 			Double amount = 0.0;
 			List<Bill> billList = datastore.getBillsEmail(email);
@@ -51,13 +52,12 @@ public class DetailServlet extends HttpServlet{
 				}
 			}
 			for(Debt debt: posDebts){
-				if(debt.getDebtor() == email){
+				if(debt.getDebtor().equals(email)){
 					amount += debt.getAmount();
 				}
 			}
-			List<Debt> negDebts = datastore.getDebtsDebtorEmail(email);
 			for(Debt debt: negDebts){
-				if(debt.getOwner() == email){
+				if(debt.getOwner().equals(email)){
 					amount -= debt.getAmount();
 				}
 			}
@@ -127,12 +127,12 @@ public class DetailServlet extends HttpServlet{
 					}
 				}
 				for(Debt debt: posDebts){
-					if(debt.getDebtor() == debtor.getEmail()){
+					if(debt.getDebtor().equals(debtor.getEmail())){
 						debtList.add(debt);
 					}
 				}
 				for(Debt debt: debtListz){
-					if(debt.getOwner() == debtor.getEmail()){
+					if(debt.getOwner().equals(debtor.getEmail())){
 						debtList.add(debt);
 					}
 				}

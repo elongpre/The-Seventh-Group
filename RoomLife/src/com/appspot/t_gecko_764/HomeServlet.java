@@ -36,6 +36,7 @@ public class HomeServlet extends HttpServlet{
 		Landlord landlord = datastore.getLandlord(emailString);
 		
 		Person person = datastore.getPerson("alice@example.com");
+		String userEmail = person.getEmail();
 
 		
 		if (landlord != null) {
@@ -58,8 +59,7 @@ public class HomeServlet extends HttpServlet{
 			List<Bill> bills = datastore.getBills(person);			
 			req.setAttribute("BillList", bills);
 	
-			Group group = datastore.getGroup(person.getGroup());
-			List<String> emails = group.getMembers();
+			List<String> emails = datastore.getGroup(person.getGroup()).getMembers();
 			emails.remove(person.getEmail());
 			ArrayList<String> roommates = new ArrayList<String>();
 			for(String email : emails){
@@ -67,12 +67,12 @@ public class HomeServlet extends HttpServlet{
 			}
 			int numRoommates = roommates.size();
 			ArrayList<Double> charges = new ArrayList<Double>();
-			List<Debt> debts = datastore.getDebts(person);
+			List<Debt> posDebts = datastore.getDebts(person);
 			for(String email : emails){
 				Double amount = 0.0;
 				List<Bill> billList = datastore.getBillsEmail(email);
 				for(Bill bill : billList){
-					if(bill.getPeeps().contains(emailString)){
+					if(bill.getPeeps().contains(userEmail)){
 						amount -= Math.ceil(bill.getAmount()*100/numRoommates)/100;
 					}
 				}
@@ -81,9 +81,15 @@ public class HomeServlet extends HttpServlet{
 						amount += Math.ceil(bill.getAmount()*100/numRoommates)/100;
 					}
 				}
-				for(Debt debt: debts){
-					if(debt.getDebtor() == email){
+				for(Debt debt: posDebts){
+					if(debt.getDebtor().equals(email)){
 						amount += debt.getAmount();
+					}
+				}
+				List<Debt> negDebts = datastore.getDebtsDebtorEmail(email);
+				for(Debt debt: negDebts){
+					if(debt.getOwner().equals(email)){
+						amount -= debt.getAmount();
 					}
 				}
 				charges.add(Math.ceil(amount*100)/100);
