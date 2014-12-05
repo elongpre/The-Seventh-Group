@@ -68,6 +68,7 @@ public class HomeServlet extends HttpServlet{
 			int numRoommates = roommates.size();
 			ArrayList<Double> charges = new ArrayList<Double>();
 			List<Debt> posDebts = datastore.getDebts(person);
+			List<Debt> negDebts = datastore.getDebtsDebtor(person);
 			for(String email : emails){
 				Double amount = 0.0;
 				List<Bill> billList = datastore.getBillsEmail(email);
@@ -86,7 +87,6 @@ public class HomeServlet extends HttpServlet{
 						amount += debt.getAmount();
 					}
 				}
-				List<Debt> negDebts = datastore.getDebtsDebtorEmail(email);
 				for(Debt debt: negDebts){
 					if(debt.getOwner().equals(email)){
 						amount -= debt.getAmount();

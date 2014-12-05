@@ -55,7 +55,7 @@
 				        			</a>
 				      			</h4>
 				    		</div>
-					    	<div id="collapse${num}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading${num}">
+					    	<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
 					      		<div class="panel-body">
 					        		Debt Details Will Go Here
 					    		</div>
