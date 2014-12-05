@@ -24,16 +24,16 @@
         	<div class="container-fluid">
                 <% 
                 String debtor = (String) request.getAttribute("debtor");
-                List<Debt> debtList = (List<Debt>) request.getAttribute("DebtList");
+                List<Debt> debtList = (List<Debt>) request.getAttribute("DebtListz");
                 pageContext.setAttribute("debtor", debtor);                
                 %>
                 <h1>${fn:escapeXml(debtor)}</h1> 
                
               	<% for(Debt debt: debtList){
-              			pageContext.setAttribute("debt_name", debt.getName());
-              			pageContext.setAttribute("debt_amount", debt.getAmount());
+              			pageContext.setAttribute("debtz_name", debt.getName());
+              			pageContext.setAttribute("debtz_amount", debt.getAmount());
               	%>
-              		<div>${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</div>
+              		<div>${fn:escapeXml(debtz_name)}: ${fn:escapeXml(debtz_amount)}</div>
               	<%
               	}
               	%>

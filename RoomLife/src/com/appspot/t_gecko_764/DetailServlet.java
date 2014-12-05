@@ -137,7 +137,7 @@ public class DetailServlet extends HttpServlet{
 					}
 				}
 				
-				req.setAttribute("DebtList", debtList);
+				req.setAttribute("DebtListz", debtList);
 				req.setAttribute("debtor", name);
 				req.getRequestDispatcher("/WEB-INF/showDebt.jsp").forward(req, resp);
 				break;

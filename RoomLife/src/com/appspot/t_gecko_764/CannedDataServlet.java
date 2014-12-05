@@ -56,7 +56,6 @@ public class CannedDataServlet extends HttpServlet{
 			Calendar deadline = new GregorianCalendar();
 			deadline.add(Calendar.DAY_OF_MONTH, 5);
 			Bill bill1 = new Bill.Builder("Water", 11.11, alice).setGroup(group).setDateDeadline(deadline.getTime()).build();
-			bill1.getPeeps().remove(1);
 			System.out.println("start datastore save");
 			datastore.saveBill(bill1);		
 			System.out.println("end datastore save");
@@ -74,28 +73,23 @@ public class CannedDataServlet extends HttpServlet{
 			
 			Debt debt2 = new Debt.Builder("debt2", 22.22, alice, candice).build();
 			datastore.saveDebt(debt2);
-			candice.addDebt(debt2.getId());
 			datastore.savePerson(candice);
 			
 			Debt debt3 = new Debt.Builder("debt3", 33.33, alice, danny).build();
 			datastore.saveDebt(debt3);
-			danny.addDebt(debt3.getId());
 			datastore.savePerson(danny);
 						
 			Debt debt4 = new Debt.Builder("debt4", 44.44, bob, alice).build();
 			datastore.saveDebt(debt4);
-			alice.addDebt(debt4.getId());
 			datastore.savePerson(alice);
 			
 			
 			Debt debt5 = new Debt.Builder("debt5", 55.55, bob, candice).build();
 			datastore.saveDebt(debt5);
-			candice.addDebt(debt5.getId());
 			datastore.savePerson(candice);
 			
 			Debt debt6 = new Debt.Builder("debt6", 66.66, bob, danny).build();
 			datastore.saveDebt(debt6);
-			danny.addDebt(debt6.getId());
 			datastore.savePerson(danny);
 			
 			MaintenanceRequest request1 = new MaintenanceRequest.Builder("request1", alice, group).setLocation("room1").setPriority("priority1")
