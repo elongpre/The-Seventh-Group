@@ -25,9 +25,11 @@ public class RegisterUserServlet extends HttpServlet{
 	    
 	    if (datastore.getPerson(email)==null){
 		    Person person = new Person(name,email);
-		    Group group = new Group(groupName,person);
+		    Group group = new Group(groupName);
 		    datastore.saveGroup(group);
-		    person.addGroup(group.getId());
+		    group.addMember(person);
+		    datastore.saveGroup(group);
+		    person.setGroup(group.getId());
 		    datastore.savePerson(person);
 		    resp.sendRedirect("/LoginPage.jsp");
 	    }else{

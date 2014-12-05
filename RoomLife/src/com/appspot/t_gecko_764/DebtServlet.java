@@ -3,6 +3,8 @@ package com.appspot.t_gecko_764;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,9 +51,9 @@ public class DebtServlet extends HttpServlet {
     }
     
     private String findRoommate(Person owner, String name) {
-    	ArrayList<Person> roommates = new ArrayList<Person>();
     	DataStore datastore = DataStore.getInstance();
-    	for(String email: owner.getRoommates()){
+    	List<String> roommates = datastore.getGroup(owner.getGroup()).getMembers();
+    	for(String email: roommates){
     		Person person = datastore.getPerson(email);
     		if( person.getName() == name){
     			return email;

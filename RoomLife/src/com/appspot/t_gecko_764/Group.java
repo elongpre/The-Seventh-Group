@@ -17,10 +17,9 @@ public class Group {
 	
 	private Group(){}
 	
-	public Group(String name, Person member){
+	public Group(String name){
 		this.name = name;
 		this.members = new ArrayList<String>();
-		members.add(member.getEmail());
 	}
 	
 	public Long getId() {
@@ -44,6 +43,7 @@ public class Group {
 	public void addMember(Person member) {
 		if(!members.contains(member.getEmail())){
 			members.add(member.getEmail());
+			member.setGroup(this.id);
 		}	
 	}
 	public void removeMember(Person member){

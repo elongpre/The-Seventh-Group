@@ -57,7 +57,8 @@ public class HomeServlet extends HttpServlet{
 			List<Bill> bills = datastore.getBills(person);			
 			req.setAttribute("BillList", bills);
 	
-			List<String> emails = datastore.getGroup(person.getGroup()).getMembers();
+			Group group = datastore.getGroup(person.getGroup());
+			List<String> emails = group.getMembers();
 			emails.remove(person.getEmail());
 			ArrayList<String> roommates = new ArrayList<String>();
 			for(String email : emails){
