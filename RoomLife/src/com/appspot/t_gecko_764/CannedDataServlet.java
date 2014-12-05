@@ -205,6 +205,9 @@ public class CannedDataServlet extends HttpServlet{
 			
 			datastore.saveLandlord(evan);
 			
+			Landlord Pizza=datastore.getLandlord(evan.getEmail());
+			System.out.println(Pizza.toString());
+			
 			resp.getWriter().println("Finished loading data");
 		} else {
 			resp.getWriter().println("Already loaded data");

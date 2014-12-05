@@ -78,6 +78,11 @@ public class DataStore {
 	public Landlord getLandlord(String email){
 		 return ofy().load().type(Landlord.class).filter("email", email).first().now();
 	}
+	public Landlord getLandlordViaName(String name){
+		 return ofy().load().type(Landlord.class).filter("name", name).first().now();
+
+	}
+	
 	
 	public void saveLandlord(Landlord landlord){
 		OfyService.ofy().save().entity(landlord).now();
