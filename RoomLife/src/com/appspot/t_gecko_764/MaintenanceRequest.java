@@ -27,7 +27,7 @@ public class MaintenanceRequest {
 	}
 
 	public Long getId(){
-		return this.id;
+		return id;
 	}
 	public String getName() {
 		return name;

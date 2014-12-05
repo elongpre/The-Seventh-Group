@@ -26,31 +26,45 @@ public class HomeServlet extends HttpServlet{
 	    	resp.sendRedirect("/LoginPage.jsp");
 	    }
 	    
-	    // get bills where person is owner
+	    // obtain the datastore access object
 		DataStore datastore = DataStore.getInstance();
+<<<<<<< HEAD
 		String emailString=user.getEmail();
+=======
+		
+		// get the current user's email
+		String emailString = user.getEmail();
+		
+		// check the datastore for a landlord with the current email address
+		Landlord landlord = datastore.getLandlord(emailString);
+		
+>>>>>>> 80f30256b2840df318db568a6072735d6f14e8f6
 		Person person = datastore.getPerson("alice@example.com");
 		Landlord landlord=datastore.getLandlordViaName("Evan");
 
 		
-		if(landlord!=null){
-			List<Long> buildingsKey=landlord.getBuildings();
+		if (landlord != null) {
+			List<Long> buildingsKey = landlord.getBuildings();
 			ArrayList<Building> buildings=new ArrayList<Building>();
-			if(buildingsKey!=null){
-				for(Long buildingKey:buildingsKey){
-					
+			
+			if(buildingsKey != null){
+				for(Long buildingKey : buildingsKey){
 					buildings.add(datastore.getBuilding(buildingKey));
-					
 				}
 			}
 			req.setAttribute("Buildings", buildings);
-			req.getRequestDispatcher("/WEB-INF/landlordHome.jsp").forward(req, resp);				
-		} else if (person!=null) {
-			String userEmail = person.getEmail();
+			req.getRequestDispatcher("/WEB-INF/landlordHome.jsp").forward(req, resp);
+			
+		} 
+		
+		else if (person != null) {
+			
+			// get the current user's list of bills
 			List<Bill> bills = datastore.getBills(person);			
 			req.setAttribute("BillList", bills);
 	
-			List<String> emails = datastore.getGroup(person.getGroup()).getMembers();
+			Group group = datastore.getGroup(person.getGroup());
+			List<String> emails = group.getMembers();
 			emails.remove(person.getEmail());
 			ArrayList<String> roommates = new ArrayList<String>();
 			for(String email : emails){
@@ -63,7 +77,7 @@ public class HomeServlet extends HttpServlet{
 				Double amount = 0.0;
 				List<Bill> billList = datastore.getBillsEmail(email);
 				for(Bill bill : billList){
-					if(bill.getPeeps().contains(userEmail)){
+					if(bill.getPeeps().contains(emailString)){
 						amount -= Math.ceil(bill.getAmount()*100/numRoommates)/100;
 					}
 				}

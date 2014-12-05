@@ -51,7 +51,7 @@ public class BillServlet extends HttpServlet{
 				roommate.setBills(bills);
 
 			}
-			roommate.addRequest(bill.getId());
+			roommate.addBill(bill.getId());
 			datastore.savePerson(roommate);
 
 			}

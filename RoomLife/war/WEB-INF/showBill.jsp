@@ -13,6 +13,7 @@
 	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
 	    
 		<script src="../../Bootstrap/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="RoomLife.css">
 	</head>
 	<body>
 		<%@include file="header.jsp" %> 

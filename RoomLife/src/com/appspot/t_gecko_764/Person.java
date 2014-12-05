@@ -14,7 +14,6 @@ public class Person {
 	@Index private String email;
 	private Long group;
 	private String name;
-	private ArrayList<String> roommates;
 	@Index private ArrayList<Long> bills;
 	private ArrayList<Long> debts;
 	private ArrayList<Long> requests;
@@ -25,7 +24,6 @@ public class Person {
 	public Person(String name, String email){
 		this.name = name;
 		this.email = email;
-		this.roommates = new ArrayList<String>();
 		this.bills= new ArrayList<Long>();
 		this.debts=new ArrayList<Long>();
 		this.requests= new ArrayList<Long>();
@@ -43,25 +41,10 @@ public class Person {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public ArrayList<String> getRoommates() {
-		return roommates;
-	}
-	public void addRoommate(Person roommate) {
-		roommates.add(roommate.getEmail());
-	}
-	public void removeRoommates(Person roommate){
-		roommates.remove(roommate.getEmail());
-	}
 	public Long getGroup() {
 		return group;
 	}
-	public void addGroup(Long id) {
-		/*
-		if(!groups.contains(group.getId())){
-			groups.add(group.getId());
-		}
-		*/
-
+	public void setGroup(Long id) {
 		this.group = id;
 	}
 	public void removeGroup(Group group) {
