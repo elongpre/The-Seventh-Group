@@ -26,9 +26,10 @@ public class DetailServlet extends HttpServlet{
 		Person person = datastore.getPerson("alice@example.com");
 		String userEmail = person.getEmail();
 		req.setAttribute("UserEmail", userEmail);
+		
+		ServletHelper.initializeServlet(req, resp, person);
+		
 		List<Bill> bills = datastore.getBills(person);
-		req.setAttribute("BillList", bills);
-
 		List<String> emails = datastore.getGroup(person.getGroup()).getMembers();
 		emails.remove(person.getEmail());
 		ArrayList<String> roommates = new ArrayList<String>();
@@ -39,37 +40,6 @@ public class DetailServlet extends HttpServlet{
 		ArrayList<Double> charges = new ArrayList<Double>();
 		List<Debt> posDebts = datastore.getDebts(person);
 		List<Debt> negDebts = datastore.getDebtsDebtor(person);
-		for(String email : emails){
-			Double amount = 0.0;
-			List<Bill> billList = datastore.getBillsEmail(email);
-			for(Bill bill : billList){
-				if(bill.getPeeps().contains(userEmail)){
-					amount -= Math.ceil(bill.getAmount()*100/numRoommates)/100;
-				}
-			}
-			for(Bill bill : bills){
-				if(bill.getPeeps().contains(email)){
-					amount += Math.ceil(bill.getAmount()*100/numRoommates)/100;
-				}
-			}
-			for(Debt debt: posDebts){
-				if(debt.getDebtor().equals(email)){
-					amount += debt.getAmount();
-				}
-			}
-			for(Debt debt: negDebts){
-				if(debt.getOwner().equals(email)){
-					amount -= debt.getAmount();
-				}
-			}
-			charges.add(Math.ceil(amount*100)/100);
-		}
-		
-		req.setAttribute("DebtNames", roommates);
-		req.setAttribute("DebtAmounts", charges);
-		
-		List<MaintenanceRequest> requests = datastore.getMaintenanceRequests(person);
-		req.setAttribute("RequestList", requests);
 
 		String path = req.getRequestURL().toString();
 		String[] splitPath = path.split("/");
@@ -102,16 +72,12 @@ public class DetailServlet extends HttpServlet{
 				break;
 			case "debt":	String name = splitPath[length-1];
 				Person debtor = null;
-				int index = 0;
 				for(String email : emails){
 					debtor = datastore.getPerson(email);
 					if(debtor.getName().equalsIgnoreCase(name)){
 						break;
-					} else {
-						index ++;
 					}
 				}				
-				Double debtAmount = charges.get(index);
 				ArrayList<Debt> debtList = new ArrayList<Debt>();
 				List<Bill> billList = datastore.getBills(debtor);
 				List<Debt> debtListz = datastore.getDebtsDebtor(person);
