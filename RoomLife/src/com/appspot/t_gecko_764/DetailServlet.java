@@ -25,6 +25,7 @@ public class DetailServlet extends HttpServlet{
 		DataStore datastore = DataStore.getInstance();
 		Person person = datastore.getPerson("alice@example.com");
 		String userEmail = person.getEmail();
+		req.setAttribute("UserEmail", userEmail);
 		List<Bill> bills = datastore.getBills(person);
 		req.setAttribute("BillList", bills);
 
