@@ -79,7 +79,7 @@
                 		<tr>
                 			<td>
                 				<div class="sidebar-header">
-			                		Debts
+			                		Balances
 			               		</div>
                 			</td>
                 			<td align="right" >

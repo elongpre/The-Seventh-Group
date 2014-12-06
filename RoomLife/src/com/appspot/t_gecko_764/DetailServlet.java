@@ -2,6 +2,7 @@ package com.appspot.t_gecko_764;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -81,29 +82,39 @@ public class DetailServlet extends HttpServlet{
 				ArrayList<Debt> debtList = new ArrayList<Debt>();
 				List<Bill> billList = datastore.getBills(debtor);
 				List<Debt> debtListz = datastore.getDebtsDebtor(person);
+				Double balance = 0.0;
 				for(Bill billz : billList){
-					if(billz.getPeeps().contains(userEmail)){
-						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
-						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).setDateCreated(billz.getDateCreated()).build());	
+					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+					if(billz.getPeeps().contains(userEmail)){				
+						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).setDateCreated(billz.getDateCreated()).build());
+						balance -= amountz;
+					} else {
+						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).build());
 					}
 				}
 				for(Bill billz : bills){
-					if(billz.getPeeps().contains(debtor.getEmail())){
-						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+					if(billz.getPeeps().contains(debtor.getEmail())){	
 						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).setDateCreated(billz.getDateCreated()).build());
+						balance += amountz;
+					} else {
+						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).build());
 					}
 				}
 				for(Debt debt: posDebts){
 					if(debt.getDebtor().equals(debtor.getEmail())){
 						debtList.add(debt);
+						balance += debt.getAmount();
 					}
 				}
 				for(Debt debt: debtListz){
 					if(debt.getOwner().equals(debtor.getEmail())){
 						debtList.add(debt);
+						balance -= debt.getAmount();
 					}
 				}
 				
+				req.setAttribute("Amount", Math.ceil(balance*100)/100);
 				req.setAttribute("DebtListz", debtList);
 				req.setAttribute("debtor", name);
 				req.getRequestDispatcher("/WEB-INF/showDebt.jsp").forward(req, resp);

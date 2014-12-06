@@ -27,11 +27,19 @@
 	                String debtor = (String) request.getAttribute("debtor");
 					String userEmail = (String) request.getAttribute("UserEmail");
 	                List<Debt> debtList = (List<Debt>) request.getAttribute("DebtListz");
+	                Double balance = (Double) request.getAttribute("Amount");
+	                pageContext.setAttribute("balance", String.format("%.2f", balance));
 	                pageContext.setAttribute("debtor", debtor); 
 	                int num = 0;
+	                if(balance < 0){
                 %>
-                	<h1>${fn:escapeXml(debtor)}</h1> 
+	                	<h1>${fn:escapeXml(debtor)}<span style="float:right;">Balance: <span style="color:red">${fn:escapeXml(balance)}</span></span></h1> 
 			  	<% 
+	                } else {
+               	%>
+	                	<h1>${fn:escapeXml(debtor)}<span style="float:right;">Balance: <span style="color:green">${fn:escapeXml(balance)}</span></span></h1> 
+			  	<%   	
+	                }
 			  		for(Debt debt: debtList){
               			pageContext.setAttribute("debtz_name", debt.getName());
               			pageContext.setAttribute("debtz_amount", debt.getAmount());
@@ -43,24 +51,46 @@
 				      			<h4 class="panel-title">
 				        			<a data-toggle="collapse" data-parent="#accordion" href="#collapse${num}" aria-expanded="true" aria-controls="collapse${num}">
 	            							<%
-				              			if(debt.getOwner().equals(userEmail)){					              				          			
-	            							%>						
-				          					<div>
-				          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
-				          						<span style="color: green">${fn:escapeXml(debtz_amount)}</span>
-				          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
-			          						</div>
-				          			<% 
-				              			} else {
-		              				%>						
-				          					<div>
-				          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
-				          						<span style="color: red">-${fn:escapeXml(debtz_amount)}</span>
-				          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
-			          						</div>
-				          			<% 		
-				              			}
-				          			%>
+	            						if(debt.getDatePaid() == null){
+					              			if(debt.getOwner().equals(userEmail)){					              				          			
+		            							%>						
+					          					<div>
+					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
+					          						<span style="color: green">${fn:escapeXml(debtz_amount)}</span>
+					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
+				          						</div>
+					          			<% 
+					              			} else {
+			              				%>						
+					          					<div>
+					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
+					          						<span style="color: red">-${fn:escapeXml(debtz_amount)}</span>
+					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
+				          						</div>
+					          			<% 		
+					              			}
+	            						} else {
+	            							if(debt.getOwner().equals(userEmail)){					              				          			
+		            							%>						
+					          					<div>
+					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
+					          						<span style="color: green; text-decoration: line-through;">${fn:escapeXml(debtz_amount)}</span>
+					          						<span style="font-style: italic">PAID</span>
+					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
+				          						</div>
+					          			<% 
+					              			} else {
+			              				%>						
+					          					<div>
+					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
+					          						<span style="color: red; text-decoration: line-through;">-${fn:escapeXml(debtz_amount)}</span>
+					          						<span style="font-style: italic">PAID</span>
+					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
+				          						</div>
+					          			<%
+					              			}
+	            						}
+					          			%>
 				        			</a>
 				      			</h4>
 				    		</div>
