@@ -28,7 +28,7 @@
 					String userEmail = (String) request.getAttribute("UserEmail");
 	                List<Debt> debtList = (List<Debt>) request.getAttribute("DebtListz");
 	                Double balance = (Double) request.getAttribute("Amount");
-	                pageContext.setAttribute("balance", String.format("%.2f", balance));
+	                pageContext.setAttribute("balance", String.format("%.2f", Math.abs(balance)));
 	                pageContext.setAttribute("debtor", debtor); 
 	                int num = 0;
 	                if(balance < 0){
@@ -64,7 +64,7 @@
 			              				%>						
 					          					<div>
 					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
-					          						<span style="color: red">-${fn:escapeXml(debtz_amount)}</span>
+					          						<span style="color: red">${fn:escapeXml(debtz_amount)}</span>
 					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
 				          						</div>
 					          			<% 		
@@ -74,7 +74,9 @@
 		            							%>						
 					          					<div>
 					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
-					          						<span style="color: green; text-decoration: line-through;">${fn:escapeXml(debtz_amount)}</span>
+					          						<span style="text-decoration: line-through;">
+					          							<span style="color: green">${fn:escapeXml(debtz_amount)}</span>
+					          						</span>
 					          						<span style="font-style: italic">PAID</span>
 					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
 				          						</div>
@@ -83,7 +85,7 @@
 			              				%>						
 					          					<div>
 					          						${fn:escapeXml(date)} | ${fn:escapeXml(debtz_name)}: 
-					          						<span style="color: red; text-decoration: line-through;">-${fn:escapeXml(debtz_amount)}</span>
+					          						<span style="color: red; text-decoration: line-through;">${fn:escapeXml(debtz_amount)}</span>
 					          						<span style="font-style: italic">PAID</span>
 					          						<span class="glyphicon glyphicon-plus" style="float: right"></span>
 				          						</div>

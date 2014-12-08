@@ -56,7 +56,10 @@
 						
 				%>
 						<li>
-							<a href="/detailservlet/bill/${bill_id}" class="bill-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: ${fn:escapeXml(bill_amount)}</a>
+							<a href="/detailservlet/bill/${bill_id}" class="bill-name">
+								&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: 
+								<span style="color:red">${fn:escapeXml(bill_amount)}</span>
+							</a>
 						</li>
 				<%
 							i++;
@@ -112,7 +115,7 @@
 					for (String name : DebtNames){
 						
 						pageContext.setAttribute("debt_name", name);
-						pageContext.setAttribute("debt_amount", String.format("%.2f", DebtAmounts.get(k)));
+						pageContext.setAttribute("debt_amount", String.format("%.2f", Math.abs(DebtAmounts.get(k))));
 						if(DebtAmounts.get(k) < 0){				
 				%>
 							<li>

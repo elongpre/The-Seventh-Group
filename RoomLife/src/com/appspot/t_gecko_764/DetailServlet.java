@@ -67,6 +67,7 @@ public class DetailServlet extends HttpServlet{
 						amount.add(0.0);
 					}
 				}
+				req.setAttribute("payment", payment);
 				req.setAttribute("names", names);
 				req.setAttribute("amount", amount);
 				req.getRequestDispatcher("/WEB-INF/showBill.jsp").forward(req, resp);
