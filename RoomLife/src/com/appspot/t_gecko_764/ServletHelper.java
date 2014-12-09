@@ -39,12 +39,12 @@ public class ServletHelper {
 				}
 			}
 			for(Debt debt: posDebts){
-				if(debt.getDebtor().equals(email)){
+				if(debt.getDebtor().equals(email) && (debt.getDatePaid() == null)){
 					amount += debt.getAmount();
 				}
 			}
 			for(Debt debt: negDebts){
-				if(debt.getOwner().equals(email)){
+				if(debt.getOwner().equals(email) && (debt.getDatePaid() == null)){
 					amount -= debt.getAmount();
 				}
 			}

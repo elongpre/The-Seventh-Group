@@ -106,13 +106,17 @@ public class DetailServlet extends HttpServlet{
 				for(Debt debt: posDebts){
 					if(debt.getDebtor().equals(debtor.getEmail())){
 						debtList.add(debt);
-						balance += debt.getAmount();
+						if(debt.getDatePaid() == null){
+							balance += debt.getAmount();
+						}
 					}
 				}
 				for(Debt debt: debtListz){
 					if(debt.getOwner().equals(debtor.getEmail())){
 						debtList.add(debt);
-						balance -= debt.getAmount();
+						if(debt.getDatePaid() == null){
+							balance -= debt.getAmount();
+						}
 					}
 				}
 				
