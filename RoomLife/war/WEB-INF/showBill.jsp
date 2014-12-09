@@ -28,26 +28,27 @@
                 Bill bill = (Bill) request.getAttribute("Bill"); 
                 pageContext.setAttribute("bill_name", bill.getName());
                 pageContext.setAttribute("bill_amount", bill.getAmount());
+                pageContext.setAttribute("bill_id", bill.getId());
                 %>
               	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
               		<h1>${fn:escapeXml(bill_name)}<span style="float:right">Bill</span></h1>
               		<div class="panel panel-default">
 			    		<div class="panel-heading" role="tab" id="headingFirst">
-			      			<h4 class="panel-title">
+			      			<h3 class="panel-title">
 			        			<a data-toggle="collapse" data-parent="#accordion" href="#collapseFirst" aria-expanded="true" aria-controls="collapseFirst">
 			              	<% 
 			              		if(bill.getDatePaid() == null) {
 			              			pageContext.setAttribute("bill_deadline", new SimpleDateFormat("MMM dd, YYYY").format(bill.getDateDeadline()));
 			              	%>              		
-			              			<div>
-				              			<span style="color: red; font-size:150%">$${fn:escapeXml(bill_amount)}</span> due on ${fn:escapeXml(bill_deadline)}
+			              			<div style="font-size: 120%">
+				              			<span style="color: red">$${fn:escapeXml(bill_amount)}</span> due on ${fn:escapeXml(bill_deadline)}
 				              			<span class="glyphicon glyphicon-plus" style="float: right"></span>
 			              			</div>
 			              	<%
 			              		} else {
 			                    	pageContext.setAttribute("bill_paid", new SimpleDateFormat("MMM dd, YYYY").format(bill.getDatePaid()));
 			                %>
-			          				<div>
+			          				<div style="font-size: 120%">
 				                		${fn:escapeXml(bill_name)} was paid on ${fn:escapeXml(bill_paid)}
 				                		<span class="glyphicon glyphicon-plus" style="float: right"></span>
 			                		</div>
@@ -55,12 +56,12 @@
 								}
 			              	%>
 			              		</a>
-		              		</h4>
+		              		</h3>
 	              		</div>
 	              		<div id="collapseFirst" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFirst">
 				      		<div class="panel-body">
 				      			<button type="button" class="btn btn-primary">
-									<a href="/home" style="color: white"> Mark as Paid </a>
+									<a href="/payservlet/bill/${bill_id}" style="color: white"> Mark as Paid </a>
 								</button>
 								<button type="button" class="btn btn-primary">
 									Edit
@@ -111,7 +112,7 @@
 		              		<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
 					      		<div class="panel-body">
 					      			<button type="button" class="btn btn-primary">
-										<a href="/home" style="color: white"> Mark as Paid </a>
+										<a href="/payservlet/${name}/bill/${bill_id}" style="color: white"> Mark as Paid </a>
 									</button>
 									<button type="button" class="btn btn-primary">
 										Edit

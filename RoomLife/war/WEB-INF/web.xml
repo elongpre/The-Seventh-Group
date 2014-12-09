@@ -82,6 +82,15 @@
     	<url-pattern>/detailservlet/*</url-pattern>
   	</servlet-mapping>
   	
+  	<servlet>
+    	<servlet-name>payServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.PayServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>payServlet</servlet-name>
+    	<url-pattern>/payservlet/*</url-pattern>
+  	</servlet-mapping>
+  	
   	
     <filter>
         <filter-name>ObjectifyFilter</filter-name>
