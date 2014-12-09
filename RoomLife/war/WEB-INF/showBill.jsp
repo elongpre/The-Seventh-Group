@@ -40,7 +40,7 @@
 			              			pageContext.setAttribute("bill_deadline", new SimpleDateFormat("MMM dd, YYYY").format(bill.getDateDeadline()));
 			              	%>              		
 			              			<div>
-				              			<span style="color: red">${fn:escapeXml(bill_amount)}</span> due on ${fn:escapeXml(bill_deadline)}
+				              			<span style="color: red; font-size:150%">$${fn:escapeXml(bill_amount)}</span> due on ${fn:escapeXml(bill_deadline)}
 				              			<span class="glyphicon glyphicon-plus" style="float: right"></span>
 			              			</div>
 			              	<%
@@ -70,7 +70,7 @@
 			  		</div>
 		  			
 	  		
-              		<div>Roommates Splitting the Bill</div>
+              		<h3>Roommates Splitting the Bill</h3>
               	
 
            		<% 
@@ -92,13 +92,13 @@
            									if(amount.get(j) == 0){
            									%>
 												<span style="text-decoration:line-through">
-													<span style="color:green">${fn:escapeXml(payment)}</span>
+													<span style="color:green">$${fn:escapeXml(payment)}</span>
 												</span>
 												<span style="font-style: italic">PAID</span>           										
            									<%	
            									} else {
            									%>
-												<span style="color:green">${fn:escapeXml(payment)}</span>
+												<span style="color:green">$${fn:escapeXml(payment)}</span>
 
            									<%	
            									}

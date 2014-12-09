@@ -58,7 +58,7 @@
 						<li>
 							<a href="/detailservlet/bill/${bill_id}" class="bill-name">
 								&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: 
-								<span style="color:red">${fn:escapeXml(bill_amount)}</span>
+								<span style="color:red">$${fn:escapeXml(bill_amount)}</span>
 							</a>
 						</li>
 				<%
@@ -95,20 +95,6 @@
                 </li>
                 <li class="divider"></li>
                 <%
-                	
-	                	List<Debt> DebtList = (List<Debt>) request.getAttribute("DebtList");
-               			if (DebtList!=null){
-							for (Debt debt: DebtList){
-								pageContext.setAttribute("debt_name", debt.getName());
-								pageContext.setAttribute("debt_amount", debt.getAmount());
-								pageContext.setAttribute("debt_id", debt.getId());
-				%>
-							<li>
-								<a href="/detailservlet/debt/${debt_id}" class="debt-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: ${fn:escapeXml(debt_amount)}</a>
-							</li>
-				<%
-							}
-                		}
 	                List<String> DebtNames = (List<String>) request.getAttribute("DebtNames"); 
                 	List<Double> DebtAmounts = (List<Double>) request.getAttribute("DebtAmounts");  
                 	int k = 0;
@@ -120,7 +106,7 @@
 				%>
 							<li>
 								<a href="/detailservlet/debt/${debt_name}" class="debt-name">
-									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: red">${fn:escapeXml(debt_amount)}</span>
+									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: red">$${fn:escapeXml(debt_amount)}</span>
 								</a>
 							</li>
 				<%
@@ -128,7 +114,7 @@
 				%>
 							<li>
 								<a href="/detailservlet/debt/${debt_name}" class="debt-name">
-									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: green">${fn:escapeXml(debt_amount)}</span>
+									&nbsp;&nbsp;&nbsp;${fn:escapeXml(debt_name)}: <span style="color: green">$${fn:escapeXml(debt_amount)}</span>
 								</a>
 							</li>
 				<%
