@@ -99,7 +99,26 @@
 					    	<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
 					      		<div class="panel-body">
 					      			<button type="button" class="btn btn-primary">
-										<a href="/home" style="color: white"> Mark as Paid </a>
+				      				<%
+					      				if ((debt.getBillId() != null) && (debt.getOwner().equals(userEmail))){	
+					      					pageContext.setAttribute("bill_id", debt.getBillId());
+					      				%>	
+					      					<a href="/detailservlet/bill/${bill_id}" style="color: white"> View Bill </a>
+					      				<%	
+					      				} else {
+					      					if((debt.getBillId() == null) && (debt.getOwner().equals(userEmail))){
+					      						pageContext.setAttribute("debt_id", debt.getId());
+			      							%>
+												<a href="/payservlet/debt/${debt_id}" style="color: white"> Mark as Paid </a>
+											<%	
+					      						
+					      					} else {
+					      					%>
+												<a href="/home" style="color: white"> Mark as Paid </a>
+											<%
+					      					}
+					      				}
+									%>
 									</button>
 									<button type="button" class="btn btn-primary">
 										Edit

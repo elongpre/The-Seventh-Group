@@ -83,23 +83,24 @@ public class DetailServlet extends HttpServlet{
 				ArrayList<Debt> debtList = new ArrayList<Debt>();
 				List<Bill> billList = datastore.getBills(debtor);
 				List<Debt> debtListz = datastore.getDebtsDebtor(person);
+				List<Bill> debtBills = new ArrayList<Bill>();
 				Double balance = 0.0;
 				for(Bill billz : billList){
 					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
 					if(billz.getPeeps().contains(userEmail)){				
-						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).setDateCreated(billz.getDateCreated()).build());
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, debtor, person).setDateCreated(billz.getDateCreated()).setBillId(billz.getId()).build());
 						balance -= amountz;
 					} else {
-						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).build());
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, debtor, person).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).setBillId(billz.getId()).build());
 					}
 				}
 				for(Bill billz : bills){
 					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
 					if(billz.getPeeps().contains(debtor.getEmail())){	
-						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).setDateCreated(billz.getDateCreated()).build());
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, person, debtor).setDateCreated(billz.getDateCreated()).setBillId(billz.getId()).build());
 						balance += amountz;
 					} else {
-						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).build());
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, person, debtor).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).setBillId(billz.getId()).build());
 					}
 				}
 				for(Debt debt: posDebts){

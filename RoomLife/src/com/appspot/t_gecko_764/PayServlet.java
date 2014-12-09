@@ -65,7 +65,7 @@ public class PayServlet extends HttpServlet{
 				debt.setDatePaid(new Date());
 				datastore.saveDebt(debt);
 				String name = datastore.getPerson(debt.getDebtor()).getName();
-				req.getRequestDispatcher("/detailservlet/debt/" +  name).forward(req, resp);
+				resp.sendRedirect("/detailservlet/debt/" +  name);
 				break;
 			default:		resp.sendRedirect("/home");
 				break;

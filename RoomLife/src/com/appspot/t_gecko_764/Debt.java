@@ -1,6 +1,7 @@
 package com.appspot.t_gecko_764;
 
 import java.util.Date;
+
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
@@ -14,6 +15,8 @@ public class Debt {
 	@Index private String debtor;
 	private Date dateCreated;
 	private Date datePaid;
+	private Long billId;
+	
 	
 	private Debt(){}
 	
@@ -21,6 +24,12 @@ public class Debt {
 		return id;
 	}
 
+	public Long getBillId() {
+		return billId;
+	}
+	public void setBillId(Long billId) {
+		this.billId = billId;
+	}
 	public String getName() {
 		return name;
 	}
@@ -65,6 +74,7 @@ public class Debt {
 		private String debtor;
 		private Date dateCreated;
 		private Date datePaid;
+		private Long billId;
 		
 		public Builder(String name, Double amount, Person owner, Person debtor) {
 			this.name = name;
@@ -82,6 +92,7 @@ public class Debt {
 			debt.setDebtor(debtor);
 			debt.setDateCreated(dateCreated);
 			debt.setDatePaid(datePaid);
+			debt.setBillId(billId);
 			return debt;
 		}
 		public Builder setName(String name) {
@@ -111,6 +122,11 @@ public class Debt {
 
 		public Builder setDatePaid(Date datePaid) {
 			this.datePaid = datePaid;
+			return this;
+		}
+		
+		public Builder setBillId(Long billId) {
+			this.billId = billId;
 			return this;
 		}
 
