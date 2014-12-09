@@ -53,21 +53,30 @@
 							pageContext.setAttribute("bill_name", bill.getName());
 							pageContext.setAttribute("bill_amount", bill.getAmount());
 							pageContext.setAttribute("bill_id", bill.getId());
-						
-				%>
-						<li>
-							<a href="/detailservlet/bill/${bill_id}" class="bill-name">
-								&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: 
-								<span style="color:red">$${fn:escapeXml(bill_amount)}</span>
-							</a>
-						</li>
-				<%
-							i++;
-								if(i == 5){
-									break;
-								}
+							if(bill.getDatePaid() == null){						
+							%>
+								<li>
+									<a href="/detailservlet/bill/${bill_id}" class="bill-name">
+										&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}: 
+										<span style="color:red">$${fn:escapeXml(bill_amount)}</span>
+									</a>
+								</li>
+							<%
+							} else {
+							%>
+								<li>
+									<a href="/detailservlet/bill/${bill_id}" class="bill-name">
+										&nbsp;&nbsp;&nbsp;${fn:escapeXml(bill_name)}:
+										<span style="text-decoration:line-through"> 
+											<span style="color:red">$${fn:escapeXml(bill_amount)}</span>
+										</span> 
+										<span style="font-style: italic">PAID</span>
+									</a>
+								</li>
+							<%								
 							}
                 		}
+                	}
 				%>
                 <li class="sidebar-brand">
                     <table width="100%">
