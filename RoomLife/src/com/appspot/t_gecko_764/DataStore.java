@@ -34,9 +34,7 @@ public class DataStore {
 	}
 	
 	public void saveBill (Bill bill){
-		System.out.println("start objectify save");
 		ofy().save().entity(bill).now();
-		System.out.println("end objectify save");
 	}
 	
 	public List<Bill> getBills(Person person){

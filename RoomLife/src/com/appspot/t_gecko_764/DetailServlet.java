@@ -2,6 +2,7 @@ package com.appspot.t_gecko_764;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,9 +26,11 @@ public class DetailServlet extends HttpServlet{
 		DataStore datastore = DataStore.getInstance();
 		Person person = datastore.getPerson("alice@example.com");
 		String userEmail = person.getEmail();
+		req.setAttribute("UserEmail", userEmail);
+		
+		ServletHelper.initializeServlet(req, resp, person);
+		
 		List<Bill> bills = datastore.getBills(person);
-		req.setAttribute("BillList", bills);
-
 		List<String> emails = datastore.getGroup(person.getGroup()).getMembers();
 		emails.remove(person.getEmail());
 		ArrayList<String> roommates = new ArrayList<String>();
@@ -37,38 +40,7 @@ public class DetailServlet extends HttpServlet{
 		int numRoommates = roommates.size();
 		ArrayList<Double> charges = new ArrayList<Double>();
 		List<Debt> posDebts = datastore.getDebts(person);
-		for(String email : emails){
-			Double amount = 0.0;
-			List<Bill> billList = datastore.getBillsEmail(email);
-			for(Bill bill : billList){
-				if(bill.getPeeps().contains(userEmail)){
-					amount -= Math.ceil(bill.getAmount()*100/numRoommates)/100;
-				}
-			}
-			for(Bill bill : bills){
-				if(bill.getPeeps().contains(email)){
-					amount += Math.ceil(bill.getAmount()*100/numRoommates)/100;
-				}
-			}
-			for(Debt debt: posDebts){
-				if(debt.getDebtor() == email){
-					amount += debt.getAmount();
-				}
-			}
-			List<Debt> negDebts = datastore.getDebtsDebtorEmail(email);
-			for(Debt debt: negDebts){
-				if(debt.getOwner() == email){
-					amount -= debt.getAmount();
-				}
-			}
-			charges.add(Math.ceil(amount*100)/100);
-		}
-		
-		req.setAttribute("DebtNames", roommates);
-		req.setAttribute("DebtAmounts", charges);
-		
-		List<MaintenanceRequest> requests = datastore.getMaintenanceRequests(person);
-		req.setAttribute("RequestList", requests);
+		List<Debt> negDebts = datastore.getDebtsDebtor(person);
 
 		String path = req.getRequestURL().toString();
 		String[] splitPath = path.split("/");
@@ -95,49 +67,61 @@ public class DetailServlet extends HttpServlet{
 						amount.add(0.0);
 					}
 				}
+				req.setAttribute("payment", payment);
 				req.setAttribute("names", names);
 				req.setAttribute("amount", amount);
 				req.getRequestDispatcher("/WEB-INF/showBill.jsp").forward(req, resp);
 				break;
 			case "debt":	String name = splitPath[length-1];
 				Person debtor = null;
-				int index = 0;
 				for(String email : emails){
 					debtor = datastore.getPerson(email);
 					if(debtor.getName().equalsIgnoreCase(name)){
 						break;
-					} else {
-						index ++;
 					}
 				}				
-				Double debtAmount = charges.get(index);
 				ArrayList<Debt> debtList = new ArrayList<Debt>();
 				List<Bill> billList = datastore.getBills(debtor);
 				List<Debt> debtListz = datastore.getDebtsDebtor(person);
+				List<Bill> debtBills = new ArrayList<Bill>();
+				Double balance = 0.0;
 				for(Bill billz : billList){
-					if(billz.getPeeps().contains(userEmail)){
-						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
-						debtList.add(new Debt.Builder(billz.getName(), amountz, debtor, person).build());	
+					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+					if(billz.getPeeps().contains(userEmail)){				
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, debtor, person).setDateCreated(billz.getDateCreated()).setBillId(billz.getId()).build());
+						balance -= amountz;
+					} else {
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, debtor, person).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).setBillId(billz.getId()).build());
 					}
 				}
 				for(Bill billz : bills){
-					if(billz.getPeeps().contains(debtor.getEmail())){
-						Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
-						debtList.add(new Debt.Builder(billz.getName(), amountz, person, debtor).build());
+					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
+					if(billz.getPeeps().contains(debtor.getEmail())){	
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, person, debtor).setDateCreated(billz.getDateCreated()).setBillId(billz.getId()).build());
+						balance += amountz;
+					} else {
+						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, person, debtor).setDateCreated(billz.getDateCreated()).setDatePaid(new Date()).setBillId(billz.getId()).build());
 					}
 				}
 				for(Debt debt: posDebts){
-					if(debt.getDebtor() == debtor.getEmail()){
+					if(debt.getDebtor().equals(debtor.getEmail())){
 						debtList.add(debt);
+						if(debt.getDatePaid() == null){
+							balance += debt.getAmount();
+						}
 					}
 				}
 				for(Debt debt: debtListz){
-					if(debt.getOwner() == debtor.getEmail()){
+					if(debt.getOwner().equals(debtor.getEmail())){
 						debtList.add(debt);
+						if(debt.getDatePaid() == null){
+							balance -= debt.getAmount();
+						}
 					}
 				}
 				
-				req.setAttribute("DebtList", debtList);
+				req.setAttribute("Amount", Math.ceil(balance*100)/100);
+				req.setAttribute("DebtListz", debtList);
 				req.setAttribute("debtor", name);
 				req.getRequestDispatcher("/WEB-INF/showDebt.jsp").forward(req, resp);
 				break;

@@ -82,6 +82,7 @@
     	<url-pattern>/detailservlet/*</url-pattern>
   	</servlet-mapping>
   	
+<<<<<<< HEAD
   	 <servlet>
     	<servlet-name>LandlordEntryServlet</servlet-name>
     	<servlet-class>com.appspot.t_gecko_764.LandlordEntryServlet</servlet-class>
@@ -108,6 +109,15 @@
   	<servlet-mapping>
     	<servlet-name>BuildingServlet</servlet-name>
     	<url-pattern>/BuildingServlet</url-pattern>
+=======
+  	<servlet>
+    	<servlet-name>payServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.PayServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>payServlet</servlet-name>
+    	<url-pattern>/payservlet/*</url-pattern>
+>>>>>>> 6bb912f9ac5c05f9b328c87e82b9afcb0ec45460
   	</servlet-mapping>
   	
   	

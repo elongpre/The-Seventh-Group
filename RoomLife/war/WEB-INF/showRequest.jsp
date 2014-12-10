@@ -22,7 +22,6 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
         	<div class="container-fluid">
-                Welcome to RoomLife!
                 <% 
                 MaintenanceRequest mainReq = (MaintenanceRequest) request.getAttribute("Request");
                 pageContext.setAttribute("req_name", mainReq.getName());
@@ -32,7 +31,7 @@
                 pageContext.setAttribute("req_priority",mainReq.getPriority());
                 
                 %>
-                <h1>${fn:escapeXml(debt_name)}</h1> 
+                <h1>${fn:escapeXml(debt_name)}<span style="float:right">Maintenance Request</span></h1> 
                
               	<% if(mainReq.getCompleted() == null) {
               		
