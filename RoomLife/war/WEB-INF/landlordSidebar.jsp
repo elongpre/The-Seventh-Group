@@ -37,7 +37,7 @@
 			               		</div>
                 			</td>
                 			<td align="right" >
-                				<a href="/entry/bill" style="padding-right: 10px">
+                				<a href="/landlordentry/building" style="padding-right: 10px">
                						<span class="glyphicon glyphicon-plus"></span>
                					</a>            				
                 			</td>
@@ -58,7 +58,7 @@
 						
 				%>
 						<li>
-							<a href="/detailservlet/building/${building_id}" class="building-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(building_name)}: ${fn:escapeXml(numGroups)}</a>
+							<a href="/landlorddetailservlet/building/${building_id}" class="building-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(building_name)}: ${fn:escapeXml(numGroups)}</a>
 						</li>
 				<%
 							i++;

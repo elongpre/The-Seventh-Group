@@ -80,21 +80,21 @@ public class DataStore {
 	public Landlord getLandlord(String email){
 		 return ofy().load().type(Landlord.class).filter("email", email).first().now();
 	}
-	public Landlord getLandlordViaName(String name){
-		 return ofy().load().type(Landlord.class).filter("name", name).first().now();
+	public Landlord getLandlordViaName(Long id){
+		 return ofy().load().type(Landlord.class).id(id).now();
 
 	}
 	
 	
 	public void saveLandlord(Landlord landlord){
-		OfyService.ofy().save().entity(landlord).now();
+		ofy().save().entity(landlord).now();
 	}
 	
 	public Building getBuilding(Long id){
 		return ofy().load().type(Building.class).id(id).now();
 	}
 	public void saveBuilding(Building building){
-		OfyService.ofy().save().entity(building).now();
+		ofy().save().entity(building).now();
 	}
 	
 	

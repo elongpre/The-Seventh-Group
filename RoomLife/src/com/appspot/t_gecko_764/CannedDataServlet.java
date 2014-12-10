@@ -107,6 +107,7 @@ public class CannedDataServlet extends HttpServlet{
 			datastore.saveMaintenanceRequest(request2);			
 			
 			Landlord evan = new Landlord("Evan", "evan@example.com");
+			datastore.saveLandlord(evan);
 			Building building1= new Building ("Unit 1","evan@example.com");
 			building1.addGroup(group.getId());
 			Building building2= new Building ("Unit 2","evan@example.com");
@@ -119,8 +120,9 @@ public class CannedDataServlet extends HttpServlet{
 			evan.addBuilding(building2.getId());
 			
 			datastore.saveLandlord(evan);
+			Landlord Pizza=datastore.getLandlordViaName(evan.getId());
 			
-			Landlord Pizza=datastore.getLandlord(evan.getEmail());
+			if(Pizza!=null)
 			System.out.println(Pizza.toString());
 			
 			resp.getWriter().println("Finished loading data");

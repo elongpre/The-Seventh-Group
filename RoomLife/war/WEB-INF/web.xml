@@ -82,6 +82,34 @@
     	<url-pattern>/detailservlet/*</url-pattern>
   	</servlet-mapping>
   	
+  	 <servlet>
+    	<servlet-name>LandlordEntryServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.LandlordEntryServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>LandlordEntryServlet</servlet-name>
+    	<url-pattern>/landlordentry/*</url-pattern>
+  	</servlet-mapping>
+  	
+  	
+   	<servlet>
+	   	<servlet-name>LandLordDetailServlet</servlet-name>
+   		<servlet-class>com.appspot.t_gecko_764.LandLordDetailServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>LandLordDetailServlet</servlet-name>
+    	<url-pattern>/landlorddetailservlet/*</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>BuildingServlet</servlet-name>
+    	<servlet-class>com.appspot.t_gecko_764.BuildingServlet</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>BuildingServlet</servlet-name>
+    	<url-pattern>/BuildingServlet</url-pattern>
+  	</servlet-mapping>
+  	
   	
     <filter>
         <filter-name>ObjectifyFilter</filter-name>

@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Landlord {
 	@Id Long id;
 	private String name;
-	private ArrayList<Long> buildings;
-	private String email;
+	@Index private String email;
+	@Index private ArrayList<Long> buildings;
 	
 	private Landlord(){
 		
@@ -19,6 +20,9 @@ public class Landlord {
 		this.name=name;
 		this.email=email;
 		this.buildings=new ArrayList<Long>();
+	}
+	public Long getId(){
+		return this.id;
 	}
 	
 	public String getName() {
