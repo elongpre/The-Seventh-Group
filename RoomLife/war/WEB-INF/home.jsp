@@ -32,7 +32,6 @@
         	<div class="container-fluid">
             	<%
             		String name = (String) request.getAttribute("UserName");
-          			
           			pageContext.setAttribute("user_name", name);
             	%> 
             	
