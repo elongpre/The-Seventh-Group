@@ -37,15 +37,15 @@
                 %>
                 <h1>${fn:escapeXml(req_name)}<span style="float:right">Maintenance Request</span></h1> 
                
-              	<% if(mainReq.getCompleted() == null) {             		
-              	%>
-              		<div><span class="glyphicon glyphicon-asterisk"></span> Maintenance has not been completed</div>
-              	<%
-              	} else {
-                    pageContext.setAttribute("req_complete", mainReq.getCompleted());
+              	<% if(mainReq.getCompleted() != null){             		
+              	    pageContext.setAttribute("req_complete", mainReq.getCompleted());
                 %>
-                	<div><span class="glyphicon glyphicon-ok-circle"></span>Maintenance was completed on ${fn:escapeXml(req_complete)}</div>
+                    	<div><span class="glyphicon glyphicon-ok-circle"></span>Maintenance was completed on ${fn:escapeXml(req_complete)}</div>
                 <%
+              	} else {
+                %>
+	          		<div><span class="glyphicon glyphicon-asterisk"></span> Maintenance has not been completed</div>
+	          	<%
               	}
               	String name = (String) request.getAttribute("debtor");
               	pageContext.setAttribute("name", name);              	

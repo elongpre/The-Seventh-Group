@@ -98,7 +98,9 @@
 												<% 
 													if(man.getCompleted() == null){
 													%>
-														<ul><a href="/landlorddetailservlet/mainreq/${mkey}">Not been completed</a></ul>
+														<ul>Maintenance has not been completed
+															<a class="btn btn-primary" href="/landlorddetailservlet/mainreq/${mkey}" style="color: white"> Mark as Completed </a>
+														</ul>
 													<%
 													} else{
 								                    	pageContext.setAttribute("req_complete", man.getCompleted());
