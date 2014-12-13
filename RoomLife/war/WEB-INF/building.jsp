@@ -28,11 +28,10 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
         	<div class="container-fluid">
-                <h1>Submit Bills and Debts</h1>
+                <h1>New Building</h1>
 	    
 			    <form action="/BuildingServlet" method="POST">
 			    	<fieldset>
-			    		<legend>New Building</legend>
 			    		
 			    		<label class="field" for="Name">Building Name:</label>
 				        <p><input type="text" name="buildingName"></p>

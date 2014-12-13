@@ -28,10 +28,9 @@
   	</servlet-mapping>
   	
    	<servlet>
-   	<servlet-name>RegisterUserServlet</servlet-name>
+   		<servlet-name>RegisterUserServlet</servlet-name>
      	<servlet-class>com.appspot.t_gecko_764.RegisterUserServlet</servlet-class>
     </servlet>
-    
    	<servlet-mapping>
    	 	<servlet-name>RegisterUserServlet</servlet-name>
     	<url-pattern>/registerUser</url-pattern>

@@ -112,15 +112,7 @@ public class CannedDataServlet extends HttpServlet{
 			evan.addBuilding(building2.getId());
 			
 			datastore.saveLandlord(evan);
-			Landlord Pizza=datastore.getLandlordViaName(evan.getId());
-			
-<<<<<<< HEAD
-			if(Pizza!=null)
-			System.out.println(Pizza.toString());
-=======
-			Landlord Pizza=datastore.getLandlord(evan.getEmail());
-//			System.out.println(Pizza.toString());
->>>>>>> 6bb912f9ac5c05f9b328c87e82b9afcb0ec45460
+
 			
 			resp.getWriter().println("Finished loading data");
 		} else {

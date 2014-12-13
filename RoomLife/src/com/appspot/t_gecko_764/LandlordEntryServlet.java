@@ -1,18 +1,20 @@
 package com.appspot.t_gecko_764;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServlet;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-public class LandlordEntryServlet {
+public class LandlordEntryServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
 		UserService userService = UserServiceFactory.getUserService();
 	    User user = userService.getCurrentUser();
@@ -44,7 +46,7 @@ public class LandlordEntryServlet {
 		System.out.println(splitPath);
 		int length = splitPath.length;
 
-		switch (splitPath[length-2]) {
+		switch (splitPath[length-1]) {
 			case "building": req.getRequestDispatcher("/WEB-INF/building.jsp").forward(req, resp);
 
 		}

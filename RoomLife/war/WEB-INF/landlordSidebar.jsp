@@ -54,8 +54,12 @@
 						for (Building building : buildings){
 							pageContext.setAttribute("building_name", building.getName());
 							pageContext.setAttribute("building_id", building.getId());
-							pageContext.setAttribute("numGroups",building.getGroups().size());
-						
+							if(building.getGroups()!=null){
+								pageContext.setAttribute("numGroups",building.getGroups().size());
+							}
+							else{
+								pageContext.setAttribute("numGroups", 0);
+							}
 				%>
 						<li>
 							<a href="/landlorddetailservlet/building/${building_id}" class="building-name">&nbsp;&nbsp;&nbsp;${fn:escapeXml(building_name)}: ${fn:escapeXml(numGroups)}</a>
