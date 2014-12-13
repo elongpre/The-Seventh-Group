@@ -74,13 +74,13 @@
 										pageContext.setAttribute("Details",man.getDetails());
 										pageContext.setAttribute("Location", man.getLocation());																														
 									%>
-										<ul>${fn:escapeXml(req_name)}</ul>
-										<ul>
+											<ul>${fn:escapeXml(req_name)}</ul>
+											<ul>
 										
 									<% 
 										if(man.getCompleted()==null){
 										%>
-											<ul>Not been completed</ul>
+											<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
 										<%
 										} else{
 					                    	pageContext.setAttribute("req_complete", man.getCompleted());
