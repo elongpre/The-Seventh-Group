@@ -60,12 +60,8 @@
 	              		</div>
 	              		<div id="collapseFirst" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFirst">
 				      		<div class="panel-body">
-				      			<button type="button" class="btn btn-primary">
-									<a href="/payservlet/bill/${bill_id}" style="color: white"> Mark as Paid </a>
-								</button>
-								<button type="button" class="btn btn-primary">
-									Edit
-								</button>
+								<a class="btn btn-primary" href="/payservlet/bill/${bill_id}" style="color: white"> Mark as Paid </a>
+								<a class="btn btn-primary" href="#" style="color: white"> Edit </a>
 				    		</div>
 			    		</div>
 			  		</div>
@@ -111,9 +107,7 @@
 		              		</div>
 		              		<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
 					      		<div class="panel-body">
-					      			<button type="button" class="btn btn-primary">
-										<a href="/payservlet/${name}/bill/${bill_id}" style="color: white"> Mark as Paid </a>
-									</button>									
+									<a class="btn btn-primary" href="/payservlet/${name}/bill/${bill_id}" style="color: white"> Mark as Paid </a>
 					    		</div>
 				    		</div>
 				  		</div>
