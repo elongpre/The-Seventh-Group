@@ -49,6 +49,11 @@
             	%>
 						
 							<li>${fn:escapeXml(name)}: ${fn:escapeXml(address)}</li>
+							<ul>
+							
+							<li>People in apartment</li>
+							
+							
 						
 				<%
 						if(emails!=null){
@@ -59,25 +64,28 @@
 							
 				%>
 							<ul>${fn:escapeXml(personName)}</ul>
+							
+							
 				<% 
-
+							
 						}
 						}
+							%>
+							</ul>
+							<%
 				
 							i++;
 									if(i == 5){
 										break;
 									}
 								%>
-								<br>
-								<h1>Maintenance Request</h1>
-								<br>
+								<ul>
+								<li>Maintenance Request</li>
+								
 								<%
 									
 						if(mainReq!=null){
-							%>
-							Hi 
-							<%
+
 
 							for(Long mKey:mainReq){
 								MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
@@ -94,21 +102,22 @@
 									
 									if(man.getCompleted()==null){
 										%>
-										<div>${fn:escapeXml(req_name)} has not been completed</div>
+										<ul>${fn:escapeXml(req_name)} has not been completed</ul>
 										<%
 									}
 									else{
 				                    pageContext.setAttribute("req_complete", man.getCompleted());
 				                    %>
-			                    		<div>${fn:escapeXml(req_name)} was completed on ${fn:escapeXml(req_complete)}</div>
+			                    		<ul>${fn:escapeXml(req_name)} was completed on ${fn:escapeXml(req_complete)}</ul>
 			                    	<%
 									}
-									%>
-									<div>${fn:escapeXml(Date)} </div>
-									<%
+
 								}
 							}
 						}
+							%>
+							</ul>
+							<%
 							
                 	}
                 }
