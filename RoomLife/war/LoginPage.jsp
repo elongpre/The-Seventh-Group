@@ -14,7 +14,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Oswald|Titillium+Web:600' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="RoomLife.css">
+		<link rel="stylesheet" href="Title.css">
 		<title>Welcome!</title>
 	</head>
 	

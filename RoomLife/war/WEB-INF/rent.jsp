@@ -16,7 +16,6 @@
 	    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Oswald|Titillium+Web:600' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="../../RoomLife.css">
-
 	    
 		<script src="../../Bootstrap/js/bootstrap.js"></script>
 		
@@ -45,7 +44,7 @@
 			    <form action="/rent/${id} " method="POST">
 			    	<fieldset>
 			    		<legend>Rent</legend>
-
+			    		
 				        <label class="field" for="Amount">Amount:</label>
 				        <p><input type="text" name="billAmount"></p>
 				        <label class="field" for="Amount">Due on:</label>

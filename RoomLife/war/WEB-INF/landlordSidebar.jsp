@@ -5,18 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
-	<head>
-		<!-- Bootstrap Core CSS -->
-	    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
-	
-	    <!-- Sidebar CSS -->
-	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
-	    
-		<script src="/Bootstrap/js/bootstrap.js"></script>
-		
-	</head>
 	<body>
-	
 		<!-- Sidebar -->
         <div id="sidebar-wrapper" style="overflow-y:auto;overflow-x:hidden">
             <ul class="sidebar-nav">
