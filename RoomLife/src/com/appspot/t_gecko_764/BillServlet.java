@@ -48,12 +48,18 @@ public class BillServlet extends HttpServlet{
 		    
 		    // calculate amount for each roommate
 		    Group group = datastore.getGroup(owner.getGroup());
-		    Double split_amount = total_amount /(group.getMembers().size());
-		    System.out.println(split_amount.toString());
-		    
-		    // create bill 
-		    Bill bill = new Bill.Builder(bill_name, split_amount, owner).setGroup(group).build();
+		    String date = req.getParameter("billDate");
+		    System.out.println(date);
+		    String[] splitDate = date.split("/");
+		    Calendar calendar = new GregorianCalendar();
+		    calendar.set(Calendar.YEAR, new Integer(splitDate[2]));
+		    calendar.set(Calendar.MONTH, new Integer(splitDate[0]) - 1);
+		    calendar.set(Calendar.DAY_OF_MONTH, new Integer(splitDate[1]));	    
+		    Date deadline = calendar.getTime();
+    
+		    Bill bill = new Bill.Builder(bill_name, total_amount, owner).setGroup(group).setDateDeadline(deadline).build();
 		    // save bill to the Datastore
+<<<<<<< HEAD
 		    datastore.saveBill(bill);
 		    
 		   //  update all those affected, which should be the current user and his/her roommates
@@ -90,6 +96,9 @@ public class BillServlet extends HttpServlet{
 	    // save bill to the Datastore
 	    datastore.saveBill(bill);
 	    
+=======
+		    datastore.saveBill(bill);	    
+>>>>>>> d549d6fbb638cdd8366d0c0b8a4dca14d83fe1fa
 	    
 	    
 	    resp.sendRedirect("/TaskComplete.html");
