@@ -25,9 +25,9 @@ public class Bill implements Comparable{
 	public int compareTo(Object o) {
 		Bill b = (Bill) o;
 		if((b.getDatePaid() == null) && (datePaid != null)){
-			return -1;
+			return 11;
 		} else if((b.getDatePaid() != null) && (datePaid == null)){
-			return 1;
+			return -1;
 		} else {
 			return dateDeadline.compareTo(b.getDateDeadline());
 		}

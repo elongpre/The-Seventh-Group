@@ -32,16 +32,11 @@ public class BillServlet extends HttpServlet{
 	    String bill_name = req.getParameter("billName");
 	    
 	    String amount = req.getParameter("billAmount");
-	    if(!bill_name.matches("[a-z]+")){
-	    	resp.sendRedirect("/entry/bill");
-	    }
-	    else
 	    if(amount==null || amount.matches("0")){
 	    	resp.sendRedirect("/entry/bill");
-	    } else 
-	    if(!amount.matches("[0-9]+") || !amount.matches("[0-9]*.[0-9]*") ){
+	    } else if(!amount.matches("[0-9]+") || !amount.matches("[0-9]*.[0-9]*") ){
 	    	resp.sendRedirect("/entry/bill");
-	    }else{
+	    } else {
 	    
 
 	    	Double total_amount= Double.parseDouble(req.getParameter("billAmount"));
@@ -60,9 +55,8 @@ public class BillServlet extends HttpServlet{
 		    Bill bill = new Bill.Builder(bill_name, total_amount, owner).setGroup(group).setDateDeadline(deadline).build();
 		    // save bill to the Datastore
 		    datastore.saveBill(bill);	    
-	    
-	    
-	    resp.sendRedirect("/TaskComplete.html");
+	    	    
+		    resp.sendRedirect("/detailservlet/bill/" + bill.getId().toString());
 	    }
     }
 }

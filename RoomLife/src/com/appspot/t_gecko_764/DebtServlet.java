@@ -31,37 +31,35 @@ public class DebtServlet extends HttpServlet {
 	    String roommate = req.getParameter("roommate");
 	    String debtAmount=req.getParameter("debtAmount");
 	    
-	    if(!debt_name.matches("[a-z]+")){
+	    if(!roommate.matches("[a-z]+@[a-z]+.[a-z]+")){
+	    	System.out.println("1");
 	    	resp.sendRedirect("/entry/debt");
-	    }else if(!roommate.matches("[a-z]+@[a-z]+.[a-z]")){
+	    } else if(debtAmount==null || debtAmount.matches("0")){
+	    	System.out.println("2");
 	    	resp.sendRedirect("/entry/debt");
-	    }
-	    else
-	    if(debtAmount==null || debtAmount.matches("0")){
+	    } else if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]*") ){
+	    	System.out.println("3");
 	    	resp.sendRedirect("/entry/debt");
-	    } else 
-	    if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]*") ){
-	    	resp.sendRedirect("/entry/debt");
-	    }else{
+	    } else {
 	    
-	    Double amount = Double.parseDouble(req.getParameter("debtAmount"));
-	    
-	    // get owner(current user) from the datastore
-	    DataStore datastore = DataStore.getInstance();
-	    Person owner = datastore.getPerson(user.getEmail());
-	    
-	    
-	    //get debtor(roommate) from the datastore
-	    //String debtor_email = findRoommate(owner, roommate);
-	    Person debtor = datastore.getPerson(roommate);
-	    
-	    // construct new Debt object
-	    Debt debt = new Debt.Builder(debt_name, amount, owner, debtor).build();
-	    
-	    // push new debt to the datastore
-	    datastore.saveDebt(debt);
-	    
-	    resp.sendRedirect("/TaskComplete.html");
+		    Double amount = Double.parseDouble(req.getParameter("debtAmount"));
+		    
+		    // get owner(current user) from the datastore
+		    DataStore datastore = DataStore.getInstance();
+		    Person owner = datastore.getPerson(user.getEmail());
+		    
+		    
+		    //get debtor(roommate) from the datastore
+		    //String debtor_email = findRoommate(owner, roommate);
+		    Person debtor = datastore.getPerson(roommate);
+		    
+		    // construct new Debt object
+		    Debt debt = new Debt.Builder(debt_name, amount, owner, debtor).build();
+		    
+		    // push new debt to the datastore
+		    datastore.saveDebt(debt);
+		    
+		    resp.sendRedirect("/detailservlet/debt/" + debtor.getName());
 	    }
 	    
     }

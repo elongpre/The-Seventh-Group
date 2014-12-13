@@ -30,6 +30,11 @@ public class EntryServlet extends HttpServlet{
 			
 			ServletHelper.initializeServlet(req, resp, person);
 			
+			ArrayList<Person> names= new ArrayList<Person>();
+			for(String email : datastore.getGroup(person.getGroup()).getMembers()){
+				names.add(datastore.getPerson(email));
+			}
+			req.setAttribute("roommateNames", names);
 			String path = req.getRequestURL().toString();
 			String[] splitPath = path.split("/");
 			int length = splitPath.length;

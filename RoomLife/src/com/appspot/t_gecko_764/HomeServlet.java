@@ -36,7 +36,6 @@ public class HomeServlet extends HttpServlet{
 		Landlord landlord = datastore.getLandlord(emailString);
 		
 		Person person = datastore.getPerson(emailString);
-		String userEmail = person.getEmail();
 		
 		if (landlord != null) {
 			List<Long> buildingsKey = landlord.getBuildings();
