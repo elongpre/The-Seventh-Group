@@ -113,7 +113,7 @@
 				      						pageContext.setAttribute("debt_id", debt.getId());
 		      							%>
 											<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Mark as Paid </a>											
-											<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Edit </a>
+											<a class="btn btn-primary" href="/entry/${debt_id}/debt" style="color: white"> Edit </a>
 										<%						      						
 				      					} else if(debt.getOwner().equals(userEmail)){
 				      					%>

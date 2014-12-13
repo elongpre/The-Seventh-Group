@@ -95,32 +95,76 @@
 			    <br>
 			    <br>
 			    
-			    <form action="DebtEntry" method= "POST">
-			    	<fieldset>
-			    		<legend>New Debt (charge a single roommate)</legend>
-			    		
-				    	<label class="field" for="Name">Debt Name:</label>
-					    <p><input type="text" name="debtName"></p>
-					    <label class="field" for="RoommateName">Roommate:</label>
-					    <p><select name="roommate">
-					    	<%
-					    		List<Person> roommates = (List<Person>) request.getAttribute("roommateNames");
-					    		for (Person mate: roommates){
-					    			pageContext.setAttribute("roommate_name", mate.getName());
-					    			pageContext.setAttribute("roommate_email", mate.getEmail());
-					    		%>
-					    			<option value="${roommate_email}">${fn:escapeXml(roommate_name)}</option>					    			
-					    		<%	
-					    		}					    	
-					    	%>
-					    </select></p>
-					    <label class="field" for="Amount">Amount:</label>
-					    <p><input type="text" name="debtAmount"></p>
-					    
-				        <input type="submit" name="submitDebt" value="Submit">
-			        </fieldset>
-			    </form>
-
+			    <%		               		
+                	
+               	if (request.getAttribute("edit_debt") == null){
+          		%>
+				    <form action="DebtEntry" method= "POST">
+				    	<fieldset>
+				    		<legend>New Debt (charge a single roommate)</legend>
+				    		
+					    	<label class="field" for="Name">Debt Name:</label>
+						    <p><input type="text" name="debtName"></p>
+						    <label class="field" for="RoommateName">Roommate:</label>
+						    <p><select name="roommate">
+						    	<%
+						    		List<Person> roommates = (List<Person>) request.getAttribute("roommateNames");
+						    		for (Person mate: roommates){
+						    			pageContext.setAttribute("roommate_name", mate.getName());
+						    			pageContext.setAttribute("roommate_email", mate.getEmail());
+						    		%>
+						    			<option value="${roommate_email}">${fn:escapeXml(roommate_name)}</option>					    			
+						    		<%	
+						    		}					    	
+						    	%>
+						    </select></p>
+						    <label class="field" for="Amount">Amount:</label>
+						    <p><input type="text" name="debtAmount"></p>
+						    <input hidden="true" type="text" name="edit" value="false">
+					        <input type="submit" name="submitDebt" value="Submit">
+				        </fieldset>
+				    </form>
+			    <%
+               	} else {
+               		Debt debt = (Debt) request.getAttribute("edit_debt");
+               		pageContext.setAttribute("debtName", debt.getName());
+               		pageContext.setAttribute("debtAmount", debt.getAmount());
+               		pageContext.setAttribute("debtId", debt.getId());
+				%>
+					<form action="/entry/DebtEntry" method= "POST">
+				    	<fieldset>
+				    		<legend>New Debt (charge a single roommate)</legend>
+				    		
+					    	<label class="field" for="Name">Debt Name:</label>
+						    <p><input type="text" name="debtName" value="${debtName}"></p>
+						    <label class="field" for="RoommateName">Roommate:</label>
+						    <p><select name="roommate">
+						    	<%
+						    		List<Person> roommates = (List<Person>) request.getAttribute("roommateNames");
+						    		for (Person mate: roommates){
+						    			pageContext.setAttribute("roommate_name", mate.getName());
+						    			pageContext.setAttribute("roommate_email", mate.getEmail());
+						    			if (mate.getEmail().equals(debt.getDebtor())){
+						    				%>
+							    				<option selected="selected" value="${roommate_email}">${fn:escapeXml(roommate_name)}</option>					    			
+							    			<%	
+						    			} else {
+							    		%>
+							    			<option value="${roommate_email}">${fn:escapeXml(roommate_name)}</option>					    			
+							    		<%	
+						    			}
+						    		}					    	
+						    	%>
+						    </select></p>
+						    <label class="field" for="Amount">Amount:</label>
+						    <p><input type="text" name="debtAmount" value="${debtAmount}"></p>
+						    <input hidden="true" type="text" name="edit" value="${debtId}">
+					        <input type="submit" name="submitDebt" value="Submit">
+				        </fieldset>
+				    </form>
+			    <%
+               	}
+            %>
 			</div>
 		</div>
 		</div>

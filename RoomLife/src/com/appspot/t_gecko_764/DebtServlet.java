@@ -35,7 +35,7 @@ public class DebtServlet extends HttpServlet {
 	    if(debtAmount==null || debtAmount.matches("0")){
 	    	req.setAttribute("error", "There must be a debt amount");
 	    	req.getRequestDispatcher("/entry/debt").forward(req, resp);
-	    } else if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]*") ){
+	    } else if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]+") ){
 	    	req.setAttribute("error", "Debt amount was not a number");
 	    	req.getRequestDispatcher("/entry/debt").forward(req, resp);
 	    } else {
@@ -54,6 +54,10 @@ public class DebtServlet extends HttpServlet {
 		    // construct new Debt object
 		    Debt debt = new Debt.Builder(debt_name, amount, owner, debtor).build();
 		    
+		    if(!req.getParameter("edit").equals("false")){
+		    	Debt debt2 = datastore.getDebt(Long.parseLong(req.getParameter("edit"), 10));
+		    	debt.setId(debt2.getId());
+		    }
 		    // push new debt to the datastore
 		    datastore.saveDebt(debt);
 		    
