@@ -29,6 +29,7 @@ public class BillServlet extends HttpServlet{
 	    DataStore datastore = DataStore.getInstance();
 	    Person owner = datastore.getPerson(user.getEmail());
 	    
+	    
 	    // get the name of the bill and the total amount
 	    String bill_name = req.getParameter("billName");
 	    
@@ -55,10 +56,14 @@ public class BillServlet extends HttpServlet{
 		    Date deadline = calendar.getTime();
     
 		    Bill bill = new Bill.Builder(bill_name, total_amount, owner).setGroup(group).setDateDeadline(deadline).build();
-		    // save bill to the Datastore
-		    datastore.saveBill(bill);	    
-	    	    
+		    if(!req.getParameter("edit").equals("false")){
+		    	Bill bill2 = datastore.getBill(Long.parseLong(req.getParameter("edit"), 10));
+		    	bill.setId(bill2.getId());
+		    } 
+		    datastore.saveBill(bill);
 		    resp.sendRedirect("/detailservlet/bill/" + bill.getId().toString());
-	    }
+	    }	    
+    	    
+	    
     }
 }

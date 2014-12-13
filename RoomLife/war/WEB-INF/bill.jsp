@@ -62,6 +62,7 @@
         				        <p><input type="text" name="billAmount"></p>
         				        <label class="field" for="Amount">Due on:</label>
         					    <p><input type="text" name="billDate" id="datepicker"></p>
+        					    <input hidden="true" type="text" name="edit" value="false">
         				        <input type="submit" name="submitBill" value="Submit">
         			        </fieldset>
         			    </form>
@@ -70,7 +71,8 @@
                 		Bill bill = (Bill) request.getAttribute("edit_bill");
                 		pageContext.setAttribute("billName", bill.getName());
                 		pageContext.setAttribute("billAmount", bill.getAmount());
-                		pageContext.setAttribute("billDate", bill.getName());
+                		pageContext.setAttribute("billId", bill.getId());
+                		pageContext.setAttribute("billDate", new SimpleDateFormat("MM/dd/yyyy").format(bill.getDateDeadline()));
 					%>
         			    <form action="BillEntry" method="POST">
         			    	<fieldset>
@@ -81,7 +83,8 @@
         				        <label class="field" for="Amount">Amount:</label>
         				        <p><input type="text" name="billAmount" value="${billAmount}"></p>
         				        <label class="field" for="Amount">Due on:</label>
-        					    <p><input type="text" name="billDate" id="datepicker"></p>
+        					    <p><input type="text" name="billDate" id="datepicker" value=${billDate}></p>
+        					    <input hidden="true" type="text" name="edit" value="${billId}">
         				        <input type="submit" name="submitBill" value="Submit">
         			        </fieldset>
         			    </form>
