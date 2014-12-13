@@ -11,8 +11,7 @@ body {
 	background: WhiteSmoke;
 }
 
-fieldset {
-	width: 500px;
+fieldset {	
 	padding: 10px;
 	border: 5px double SlateGray;
 }
@@ -30,9 +29,12 @@ select {
 }
 
 legend {
+	width: auto;
 	font-size: 20px;
 	font-family: 'Titillium Web', sans-serif;
-	text-align: center;
+	text-align: left;
+	padding: 0 10px 0 10px;
+	margin-bottom: 0;
 }
 
 label.field {

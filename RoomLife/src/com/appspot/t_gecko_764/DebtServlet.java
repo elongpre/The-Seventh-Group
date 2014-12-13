@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class DebtServlet extends HttpServlet {
 	
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
+            throws IOException, ServletException {
     	
     	//Date date = new Date();
     	//long date_created = date.getTime();
@@ -31,15 +32,12 @@ public class DebtServlet extends HttpServlet {
 	    String roommate = req.getParameter("roommate");
 	    String debtAmount=req.getParameter("debtAmount");
 	    
-	    if(!roommate.matches("[a-z]+@[a-z]+.[a-z]+")){
-	    	System.out.println("1");
-	    	resp.sendRedirect("/entry/debt");
-	    } else if(debtAmount==null || debtAmount.matches("0")){
-	    	System.out.println("2");
-	    	resp.sendRedirect("/entry/debt");
+	    if(debtAmount==null || debtAmount.matches("0")){
+	    	req.setAttribute("error", "There must be a debt amount");
+	    	req.getRequestDispatcher("/entry/debt").forward(req, resp);
 	    } else if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]*") ){
-	    	System.out.println("3");
-	    	resp.sendRedirect("/entry/debt");
+	    	req.setAttribute("error", "Debt amount was not a number");
+	    	req.getRequestDispatcher("/entry/debt").forward(req, resp);
 	    } else {
 	    
 		    Double amount = Double.parseDouble(req.getParameter("debtAmount"));
