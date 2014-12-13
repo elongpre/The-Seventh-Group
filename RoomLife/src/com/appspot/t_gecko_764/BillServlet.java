@@ -44,7 +44,6 @@ public class BillServlet extends HttpServlet{
 		    // calculate amount for each roommate
 		    Group group = datastore.getGroup(owner.getGroup());
 		    String date = req.getParameter("billDate");
-		    System.out.println(date);
 		    String[] splitDate = date.split("/");
 		    Calendar calendar = new GregorianCalendar();
 		    calendar.set(Calendar.YEAR, new Integer(splitDate[2]));
