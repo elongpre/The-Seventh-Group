@@ -1,6 +1,7 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="com.appspot.t_gecko_764.*" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,8 +23,13 @@
 		    UserService userService = UserServiceFactory.getUserService();
 		    User user = userService.getCurrentUser();
 		    if (user != null) {
-		      pageContext.setAttribute("user", user);
-		      response.sendRedirect("/home");
+		    	DataStore datastore = DataStore.getInstance();
+		    	if((datastore.getPerson(user.getEmail()) == null) && (datastore.getLandlord(user.getEmail()) == null)){
+		    		response.sendRedirect(userService.createLogoutURL("/LoginPage.jsp"));
+		    	} else {
+			      	pageContext.setAttribute("user", user);
+			      	response.sendRedirect("/home");
+		    	}
 			} else {
 		%>
 			<h1>Welcome to RoomLife!</h1>

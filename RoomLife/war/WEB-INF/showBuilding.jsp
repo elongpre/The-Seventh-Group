@@ -22,83 +22,42 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
         	<div class="container-fluid">
-                <% 
-                DataStore datastor = DataStore.getInstance();
-                Building building = (Building) request.getAttribute("building"); 
-                String buildingName=building.getName();
-                pageContext.setAttribute("buildingname", buildingName);
-                List<Long> groupsKeys=building.getGroups();
-                List<Group> groups= new ArrayList<Group>();
-                List<String> emails= new ArrayList<String>();
-                List <Long> mainReq = new ArrayList<Long>();
-                %>
-                <ul>
-                <%
-                
-                if(groupsKeys!=null){
-                	int i = 0;
-                	for(Long key:groupsKeys){
-                		Group group=datastor.getGroup(key);
-                		pageContext.setAttribute("address",group.getAddress());
-                		pageContext.setAttribute("name", group.getName());
-                		pageContext.setAttribute("id", group.getId());
-                		emails=group.getMembers();
-                		mainReq=group.getMainreq();
-                		
-                		
-            	%>
-						
-							<li>${fn:escapeXml(name)}: ${fn:escapeXml(address)}</li>
-							<ul>
+        		<ul>
+           	<% 
+	                DataStore datastor = DataStore.getInstance();
+	                Building building = (Building) request.getAttribute("building"); 
+	                String buildingName=building.getName();
+	                pageContext.setAttribute("buildingname", buildingName);
+	                List<Long> groupsKeys=building.getGroups();
+	                List<Group> groups= new ArrayList<Group>();
+	                List<String> emails= new ArrayList<String>();
+	                List <Long> mainReq = new ArrayList<Long>();
+	                
+	                if(groupsKeys!=null){
+	                	int i = 0;
+	                	for(Long key:groupsKeys){
+	                		Group group=datastor.getGroup(key);
+	                		pageContext.setAttribute("address",group.getAddress());
+	                		pageContext.setAttribute("name", group.getName());
+	                		pageContext.setAttribute("id", group.getId());
+	                		emails=group.getMembers();
+	                		mainReq=group.getMainreq();               		                		
+	           			%>
 							
-							<li>People in apartment</li>
-							
-							
-						
-				<%
-						if(emails!=null){
-						for(String email:emails){
-							Person person=datastore.getPerson(email);
-							String name=person.getName();
-							pageContext.setAttribute("personName", name);
-							
-				%>
-							<ul>${fn:escapeXml(personName)}</ul>
-							
-							
-				<% 
-							
-						}
-						}
-							%>
-							</ul>
-							<%
-				
-							i++;
-									if(i == 5){
-										break;
-									}
-								%>
-								<ul>
-								<li>Maintenance Request</li>
-								
-								<%
+								<li>${fn:escapeXml(name)}: ${fn:escapeXml(address)}</li>
+								<ul>								
+									<li>People in apartment</li>																						
+									<%
+										if(emails!=null){
+											for(String email:emails){
+												Person person=datastore.getPerson(email);
+												String name=person.getName();
+												pageContext.setAttribute("personName", name);
 									
-						if(mainReq!=null){
-
-
-							for(Long mKey:mainReq){
-								MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
-								if(man!=null){
-									pageContext.setAttribute("id", mKey);
-									pageContext.setAttribute("req_name", man.getName());
-									pageContext.setAttribute("priority", man.getPriority() );
-									pageContext.setAttribute("date", man.getDateCreated());
-									pageContext.setAttribute("details",man.getDetails());
-									pageContext.setAttribute("location", man.getLocation());
-
-									%>
+											%>
+												<ul>${fn:escapeXml(personName)}</ul>
 									
+<<<<<<< HEAD
 									<ul>${fn:escapeXml(req_name)}</ul>
 									<ul>
 									<% 
@@ -113,15 +72,67 @@
 			                    		<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
 			                    	<%
 									}
-									%>
+=======
 									
+											<% 								
+											}
+										}
+									%>
+								</ul>
+								<%
+					
+								i++;
+										if(i == 5){
+											break;
+										}
+>>>>>>> 8f41b6def138d5dca8c19f53c8dda7394e447340
+									%>
+									<ul>
+									<li>Maintenance Request</li>
+									
+									
+									
+									
+									
+									<%
 										
+							if(mainReq!=null){
+	
+	
+								for(Long mKey:mainReq){
+									MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
+									if(man!=null){
+										pageContext.setAttribute("id", mKey);
+										pageContext.setAttribute("req_name", man.getName());
+										pageContext.setAttribute("Priority", man.getPriority() );
+										pageContext.setAttribute("Date", man.getDateCreated());
+										pageContext.setAttribute("Details",man.getDetails());
+										pageContext.setAttribute("Location", man.getLocation());																														
+									%>
+										<ul>${fn:escapeXml(req_name)}</ul>
+										<ul>
 										
-										<ul>${fn:escapeXml(priority)}</ul>
-										<ul>${fn:escapeXml(date)}</ul>
-										<ul>${fn:escapeXml(location)}</ul>
-										<ul>${fn:escapeXml(details)}</ul>
-										</ul>
+										<% 
+										if(man.getCompleted()==null){
+											%>
+											<ul>Not been completed</ul>
+											<%
+										}
+										else{
+					                    pageContext.setAttribute("req_complete", man.getCompleted());
+					                    %>
+				                    		<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
+				                    	<%
+										}
+										%>
+										
+											
+											
+											<ul>${fn:escapeXml(priority)}</ul>
+											<ul>${fn:escapeXml(date)}</ul>
+											<ul>${fn:escapeXml(location)}</ul>
+											<ul>${fn:escapeXml(details)}</ul>
+											</ul>
 										
 										
 										
@@ -129,19 +140,17 @@
 									<%
 								}
 							}
-						}
-							%>
-							</ul>
-							<%
-							
-                	}
-                }
-                
-
-
-                %>
-				</ul>
-            	
+								%>
+								</ul>
+								<%
+								
+	                	}
+	                }
+	                
+	
+	
+	                %>
+				</ul>            	
 			</div>
 		</div>
 		</div>
