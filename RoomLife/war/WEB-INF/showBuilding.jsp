@@ -50,6 +50,9 @@
 						      				<a class data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 												<div>
 													<span>People in apartment</span>
+													<span>
+														<a href="/rent/${id}">rent</a>
+													</span>
 													<span class="glyphicon glyphicon-plus" style="float: right"></span>
 												</div>
 											</a>

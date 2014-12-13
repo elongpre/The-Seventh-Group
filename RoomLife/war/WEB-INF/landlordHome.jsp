@@ -12,7 +12,7 @@
 	
 	    <!-- Sidebar CSS -->
 	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
-	    
+	    <link href="RoomLife.css" rel="stylesheet">
 		<script src="/Bootstrap/js/bootstrap.js"></script>
 	</head>
 	<body>

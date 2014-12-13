@@ -19,7 +19,10 @@ public class CannedDataServlet extends HttpServlet{
 			Person bob = new Person("Bob", "bob@example.com");
 			Person candice = new Person("Candice", "candice@example.com");
 			Person danny = new Person("Danny", "danny@example.com");
-						
+			
+			Group basicGroup = new Group("BasicGroup");
+			basicGroup.setId(new Long(1));
+			datastore.saveGroup(basicGroup);
 			Group group = new Group("TestGroup");
 			datastore.saveGroup(group);
 			group.setAddress("Apt 125");

@@ -102,13 +102,6 @@ public class Bill implements Comparable{
 			this.dateCreated = new Date();
 		}	
 		
-		public Builder(String name, Double amount, Landlord owner) {
-			this.name=name;
-			this.amount=amount;
-			this.owner = owner.getEmail();
-			this.dateCreated = new Date();
-		}
-
 		public Bill build(){
 			Bill bill = new Bill();
 			bill.setName(name);
@@ -139,8 +132,10 @@ public class Bill implements Comparable{
 
 		public Builder setGroup(Group group) {
 			this.group = group.getId();
-			this.peeps = new ArrayList<String>();
-			peeps.addAll(group.getMembers());
+			if(group.getMembers() != null){
+				this.peeps = new ArrayList<String>();
+				peeps.addAll(group.getMembers());
+			}
 			return this;
 		}
 
