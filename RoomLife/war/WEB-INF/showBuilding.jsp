@@ -92,26 +92,41 @@
 								if(man!=null){
 									pageContext.setAttribute("id", mKey);
 									pageContext.setAttribute("req_name", man.getName());
-									pageContext.setAttribute("Priority", man.getPriority() );
-									pageContext.setAttribute("Date", man.getDateCreated());
-									pageContext.setAttribute("Details",man.getDetails());
-									pageContext.setAttribute("Location", man.getLocation());
+									pageContext.setAttribute("priority", man.getPriority() );
+									pageContext.setAttribute("date", man.getDateCreated());
+									pageContext.setAttribute("details",man.getDetails());
+									pageContext.setAttribute("location", man.getLocation());
 
-
-								
+									%>
 									
+									<ul>${fn:escapeXml(req_name)}</ul>
+									<ul>
+									<% 
 									if(man.getCompleted()==null){
 										%>
-										<ul>${fn:escapeXml(req_name)} has not been completed</ul>
+										<ul>Not been completed</ul>
 										<%
 									}
 									else{
 				                    pageContext.setAttribute("req_complete", man.getCompleted());
 				                    %>
-			                    		<ul>${fn:escapeXml(req_name)} was completed on ${fn:escapeXml(req_complete)}</ul>
+			                    		<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
 			                    	<%
 									}
-
+									%>
+									
+										
+										
+										<ul>${fn:escapeXml(priority)}</ul>
+										<ul>${fn:escapeXml(date)}</ul>
+										<ul>${fn:escapeXml(location)}</ul>
+										<ul>${fn:escapeXml(details)}</ul>
+										</ul>
+										
+										
+										
+										
+									<%
 								}
 							}
 						}
