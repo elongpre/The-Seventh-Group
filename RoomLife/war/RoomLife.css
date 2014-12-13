@@ -29,12 +29,14 @@ select {
 }
 
 legend {
+	border-radius: 4px;
 	width: auto;
 	font-size: 20px;
 	font-family: 'Titillium Web', sans-serif;
-	text-align: left;
+	text-align: center;
 	padding: 0 10px 0 10px;
 	margin-bottom: 0;
+	border-bottom: 0px;
 }
 
 label.field {
@@ -54,4 +56,8 @@ select.textbox {
 fieldset p {
 	clear: both;
 	padding: 2px;
+}
+
+a#signout {
+	border-radius: 50px;
 }
