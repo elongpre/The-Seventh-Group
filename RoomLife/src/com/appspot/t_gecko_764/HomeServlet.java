@@ -50,10 +50,8 @@ public class HomeServlet extends HttpServlet{
 			
 		} 
 		
-		else if (person != null) {
-			
-			ServletHelper.initializeServlet(req, resp, person);
-			
+		else if (person != null) {			
+			ServletHelper.initializeServlet(req, resp, person);			
 			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
 		} else {
 			resp.sendRedirect("/LoginPage.jsp");
