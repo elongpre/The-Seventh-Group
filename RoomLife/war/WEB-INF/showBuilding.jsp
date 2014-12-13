@@ -96,7 +96,7 @@
 														<ul>
 													
 												<% 
-													if(man.getCompleted()==null){
+													if(man.getCompleted() == null){
 													%>
 														<ul><a href="/landlorddetailservlet/mainreq/${mkey}">Not been completed</a></ul>
 													<%

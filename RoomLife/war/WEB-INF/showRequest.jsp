@@ -37,54 +37,41 @@
                 %>
                 <h1>${fn:escapeXml(req_name)}<span style="float:right">Maintenance Request</span></h1> 
                
-              	<% if(mainReq.getCompleted() == null) {
-              		
+              	<% if(mainReq.getCompleted() == null) {             		
               	%>
-              		<div>&emsp;&emsp; has not been completed</div>
+              		<div><span class="glyphicon glyphicon-asterisk"></span> Maintenance has not been completed</div>
               	<%
               	} else {
                     pageContext.setAttribute("req_complete", mainReq.getCompleted());
                 %>
-                	<div>${fn:escapeXml(req_name)} was completed on ${fn:escapeXml(req_complete)}</div>
+                	<div><span class="glyphicon glyphicon-ok-circle"></span>Maintenance was completed on ${fn:escapeXml(req_complete)}</div>
                 <%
               	}
-              	%>
-              	
-              	<div>Maintenance Request Info</div>
-              	
-              	<%
               	String name = (String) request.getAttribute("debtor");
               	pageContext.setAttribute("name", name);              	
               	%>
-              	<table>
-              		<tr>
-              			<td>
-              				<div>${fn:escapeXml(req_priority)}</div>
-              			</td>
-              			<td>
-              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              			</td>
-              			<td>
-              				<div>${fn:escapeXml(req_location)}</div>
-              			</td>
-              			<td>
-              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              			</td>
-              			<td>
-              				<div>${fn:escapeXml(req_date)}</div>
-              			</td>
-              			<td>
-              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              			</td>
-
-              			<td>
-              				<div style = "margin:20px; padding:20px" >${fn:escapeXml(req_description)}</div>
-              			</td>
-              		</tr>
-              	
-              	</table>
-                
-                
+              	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	              	<div class="panel panel-default">
+			    		<div class="panel-heading" role="tab" id="headingFirst">
+			      			<h3 class="panel-title">
+			        			<a data-toggle="collapse" data-parent="#accordion" href="#collapseFirst" aria-expanded="true" aria-controls="collapseFirst">
+          							<div>Maintenance Request Info<span class="glyphicon glyphicon-plus" style="float: right"></span></div>
+          						</a>
+       						</h3>
+       					</div>
+       					<div id="collapseFirst" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapseFirst">
+				      		<ul class="list-group">
+				      			<li class="list-group-item">Date Submitted: ${fn:escapeXml(req_date)}</li>
+				      			<li class="list-group-item">Priority: ${fn:escapeXml(req_priority)}</li>
+				      			<li class="list-group-item">Location: ${fn:escapeXml(req_location)}</li>
+				      			<li class="list-group-item">
+				      				<div>Details</div>
+			      					<div style = "margin:20px; padding:20px" >${fn:escapeXml(req_description)}</div>
+			      				</li>
+               				</ul>
+           				</div>
+       				</div>
+   				</div>
 			</div>
 		</div>
 		</div>

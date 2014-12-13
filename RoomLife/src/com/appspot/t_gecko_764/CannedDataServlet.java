@@ -14,9 +14,9 @@ public class CannedDataServlet extends HttpServlet{
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		DataStore datastore = DataStore.getInstance();
-		if (datastore.getPerson("alice@example.com") == null){		
-			Person alice = new Person("Alice", "alice@example.com");
-			Person bob = new Person("Bob", "bob@example.com");
+		if (datastore.getPerson("guillenunez28@gmail.com") == null){		
+			Person alice = new Person("Guillermo", "guillenunez28@gmail.com");
+			Person bob = new Person("Carter", "carter.mcbride1022");
 			Person candice = new Person("Candice", "candice@example.com");
 			Person danny = new Person("Danny", "danny@example.com");
 			
@@ -137,12 +137,12 @@ public class CannedDataServlet extends HttpServlet{
 			group.addMaintenanceRequest(request2);
 			datastore.saveGroup(group);
 			
-			Landlord evan = new Landlord("Evan", "evan@example.com");
+			Landlord evan = new Landlord("Evan", "elongpre@gmail.com");
 			datastore.saveLandlord(evan);
-			Building building1= new Building ("Unit 1","evan@example.com");
+			Building building1= new Building ("Unit 1","elongpre@gmail.com");
 			building1.addGroup(group.getId());
 			building1.addGroup(group3.getId());
-			Building building2= new Building ("Unit 2","evan@example.com");
+			Building building2= new Building ("Unit 2","elongpre@gmail.com");
 			building2.addGroup(group2.getId());
 			
 			datastore.saveBuilding(building1);
