@@ -35,13 +35,8 @@ public class HomeServlet extends HttpServlet{
 		// check the datastore for a landlord with the current email address
 		Landlord landlord = datastore.getLandlord(emailString);
 		
-<<<<<<< HEAD
-		Person person = datastore.getPerson(user.getEmail());
-=======
 		Person person = datastore.getPerson(emailString);
 		String userEmail = person.getEmail();
->>>>>>> 77808688a1902c6f14cac7c46b9b201c47c1a266
-
 		
 		if (landlord != null) {
 			List<Long> buildingsKey = landlord.getBuildings();
