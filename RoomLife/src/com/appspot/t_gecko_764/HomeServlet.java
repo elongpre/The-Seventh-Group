@@ -30,13 +30,10 @@ public class HomeServlet extends HttpServlet{
 		DataStore datastore = DataStore.getInstance();
 		String emailString=user.getEmail();
 		
-		
-		
 		// check the datastore for a landlord with the current email address
 		Landlord landlord = datastore.getLandlord(emailString);		
 		Person person = datastore.getPerson(emailString);
 		req.setAttribute("UserName", person.getName());
-		//String userEmail = person.getEmail();
 		
 		if (landlord != null) {
 			List<Long> buildingsKey = landlord.getBuildings();
