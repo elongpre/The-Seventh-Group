@@ -10,17 +10,18 @@
 <html>
 	<head>
 		<!-- Bootstrap Core CSS -->
-		
-	    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
+	    <link href="../../Bootstrap/css/bootstrap.css" rel="stylesheet">
 	
 	    <!-- Sidebar CSS -->
-	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
 	    
-	    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
+	    <script src="http://code.jquery.com/jquery.js"></script>
+		<script src="../../Bootstrap/js/bootstrap.js"></script>
+
+		
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Oswald|Titillium+Web:600' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="../../RoomLife.css">
-		
-		<script src="/Bootstrap/js/bootstrap.js"></script>
 	</head>
 	<body>
 		<%@include file="header.jsp" %> 
