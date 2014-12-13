@@ -74,7 +74,7 @@
                 		pageContext.setAttribute("billId", bill.getId());
                 		pageContext.setAttribute("billDate", new SimpleDateFormat("MM/dd/yyyy").format(bill.getDateDeadline()));
 					%>
-        			    <form action="BillEntry" method="POST">
+        			    <form action="/entry/BillEntry" method="POST">
         			    	<fieldset>
         			    		<legend>Edit Bill (split evenly among all roommates)</legend>
         			    		
