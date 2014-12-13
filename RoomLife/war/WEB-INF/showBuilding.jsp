@@ -44,6 +44,7 @@
 	                		mainReq=group.getMainreq();               		                		
            					%>
 								<li>${fn:escapeXml(name)}: ${fn:escapeXml(address)}</li>
+								<li><a href="/rent/form/${id}">Charge monthly rent</a></li>
 								<ul>								
 									<li>People in apartment</li>
 									<ul>																						
@@ -61,13 +62,14 @@
 									%>													
 									</ul>
 								</ul>
+								<ul>
 								<li>Maintenance Requests</li>
 							<%			
 							if(mainReq!=null){
 								for(Long mKey:mainReq){
 									MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
 									if(man!=null){
-										pageContext.setAttribute("id", mKey);
+										pageContext.setAttribute("mkey", mKey);
 										pageContext.setAttribute("req_name", man.getName());
 										pageContext.setAttribute("Priority", man.getPriority() );
 										pageContext.setAttribute("Date", man.getDateCreated());
@@ -80,7 +82,7 @@
 									<% 
 										if(man.getCompleted()==null){
 										%>
-											<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
+											<ul><a href="/landlorddetailservlet/mainreq/${mkey}">Not been completed</a></ul>
 										<%
 										} else{
 					                    	pageContext.setAttribute("req_complete", man.getCompleted());
@@ -98,6 +100,10 @@
 									}
 								}
 							}
+							%>
+							</ul>
+							<%
+
 	                	}
 	                }
 				%>

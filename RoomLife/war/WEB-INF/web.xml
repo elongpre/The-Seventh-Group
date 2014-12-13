@@ -14,6 +14,15 @@
    	 	<servlet-name>maintenanceServlet</servlet-name>
     	<url-pattern>/entry/mreq</url-pattern>
   	</servlet-mapping>
+  	
+        <servlet>
+        <servlet-name>RentServlet</servlet-name>
+        <servlet-class>com.appspot.t_gecko_764.RentServlet</servlet-class>
+    </servlet>    
+    <servlet-mapping>
+   	 	<servlet-name>RentServlet</servlet-name>
+    	<url-pattern>/rent/*</url-pattern>
+  	</servlet-mapping>
     
   
  	<servlet>	
