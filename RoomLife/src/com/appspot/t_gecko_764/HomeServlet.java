@@ -33,7 +33,7 @@ public class HomeServlet extends HttpServlet{
 		// check the datastore for a landlord with the current email address
 		Landlord landlord = datastore.getLandlord(emailString);		
 		Person person = datastore.getPerson(emailString);
-		req.setAttribute("UserName", person.getName());
+
 		
 		if (landlord != null) {
 			List<Long> buildingsKey = landlord.getBuildings();
@@ -50,8 +50,12 @@ public class HomeServlet extends HttpServlet{
 		} 
 		
 		else if (person != null) {			
-			ServletHelper.initializeServlet(req, resp, person);			
+			ServletHelper.initializeServlet(req, resp, person);		
+			req.setAttribute("UserName", person.getName());
 			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
+			
+
+			
 		} else {
 			resp.sendRedirect("/LoginPage.jsp");
 		}
