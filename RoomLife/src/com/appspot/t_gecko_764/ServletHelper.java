@@ -31,11 +31,17 @@ public class ServletHelper {
 			Double amount = 0.0;
 			List<Bill> billList = datastore.getBillsEmail(email);
 			for(Bill bill : billList){
+				if(bill.getGroup() == 1){
+					continue;
+				}
 				if(bill.getPeeps().contains(userEmail)){
 					amount -= Math.ceil(bill.getAmount()*100/numRoommates)/100;
 				}
 			}
 			for(Bill bill : bills){
+				if(bill.getGroup() == 1){
+					continue;
+				}
 				if(bill.getPeeps().contains(email)){
 					amount += Math.ceil(bill.getAmount()*100/numRoommates)/100;
 				}

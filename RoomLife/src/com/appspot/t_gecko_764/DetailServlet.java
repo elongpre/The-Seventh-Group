@@ -54,24 +54,33 @@ public class DetailServlet extends HttpServlet{
 			case "bill":	id = Long.parseLong(splitPath[length-1], 10);
 				Bill bill = datastore.getBill(id);
 				req.setAttribute("Bill", bill);
-				Group group = datastore.getGroup(person.getGroup());
-				ArrayList<String> names = new ArrayList<String>();
-				ArrayList<Double> amount = new ArrayList<Double>();
-				double payment = bill.getAmount()/group.getMembers().size();
-				payment = Math.ceil( payment * 100.0 ) / 100.0;
-				for(String email: group.getMembers()){
-					Person payer = datastore.getPerson(email);
-					names.add(payer.getName());
-					if(bill.getPeeps().contains(email)){
-						amount.add(payment);
-					} else {
-						amount.add(0.0);
+				if(bill.getGroup() == 1){
+					double payment = bill.getAmount();
+					payment = Math.ceil( payment * 100.0 ) / 100.0;
+					req.setAttribute("rent", "true");
+					req.setAttribute("payment", payment);
+					req.getRequestDispatcher("/WEB-INF/showBill.jsp").forward(req, resp);
+				} else {
+					req.setAttribute("rent", "false");
+					Group group = datastore.getGroup(person.getGroup());
+					ArrayList<String> names = new ArrayList<String>();
+					ArrayList<Double> amount = new ArrayList<Double>();
+					double payment = bill.getAmount()/group.getMembers().size();
+					payment = Math.ceil( payment * 100.0 ) / 100.0;
+					for(String email: group.getMembers()){
+						Person payer = datastore.getPerson(email);
+						names.add(payer.getName());
+						if(bill.getPeeps().contains(email)){
+							amount.add(payment);
+						} else {
+							amount.add(0.0);
+						}
 					}
+					req.setAttribute("payment", payment);
+					req.setAttribute("names", names);
+					req.setAttribute("amount", amount);
+					req.getRequestDispatcher("/WEB-INF/showBill.jsp").forward(req, resp);
 				}
-				req.setAttribute("payment", payment);
-				req.setAttribute("names", names);
-				req.setAttribute("amount", amount);
-				req.getRequestDispatcher("/WEB-INF/showBill.jsp").forward(req, resp);
 				break;
 			case "debt":	String name = splitPath[length-1];
 				Person debtor = null;
@@ -87,6 +96,9 @@ public class DetailServlet extends HttpServlet{
 				List<Bill> debtBills = new ArrayList<Bill>();
 				Double balance = 0.0;
 				for(Bill billz : billList){
+					if(billz.getGroup() == 1){
+						continue;
+					}
 					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
 					if(billz.getPeeps().contains(userEmail)){				
 						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, debtor, person).setDateCreated(billz.getDateCreated()).setBillId(billz.getId()).build());
@@ -96,6 +108,9 @@ public class DetailServlet extends HttpServlet{
 					}
 				}
 				for(Bill billz : bills){
+					if(billz.getGroup() == 1){
+						continue;
+					}
 					Double amountz = Math.ceil(billz.getAmount()*100/numRoommates)/100;
 					if(billz.getPeeps().contains(debtor.getEmail())){	
 						debtList.add(new Debt.Builder(billz.getName() + " (Bill)", amountz, person, debtor).setDateCreated(billz.getDateCreated()).setBillId(billz.getId()).build());

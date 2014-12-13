@@ -28,6 +28,9 @@ public class DataStore {
 	public Group getGroup(Long id){
 		return ofy().load().type(Group.class).id(id).now();
 	}
+	public Group getBasicGroup(){
+		return ofy().load().type(Group.class).id(1).now();
+	}
 	
 	public void saveGroup(Group group){
 		ofy().save().entity(group).now();

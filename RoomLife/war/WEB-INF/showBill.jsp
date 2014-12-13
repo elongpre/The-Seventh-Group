@@ -65,55 +65,56 @@
 				    		</div>
 			    		</div>
 			  		</div>
-		  			
-	  		
-              		<h3>Roommates Splitting the Bill</h3>
-              	
-
-           		<% 
-           			ArrayList<String> names = (ArrayList<String>) request.getAttribute("names");
-           			ArrayList<Double> amount = (ArrayList<Double>) request.getAttribute("amount");
-           			Double payment = (Double) request.getAttribute("payment");
-           			pageContext.setAttribute("payment", payment);
-           			for (int j = 0; j < names.size(); j++){
-           				pageContext.setAttribute("num", j);
-           				pageContext.setAttribute("name", names.get(j));
-           			%>
-           				<div class="panel panel-default">
-				    		<div class="panel-heading" role="tab" id="heading${num}">
-				      			<h4 class="panel-title">
-				        			<a data-toggle="collapse" data-parent="#accordion" href="#collapse${num}" aria-expanded="true" aria-controls="collapse${num}">
-           								<div>
-           									${fn:escapeXml(name)}: 
-           									<%
-           									if(amount.get(j) == 0){
-           									%>
-												<span style="text-decoration:line-through">
+		  		<%
+		  			String rentBool = (String)request.getAttribute("rent");
+		  			if(!rentBool.equals("true")){
+			  		%>		  		
+	              		<h3>Roommates Splitting the Bill</h3>              	
+	           		<% 
+	           			ArrayList<String> names = (ArrayList<String>) request.getAttribute("names");
+	           			ArrayList<Double> amount = (ArrayList<Double>) request.getAttribute("amount");
+	           			Double payment = (Double) request.getAttribute("payment");
+	           			pageContext.setAttribute("payment", payment);
+	           			for (int j = 0; j < names.size(); j++){
+	           				pageContext.setAttribute("num", j);
+	           				pageContext.setAttribute("name", names.get(j));
+	           			%>
+	           				<div class="panel panel-default">
+					    		<div class="panel-heading" role="tab" id="heading${num}">
+					      			<h4 class="panel-title">
+					        			<a data-toggle="collapse" data-parent="#accordion" href="#collapse${num}" aria-expanded="true" aria-controls="collapse${num}">
+	           								<div>
+	           									${fn:escapeXml(name)}: 
+	           									<%
+	           									if(amount.get(j) == 0){
+	           									%>
+													<span style="text-decoration:line-through">
+														<span style="color:green">$${fn:escapeXml(payment)}</span>
+													</span>
+													<span style="font-style: italic">PAID</span>           										
+	           									<%	
+	           									} else {
+	           									%>
 													<span style="color:green">$${fn:escapeXml(payment)}</span>
-												</span>
-												<span style="font-style: italic">PAID</span>           										
-           									<%	
-           									} else {
-           									%>
-												<span style="color:green">$${fn:escapeXml(payment)}</span>
-
-           									<%	
-           									}
-           									%>
-           									<span class="glyphicon glyphicon-plus" style="float: right"></span>
-           								</div>
-          							</a>
-			              		</h4>
-		              		</div>
-		              		<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
-					      		<div class="panel-body">
-									<a class="btn btn-primary" href="/payservlet/${name}/bill/${bill_id}" style="color: white"> Mark as Paid </a>
+	
+	           									<%	
+	           									}
+	           									%>
+	           									<span class="glyphicon glyphicon-plus" style="float: right"></span>
+	           								</div>
+	          							</a>
+				              		</h4>
+			              		</div>
+			              		<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
+						      		<div class="panel-body">
+										<a class="btn btn-primary" href="/payservlet/${name}/bill/${bill_id}" style="color: white"> Mark as Paid </a>
+						    		</div>
 					    		</div>
-				    		</div>
-				  		</div>
-           		<%			
-           			}
-           		%>
+					  		</div>
+	           		<%			
+	           			}
+		  			}
+	           		%>
 		  		</div>              		             	
 			</div>
 		</div>
