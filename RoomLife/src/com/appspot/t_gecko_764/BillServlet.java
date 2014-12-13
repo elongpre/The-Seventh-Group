@@ -30,7 +30,6 @@ public class BillServlet extends HttpServlet{
 	    
 	    // get the name of the bill and the total amount
 	    String bill_name = req.getParameter("billName");
-<<<<<<< HEAD
 	    
 	    String amount = req.getParameter("billAmount");
 	    if(!bill_name.matches("[a-z]+")){
@@ -76,11 +75,6 @@ public class BillServlet extends HttpServlet{
 			}
 	    	
 
-
-
-
-=======
-	    Double total_amount = Double.parseDouble(req.getParameter("billAmount"));
 	    String date = req.getParameter("billDate");
 	    System.out.println(date);
 	    String[] splitDate = date.split("/");
@@ -90,7 +84,6 @@ public class BillServlet extends HttpServlet{
 	    calendar.set(Calendar.DAY_OF_MONTH, new Integer(splitDate[1]));	    
 	    Date deadline = calendar.getTime();
 	    // calculate amount for each roommate
-	    Group group = datastore.getGroup(owner.getGroup());	    
 	    
 	    // create bill 
 	    Bill bill = new Bill.Builder(bill_name, total_amount, owner).setGroup(group).setDateDeadline(deadline).build();
@@ -98,7 +91,6 @@ public class BillServlet extends HttpServlet{
 	    datastore.saveBill(bill);
 	    
 	    
->>>>>>> 77808688a1902c6f14cac7c46b9b201c47c1a266
 	    
 	    resp.sendRedirect("/TaskComplete.html");
 	    }
