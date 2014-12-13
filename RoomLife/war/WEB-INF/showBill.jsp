@@ -113,10 +113,7 @@
 					      		<div class="panel-body">
 					      			<button type="button" class="btn btn-primary">
 										<a href="/payservlet/${name}/bill/${bill_id}" style="color: white"> Mark as Paid </a>
-									</button>
-									<button type="button" class="btn btn-primary">
-										Edit
-									</button>
+									</button>									
 					    		</div>
 				    		</div>
 				  		</div>
