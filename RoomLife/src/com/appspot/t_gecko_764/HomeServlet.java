@@ -28,13 +28,17 @@ public class HomeServlet extends HttpServlet{
 	    
 	    // obtain the datastore access object
 		DataStore datastore = DataStore.getInstance();
-		String emailString=user.getEmail();
+		
+		// get current user's email
+		String emailString = user.getEmail();
 		
 		// check the datastore for a landlord with the current email address
-		Landlord landlord = datastore.getLandlord(emailString);		
-		Person person = datastore.getPerson(emailString);
-
+		Landlord landlord = datastore.getLandlord(emailString);
 		
+		// check datastore for person with current email
+		Person person = datastore.getPerson(emailString);
+		
+		// user is a landlord
 		if (landlord != null) {
 			List<Long> buildingsKey = landlord.getBuildings();
 			ArrayList<Building> buildings=new ArrayList<Building>();
@@ -46,17 +50,19 @@ public class HomeServlet extends HttpServlet{
 			}
 			req.setAttribute("Buildings", buildings);
 			req.getRequestDispatcher("/WEB-INF/landlordHome.jsp").forward(req, resp);
-			
 		} 
 		
-		else if (person != null) {			
-			ServletHelper.initializeServlet(req, resp, person);		
+		// user is a tenant
+		else if (person != null) {	
 			req.setAttribute("UserName", person.getName());
+			
+			//check for recent bills
+			ServletHelper.initializeServlet(req, resp, person);			
 			req.getRequestDispatcher("/WEB-INF/home.jsp").forward(req, resp);
-			
-
-			
-		} else {
+		} 
+		
+		// user does not exist
+		else {
 			resp.sendRedirect("/LoginPage.jsp");
 		}
 	}

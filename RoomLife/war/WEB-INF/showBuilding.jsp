@@ -23,8 +23,8 @@
         <div id="page-content-wrapper">
         	<div class="container-fluid">
         		<ul>
-           	<% 
-	                DataStore datastor = DataStore.getInstance();
+	           	<% 
+	               	DataStore datastor = DataStore.getInstance();
 	                Building building = (Building) request.getAttribute("building"); 
 	                String buildingName=building.getName();
 	                pageContext.setAttribute("buildingname", buildingName);
@@ -42,41 +42,28 @@
 	                		pageContext.setAttribute("id", group.getId());
 	                		emails=group.getMembers();
 	                		mainReq=group.getMainreq();               		                		
-	           			%>
-							
+           					%>
 								<li>${fn:escapeXml(name)}: ${fn:escapeXml(address)}</li>
 								<ul>								
-									<li>People in apartment</li>																						
+									<li>People in apartment</li>
+									<ul>																						
 									<%
 										if(emails!=null){
 											for(String email:emails){
 												Person person=datastore.getPerson(email);
 												String name=person.getName();
 												pageContext.setAttribute("personName", name);
-									
 											%>
-												<ul>${fn:escapeXml(personName)}</ul>
-									
-
-								<%
+												<li>${fn:escapeXml(personName)}</li>
+											<%
 											}
-								i++;
-										if(i == 5){
-											break;
 										}
-									%>
-									
-									<li>Maintenance Request</li>
-									
-									
-									
-									
-									
-									<%
-										
+									%>													
+									</ul>
+								</ul>
+								<li>Maintenance Requests</li>
+							<%			
 							if(mainReq!=null){
-	
-	
 								for(Long mKey:mainReq){
 									MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
 									if(man!=null){
@@ -90,45 +77,30 @@
 											<ul>${fn:escapeXml(req_name)}</ul>
 											<ul>
 										
-										<% 
+									<% 
 										if(man.getCompleted()==null){
-											%>
-											<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
-											<%
-										}
-										else{
-					                    pageContext.setAttribute("req_complete", man.getCompleted());
-					                    %>
-				                    		<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
-				                    	<%
-										}
 										%>
-										
-											
-											
-											<ul>${fn:escapeXml(priority)}</ul>
-											<ul>${fn:escapeXml(date)}</ul>
-											<ul>${fn:escapeXml(location)}</ul>
-											<ul>${fn:escapeXml(details)}</ul>
-											</ul>
-										
-										
-										
-										
+											<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
+										<%
+										} else{
+					                    	pageContext.setAttribute("req_complete", man.getCompleted());
+				                    	%>
+			                    			<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
+			                    		<%
+										}
+									%>	
+										<ul>${fn:escapeXml(Priority)}</ul>
+										<ul>${fn:escapeXml(Date)}</ul>
+										<ul>${fn:escapeXml(Location)}</ul>
+										<ul>${fn:escapeXml(Details)}</ul>
+										</ul>	
 									<%
+									}
 								}
 							}
-								
-								
 	                	}
 	                }
-	                	}
-	                }
-			
-	                	
-	
-	
-	                %>
+				%>
 				</ul>            	
 			</div>
 		</div>
