@@ -30,6 +30,7 @@
                 List<Long> groupsKeys=building.getGroups();
                 List<Group> groups= new ArrayList<Group>();
                 List<String> emails= new ArrayList<String>();
+                List <Long> mainReq = new ArrayList<Long>();
                 %>
                 <ul>
                 <%
@@ -42,6 +43,7 @@
                 		pageContext.setAttribute("name", group.getName());
                 		pageContext.setAttribute("id", group.getId());
                 		emails=group.getMembers();
+                		mainReq=group.getMainreq();
                 		
                 		
             	%>
@@ -49,6 +51,7 @@
 							<li>${fn:escapeXml(name)}: ${fn:escapeXml(address)}</li>
 						
 				<%
+						if(emails!=null){
 						for(String email:emails){
 							Person person=datastore.getPerson(email);
 							String name=person.getName();
@@ -59,10 +62,54 @@
 				<% 
 
 						}
+						}
+				
 							i++;
 									if(i == 5){
 										break;
 									}
+								%>
+								<br>
+								<h1>Maintenance Request</h1>
+								<br>
+								<%
+									
+						if(mainReq!=null){
+							%>
+							Hi 
+							<%
+
+							for(Long mKey:mainReq){
+								MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
+								if(man!=null){
+									pageContext.setAttribute("id", mKey);
+									pageContext.setAttribute("req_name", man.getName());
+									pageContext.setAttribute("Priority", man.getPriority() );
+									pageContext.setAttribute("Date", man.getDateCreated());
+									pageContext.setAttribute("Details",man.getDetails());
+									pageContext.setAttribute("Location", man.getLocation());
+
+
+								
+									
+									if(man.getCompleted()==null){
+										%>
+										<div>${fn:escapeXml(req_name)} has not been completed</div>
+										<%
+									}
+									else{
+				                    pageContext.setAttribute("req_complete", man.getCompleted());
+				                    %>
+			                    		<div>${fn:escapeXml(req_name)} was completed on ${fn:escapeXml(req_complete)}</div>
+			                    	<%
+									}
+									%>
+									<div>${fn:escapeXml(Date)} </div>
+									<%
+								}
+							}
+						}
+							
                 	}
                 }
                 

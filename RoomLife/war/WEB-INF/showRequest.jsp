@@ -72,12 +72,7 @@
               			<td>
               				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
               			</td>
-              			<td>
-              				<div>${fn:escapeXml(req_location)}</div>
-              			</td>
-              			<td>
-              				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              			</td>
+
               			<td>
               				<div style = "margin:20px; padding:20px" >${fn:escapeXml(req_description)}</div>
               			</td>

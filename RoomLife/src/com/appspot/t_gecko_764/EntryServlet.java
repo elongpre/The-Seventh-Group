@@ -24,8 +24,7 @@ public class EntryServlet extends HttpServlet{
 		    }
 		    
 			DataStore datastore = DataStore.getInstance();
-			Person person = datastore.getPerson("alice@example.com");
-			String userEmail = person.getEmail();
+			Person person = datastore.getPerson(user.getEmail());
 			
 			ServletHelper.initializeServlet(req, resp, person);
 			

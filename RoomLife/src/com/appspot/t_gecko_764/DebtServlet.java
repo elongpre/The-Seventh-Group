@@ -29,6 +29,21 @@ public class DebtServlet extends HttpServlet {
 	    // get the name and total amount of the debt, as well as the associated roommate
 	    String debt_name = req.getParameter("debtName");
 	    String roommate = req.getParameter("roommate");
+	    String debtAmount=req.getParameter("debtAmount");
+	    
+	    if(!debt_name.matches("[a-z]+")){
+	    	resp.sendRedirect("/entry/debt");
+	    }else if(!roommate.matches("[a-z]+@[a-z]+.[a-z]")){
+	    	resp.sendRedirect("/entry/debt");
+	    }
+	    else
+	    if(debtAmount==null || debtAmount.matches("0")){
+	    	resp.sendRedirect("/entry/debt");
+	    } else 
+	    if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]*") ){
+	    	resp.sendRedirect("/entry/debt");
+	    }else{
+	    
 	    Double amount = Double.parseDouble(req.getParameter("debtAmount"));
 	    
 	    // get owner(current user) from the datastore
@@ -47,6 +62,7 @@ public class DebtServlet extends HttpServlet {
 	    datastore.saveDebt(debt);
 	    
 	    resp.sendRedirect("/TaskComplete.html");
+	    }
 	    
     }
     

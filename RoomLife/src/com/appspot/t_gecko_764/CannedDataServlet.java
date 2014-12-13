@@ -46,6 +46,20 @@ public class CannedDataServlet extends HttpServlet{
 			datastore.savePerson(matt);
 			datastore.savePerson(rob);
 			
+			
+			
+			Person pett = new Person("Pett","pett@example.com");
+			Person david = new Person("David","david@example.com");
+			
+			Group group3 = new Group("TestGroup3");
+			datastore.saveGroup(group3);
+			group3.setAddress("Apt 233");
+			group3.addMember(pett);
+			group3.addMember(david);
+			datastore.saveGroup(group3);
+			datastore.savePerson(pett);
+			datastore.savePerson(david);
+			
 			// save mock users to the datastore
 			datastore.savePerson(alice);
 			datastore.savePerson(bob);
@@ -93,15 +107,20 @@ public class CannedDataServlet extends HttpServlet{
 			MaintenanceRequest request1 = new MaintenanceRequest.Builder("request1", alice, group).setLocation("room1").setPriority("priority1")
 					.setDetails("Details1Details1Details1Details1Details1Details1Details1 Details1Details1Details1Details1Details1Details1Details1\nDetails1Details1Details1Details1Details1Details1Details1").build();
 			datastore.saveMaintenanceRequest(request1);
+			group.addMaintenanceRequest(request1);
+			datastore.saveGroup(group);
 						
-			MaintenanceRequest request2 = new MaintenanceRequest.Builder("request1", bob, group).setLocation("room2").setPriority("priority2")
+			MaintenanceRequest request2 = new MaintenanceRequest.Builder("request2", bob, group).setLocation("room2").setPriority("priority2")
 					.setDetails("Details2Details2Details2Details2Details2Details2Details2 Details2Details2Details2Details2Details2Details2Details2\nDetails2Details2Details2Details2Details2Details2Details2").build();
-			datastore.saveMaintenanceRequest(request2);			
+			datastore.saveMaintenanceRequest(request2);
+			group.addMaintenanceRequest(request2);
+			datastore.saveGroup(group);
 			
 			Landlord evan = new Landlord("Evan", "evan@example.com");
 			datastore.saveLandlord(evan);
 			Building building1= new Building ("Unit 1","evan@example.com");
 			building1.addGroup(group.getId());
+			building1.addGroup(group3.getId());
 			Building building2= new Building ("Unit 2","evan@example.com");
 			building2.addGroup(group2.getId());
 			

@@ -34,6 +34,7 @@ public class LandLordDetailServlet extends HttpServlet{
 			}
 			req.setAttribute("Buildings", buildings);
 
+			
 
 			String path = req.getRequestURL().toString();
 			String[] splitPath = path.split("/");

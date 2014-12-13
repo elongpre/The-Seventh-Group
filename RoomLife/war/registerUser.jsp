@@ -11,7 +11,9 @@
 		<title>User Registration</title>
 		<%
 		String flag = request.getParameter("failed");
-		
+		if (flag==null){
+			flag="no";
+		}
 		%>
 	</head>
 	
@@ -45,7 +47,8 @@
 				
 				<input type="submit" value="Register">
 			</fieldset>
-		
+			<br>
+			<a href="/LoginPage.jsp">Changed my mind. Go back</a>
 		</form>
 	</body>
 </html>

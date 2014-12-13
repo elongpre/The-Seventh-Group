@@ -17,26 +17,29 @@ public class RegisterUserServlet extends HttpServlet{
             throws IOException {
     	
 	    // get parameters from post
-	    String name = req.getParameter("firstname") + req.getParameter("secondname");
+	    String name = req.getParameter("firstname") +" " + req.getParameter("secondname");
 	    String groupName = req.getParameter("group");
 	    String email = req.getParameter("email");
-	    
-	    DataStore datastore = DataStore.getInstance();
-	    
-	    if (datastore.getPerson(email)==null){
-		    Person person = new Person(name,email);
-		    Group group = new Group(groupName);
-		    datastore.saveGroup(group);
-		    group.addMember(person);
-		    datastore.saveGroup(group);
-		    person.setGroup(group.getId());
-		    datastore.savePerson(person);
-		    resp.sendRedirect("/LoginPage.jsp");
+	    if(name.matches("") || groupName.matches("") || email.matches("")){
+	    	resp.sendRedirect("/registerUser.jsp");
 	    }else{
-	    	resp.sendRedirect("/registerUser.jsp?failed=yes");
-	    }
-	    
 
+		    DataStore datastore = DataStore.getInstance();
+		    
+		    if (datastore.getPerson(email)==null){
+			    Person person = new Person(name,email);
+			    Group group = new Group(groupName);
+			    datastore.saveGroup(group);
+			    group.addMember(person);
+			    datastore.saveGroup(group);
+			    person.setGroup(group.getId());
+			    datastore.savePerson(person);
+			    resp.sendRedirect("/LoginPage.jsp");
+		    }else{
+		    	resp.sendRedirect("/registerUser.jsp?failed=yes");
+		    }
+	    
+	    }
 	    
 	  
 

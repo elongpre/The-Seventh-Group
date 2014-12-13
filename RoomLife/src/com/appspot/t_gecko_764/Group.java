@@ -20,6 +20,7 @@ public class Group {
 	public Group(String name){
 		this.name = name;
 		this.members = new ArrayList<String>();
+		this.mainreq= new ArrayList<Long>();
 	}
 	
 	public Long getId() {
@@ -55,7 +56,7 @@ public class Group {
 	}
 
 	public ArrayList<Long> getMainreq() {
-		return mainreq;
+		return this.mainreq;
 	}
 
 	public void setMainreq(ArrayList<Long> mainreq) {
