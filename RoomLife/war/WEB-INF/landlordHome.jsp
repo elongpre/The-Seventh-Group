@@ -7,11 +7,11 @@
 <html>
 	<head>
 		<!-- Bootstrap Core CSS -->
-		
-	    <link href="../..Bootstrap/css/bootstrap.css" rel="stylesheet">
+	    <link href="../../Bootstrap/css/bootstrap.css" rel="stylesheet">
 	
 	    <!-- Sidebar CSS -->
-	    <link href="../..Bootstrap/css/simple-sidebar.css" rel="stylesheet">
+	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
+	    <script src="http://code.jquery.com/jquery.js"></script>
 		<script src="../../Bootstrap/js/bootstrap.js"></script>
 		
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
