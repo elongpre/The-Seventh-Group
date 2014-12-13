@@ -16,9 +16,7 @@
 	    <!-- Sidebar CSS -->
 	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
 	    
-	    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Oswald|Titillium+Web:600' rel='stylesheet' type='text/css'>
-
+		
 		<script src="/Bootstrap/js/bootstrap.js"></script>
 	</head>
 	<body>
@@ -35,7 +33,7 @@
           			pageContext.setAttribute("user_name", name);
             	%> 
             	
-            	<h1 id="username">Hello ${fn:escapeXml(user_name)}!</h1>
+            	<h2 id="username">Hello ${fn:escapeXml(user_name)}!</h2>
 			</div>
 		</div>
 		</div>

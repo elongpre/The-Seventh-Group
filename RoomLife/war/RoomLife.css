@@ -1,6 +1,13 @@
 h1 {
 	color: SlateGray;
 	font-family: 'Titillium Web', sans-serif;
+	font-size: 35px;
+	text-align: center;
+}
+
+h2 {
+	color: SlateGray;
+	font-family: 'Titillium Web', sans-serif;
 	font-size: 50px;
 	text-align: center;
 }
