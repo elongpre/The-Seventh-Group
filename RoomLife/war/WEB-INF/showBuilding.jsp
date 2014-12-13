@@ -57,35 +57,13 @@
 											%>
 												<ul>${fn:escapeXml(personName)}</ul>
 									
-<<<<<<< HEAD
-									<ul>${fn:escapeXml(req_name)}</ul>
-									<ul>
-									<% 
-									if(man.getCompleted()==null){
-										%>
-										<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
-										<%
-									}
-									else{
-				                    pageContext.setAttribute("req_complete", man.getCompleted());
-				                    %>
-			                    		<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
-			                    	<%
-									}
-=======
-									
-											<% 								
-											}
-										}
-									%>
-								</ul>
+
 								<%
-					
+											}
 								i++;
 										if(i == 5){
 											break;
 										}
->>>>>>> 8f41b6def138d5dca8c19f53c8dda7394e447340
 									%>
 									<ul>
 									<li>Maintenance Request</li>
@@ -146,7 +124,10 @@
 								
 	                	}
 	                }
-	                
+	                	}
+	                }
+			
+	                	
 	
 	
 	                %>
