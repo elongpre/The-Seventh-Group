@@ -29,9 +29,10 @@
                 pageContext.setAttribute("req_location", mainReq.getLocation());
                 pageContext.setAttribute("req_description", mainReq.getDetails());
                 pageContext.setAttribute("req_priority",mainReq.getPriority());
+                pageContext.setAttribute("owner", mainReq.getOwner());
                 
                 %>
-                <h1>${fn:escapeXml(debt_name)}<span style="float:right">Maintenance Request</span></h1> 
+                <h1>${fn:escapeXml(owner)}<span style="float:right">Maintenance Request</span></h1> 
                
               	<% if(mainReq.getCompleted() == null) {
               		

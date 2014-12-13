@@ -1,6 +1,7 @@
 package com.appspot.t_gecko_764;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServlet;
@@ -34,9 +35,10 @@ public class MaintenanceServlet extends HttpServlet {
 	    // construct new maintenance request object using Builder
 	    MaintenanceRequest mainreq = new MaintenanceRequest.Builder(groupName, owner, group).setName(name).setPriority(priority).setLocation(place)
 	    		.setDetails(description).build();
-	    datastore.saveMaintenanceRequest(mainreq);
+	    
 	    
 	    // add request to group and add group to datastore
+	    datastore.saveMaintenanceRequest(mainreq);
 	    group.addMaintenanceRequest(mainreq);
 	    datastore.saveGroup(group);
 	    
