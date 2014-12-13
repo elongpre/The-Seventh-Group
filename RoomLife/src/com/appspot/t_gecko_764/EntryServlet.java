@@ -23,30 +23,42 @@ public class EntryServlet extends HttpServlet{
 		    	resp.sendRedirect("/LoginPage.jsp");
 		    }
 		    
+		    String path = req.getRequestURL().toString();
+			String[] splitPath = path.split("/");
+			int length = splitPath.length;
+			if( splitPath[length-1].contains("css")){
+				return;
+			}
+			
 			DataStore datastore = DataStore.getInstance();
 			Person person = datastore.getPerson(user.getEmail());
 
 			String userEmail = person.getEmail();
 			
 			ServletHelper.initializeServlet(req, resp, person);
+						
 			
 			ArrayList<Person> names= new ArrayList<Person>();
 			for(String email : datastore.getGroup(person.getGroup()).getMembers()){
 				names.add(datastore.getPerson(email));
 			}
 			req.setAttribute("roommateNames", names);
-			String path = req.getRequestURL().toString();
-			String[] splitPath = path.split("/");
-			int length = splitPath.length;
-			if( splitPath[length-1].contains("css")){
-				return;
-			}
+
 			switch (splitPath[length-1]) {
-				case "bill": req.getRequestDispatcher("/WEB-INF/bill.jsp").forward(req, resp);
+				case "bill": if(!splitPath[length-2].equals("entry")){
+						req.setAttribute("edit_bill", datastore.getBill(Long.parseLong(splitPath[length-2], 10)));
+					}
+					req.getRequestDispatcher("/WEB-INF/bill.jsp").forward(req, resp);
 					break;
-				case "debt": req.getRequestDispatcher("/WEB-INF/bill.jsp").forward(req, resp);
+				case "debt": if(!splitPath[length-2].equals("entry")){
+						req.setAttribute("edit_debt", datastore.getDebt(Long.parseLong(splitPath[length-2], 10)));
+					}
+					req.getRequestDispatcher("/WEB-INF/bill.jsp").forward(req, resp);
 					break;
-				case "request": req.getRequestDispatcher("/WEB-INF/mainrequest.jsp").forward(req, resp);
+				case "request": if(!splitPath[length-2].equals("entry")){
+						req.setAttribute("edit_req", datastore.getMaintenanceRequest(Long.parseLong(splitPath[length-2], 10)));
+					}
+					req.getRequestDispatcher("/WEB-INF/mainrequest.jsp").forward(req, resp);
 					break;
 			}
 		}

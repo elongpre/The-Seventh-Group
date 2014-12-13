@@ -63,7 +63,7 @@
 	              		<div id="collapseFirst" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFirst">
 				      		<div class="panel-body">
 								<a class="btn btn-primary" href="/payservlet/bill/${bill_id}" style="color: white"> Mark as Paid </a>
-								<a class="btn btn-primary" href="#" style="color: white"> Edit </a>
+								<a class="btn btn-primary" href="/entry/${bill_id}/bill" style="color: white"> Edit </a>
 				    		</div>
 			    		</div>
 			  		</div>
