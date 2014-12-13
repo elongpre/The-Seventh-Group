@@ -68,52 +68,53 @@
 											<%
 											}
 										}
+									%>													
+									</ul>
+								</ul>
+								<ul>
+								<li>Maintenance Requests</li>
+							<%			
+							if(mainReq!=null){
+								for(Long mKey:mainReq){
+									MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
+									if(man!=null){
+										pageContext.setAttribute("mkey", mKey);
+										pageContext.setAttribute("req_name", man.getName());
+										pageContext.setAttribute("Priority", man.getPriority() );
+										pageContext.setAttribute("Date", man.getDateCreated());
+										pageContext.setAttribute("Details",man.getDetails());
+										pageContext.setAttribute("Location", man.getLocation());																														
 									%>
-										</ul>
-						    		</div>
-					    		</div>
-				    		</div>													
-								
-							<div>Maintenance Requests</div>
-						<%			
-						if(mainReq!=null){
-							for(Long mKey:mainReq){
-								MaintenanceRequest man = datastor.getMaintenanceRequest(mKey);
-								if(man!=null){
-									pageContext.setAttribute("id", mKey);
-									pageContext.setAttribute("req_name", man.getName());
-									pageContext.setAttribute("Priority", man.getPriority() );
-									pageContext.setAttribute("Date", man.getDateCreated());
-									pageContext.setAttribute("Details",man.getDetails());
-									pageContext.setAttribute("Location", man.getLocation());																														
-								%>
-										<ul>${fn:escapeXml(req_name)}</ul>
-										<ul>
-									
-								<% 
-									if(man.getCompleted()==null){
-									%>
-										<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
-									<%
-									} else{
-				                    	pageContext.setAttribute("req_complete", man.getCompleted());
-			                    	%>
-		                    			<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
-		                    		<%
+											<ul>${fn:escapeXml(req_name)}</ul>
+											<ul>
+										
+									<% 
+										if(man.getCompleted()==null){
+										%>
+											<ul><a href="/landlorddetailservlet/mainreq/${mkey}">Not been completed</a></ul>
+										<%
+										} else{
+					                    	pageContext.setAttribute("req_complete", man.getCompleted());
+				                    	%>
+			                    			<ul>Completed on ${fn:escapeXml(req_complete)}</ul>
+			                    		<%
+										}
+									%>	
+										<ul>${fn:escapeXml(Priority)}</ul>
+										<ul>${fn:escapeXml(Date)}</ul>
+										<ul>${fn:escapeXml(Location)}</ul>
+										<ul>${fn:escapeXml(Details)}</ul>
+										</ul>	
+							%>
+							</ul>
+							<%
 									}
-								%>	
-									<ul>${fn:escapeXml(Priority)}</ul>
-									<ul>${fn:escapeXml(Date)}</ul>
-									<ul>${fn:escapeXml(Location)}</ul>
-									<ul>${fn:escapeXml(Details)}</ul>
-									</ul>	
-								<%
 								}
 							}
-						}
                 	}
                 }
-			%>
+				%>
+				</ul>            	
 			</div>
 		</div>
 		</div>

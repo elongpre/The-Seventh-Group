@@ -59,7 +59,7 @@ public class LandLordDetailServlet extends HttpServlet{
 				Date today= new Date();
 				manReq.setCompleted(today);
 				datastore.saveMaintenanceRequest(manReq);
-				resp.sendRedirect(req.getRequestURI());
+				resp.sendRedirect("/home");
 			}else
 				resp.sendRedirect("/home");
 
