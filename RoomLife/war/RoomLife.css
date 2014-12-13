@@ -1,5 +1,13 @@
 h1 {
 	color: SlateGray;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 50px;
+	text-align: center;
+}
+
+p {
+	font-family: 'Titillium Web', sans-serif;
+	text-align: center;
 }
 
 #username {
@@ -9,6 +17,16 @@ h1 {
 
 body {
 	background: White;
+}
+
+.button {
+	padding: 5px 5px 5px 5px;
+	margin: 0 auto;
+	width: 150px;
+	display: block;
+	background: CornflowerBlue;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 20px;
 }
 
 fieldset {	

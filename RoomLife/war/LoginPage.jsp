@@ -33,7 +33,8 @@
 			} else {
 		%>
 			<h1>Welcome to RoomLife!</h1>
-			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button name="signIn">Sign in</button></a>
+			<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button name="signIn" class="button">Sign in</button></a>
+			<br>
 			<p>New user? Click <a href="registerUser.jsp?failed=no" id="register">here</a> to register.</p>
 		<%
 		    }
