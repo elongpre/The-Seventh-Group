@@ -35,7 +35,7 @@ public class DebtServlet extends HttpServlet {
 	    if(debtAmount==null || debtAmount.matches("0")){
 	    	req.setAttribute("error", "There must be a debt amount");
 	    	req.getRequestDispatcher("/entry/debt").forward(req, resp);
-	    } else if(!debtAmount.matches("[0-9]+") || !debtAmount.matches("[0-9]*.[0-9]+") ){
+	    } else if(!debtAmount.matches("[0-9]+") && !debtAmount.matches("[0-9]*.[0-9]+") ){
 	    	req.setAttribute("error", "Debt amount was not a number");
 	    	req.getRequestDispatcher("/entry/debt").forward(req, resp);
 	    } else {
