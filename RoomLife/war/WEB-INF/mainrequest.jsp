@@ -37,6 +37,7 @@
 						  <option value="plumbing">Plumbing</option>
 						  <option value="electricity">Electricity</option>
 						  <option value="pest control">Pest Control</option>
+						  <option value="other">Other</option>
 						</select></p>
 		
 				        <label class="field" for="Priority">Priority:</label>
@@ -47,10 +48,7 @@
 				        	</select>
 				        </p>
 				        <label class="field" for="Place">Place:</label>
-				        <p><input type="text" name="place"></p>
-				        
-				        <label class="field" for="Group">Group:</label>
-				        <p><input type="text" name="group"></p>
+				        <p><input type="text" name="place"></p>				        				        
 				        
 				        <label class="field" for="Description">Description:</label>
 				        <p><textarea rows="10" cols="50" name="description"></textarea></p>

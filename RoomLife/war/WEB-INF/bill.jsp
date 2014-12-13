@@ -63,7 +63,7 @@
 				    	<label class="field" for="Name">Debt Name:</label>
 					    <p><input type="text" name="debtName"></p>
 					    <label class="field" for="RoommateName">Roommate:</label>
-					    <p><select>
+					    <p><select name="roommate">
 					    	<%
 					    		List<Person> roommates = (List<Person>) request.getAttribute("roommateNames");
 					    		for (Person mate: roommates){
