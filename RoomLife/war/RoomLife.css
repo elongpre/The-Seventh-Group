@@ -57,3 +57,7 @@ fieldset p {
 	clear: both;
 	padding: 2px;
 }
+
+a#signout {
+	border-radius: 50px;
+}
