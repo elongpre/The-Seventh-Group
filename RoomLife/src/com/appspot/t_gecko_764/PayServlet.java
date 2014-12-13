@@ -24,7 +24,7 @@ public class PayServlet extends HttpServlet{
 	    }
 	    
 		DataStore datastore = DataStore.getInstance();
-		Person person = datastore.getPerson("alice@example.com");
+		Person person = datastore.getPerson(user.getEmail());
 		String userEmail = person.getEmail();		
 		
 		List<String> emails = datastore.getGroup(person.getGroup()).getMembers();

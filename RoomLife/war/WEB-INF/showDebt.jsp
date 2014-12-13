@@ -11,8 +11,8 @@
 	
 	    <!-- Sidebar CSS -->
 	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
-	    
-		<script src="/Bootstrap/js/bootstrap.js"></script>
+	    <script src="http://code.jquery.com/jquery.js"></script>
+		<script src="../../Bootstrap/js/bootstrap.js"></script>
 	</head>
 	<body>
 		<%@include file="header.jsp" %> 

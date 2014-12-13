@@ -11,7 +11,7 @@
 	
 	    <!-- Sidebar CSS -->
 	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
-	    
+	    <script src="http://code.jquery.com/jquery.js"></script>
 		<script src="../../Bootstrap/js/bootstrap.js"></script>
 		
 		<link rel="stylesheet" href="RoomLife.css">

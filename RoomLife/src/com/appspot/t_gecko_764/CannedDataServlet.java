@@ -55,36 +55,54 @@ public class CannedDataServlet extends HttpServlet{
 			//create bill one, not including bob
 			Calendar deadline = new GregorianCalendar();
 			deadline.add(Calendar.DAY_OF_MONTH, 5);
-			Bill bill1 = new Bill.Builder("Water", 11.11, alice).setGroup(group).setDateDeadline(deadline.getTime()).build();
+			Calendar date = new GregorianCalendar();
+			date.add(Calendar.DAY_OF_MONTH, -1);
+			Bill bill1 = new Bill.Builder("Water", 11.11, alice).setGroup(group).setDateDeadline(deadline.getTime()).setDateCreated(date.getTime()).build();
 			bill1.getPeeps().remove(2);
 			System.out.println("start datastore save");
 			datastore.saveBill(bill1);		
 			System.out.println("end datastore save");
 			
 			// Bill that include all the group
-			deadline.add(Calendar.DAY_OF_MONTH, 5);
+			Calendar deadline2 = new GregorianCalendar();
+			deadline2.add(Calendar.DAY_OF_MONTH, 10);
 			Bill bill2 = new Bill.Builder("Electricity", 22.22, alice).setGroup(group).setDateDeadline(deadline.getTime()).build();
 			datastore.saveBill(bill2);			
 					
 			// Bill that includes all the group
-			deadline.add(Calendar.DAY_OF_MONTH, 5);
+			Calendar deadline3 = new GregorianCalendar();
+			deadline3.add(Calendar.DAY_OF_MONTH, 15);
 			Bill bill3 = new Bill.Builder("Gas", 33.33, bob).setGroup(group).setDateDeadline(deadline.getTime()).build();
 			datastore.saveBill(bill3);
-			deadline.add(Calendar.DAY_OF_MONTH, 5);
 			
 			Debt debt1 = new Debt.Builder("debt1", 11.11, alice, bob).build();
+			Calendar date1 = new GregorianCalendar();
+			date1.add(Calendar.DAY_OF_MONTH, -5);
+			debt1.setDateCreated(date1.getTime());
 			datastore.saveDebt(debt1);
 			
 			Debt debt2 = new Debt.Builder("debt2", 22.22, alice, candice).build();
+			Calendar date2 = new GregorianCalendar();
+			date2.add(Calendar.DAY_OF_MONTH, -4);
+			debt2.setDateCreated(date1.getTime());
 			datastore.saveDebt(debt2);
 			
 			Debt debt3 = new Debt.Builder("debt3", 33.33, alice, danny).build();
+			Calendar date3 = new GregorianCalendar();
+			date3.add(Calendar.DAY_OF_MONTH, -2);
+			debt3.setDateCreated(date1.getTime());
 			datastore.saveDebt(debt3);
 
 			Debt debt4 = new Debt.Builder("debt4", 44.44, bob, alice).build();
+			Calendar date4 = new GregorianCalendar();
+			date4.add(Calendar.DAY_OF_MONTH, -7);
+			debt4.setDateCreated(date1.getTime());
 			datastore.saveDebt(debt4);			
 			
 			Debt debt5 = new Debt.Builder("debt5", 55.55, bob, candice).build();
+			Calendar date5 = new GregorianCalendar();
+			date5.add(Calendar.DAY_OF_MONTH, -5);
+			debt5.setDateCreated(date1.getTime());
 			datastore.saveDebt(debt5);
 			
 			Debt debt6 = new Debt.Builder("debt6", 66.66, bob, danny).build();

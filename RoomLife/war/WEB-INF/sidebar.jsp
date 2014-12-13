@@ -4,17 +4,7 @@
 <%@ page import="com.appspot.t_gecko_764.*" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<html>
-	<head>
-		<!-- Bootstrap Core CSS -->
-	    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet">
-	
-	    <!-- Sidebar CSS -->
-	    <link href="Bootstrap/css/simple-sidebar.css" rel="stylesheet">
-	    
-		<script src="/Bootstrap/js/bootstrap.js"></script>
-		
-	</head>
+<html>	
 	<body>
 	
 		<!-- Sidebar -->
