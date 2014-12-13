@@ -36,7 +36,7 @@ public class BillServlet extends HttpServlet{
 	    if(amount==null || amount.matches("0")){
 	    	req.setAttribute("error", "There must be a bill amount");
 	    	req.getRequestDispatcher("/entry/bill").forward(req, resp);
-	    } else if(!amount.matches("[0-9]+") || !amount.matches("[0-9]*.[0-9]*") ){
+	    } else if(!amount.matches("[0-9]+") && !amount.matches("[0-9]*.[0-9]+") ){
 	    	req.setAttribute("error", "Bill amount was not a number");
 	    	req.getRequestDispatcher("/entry/bill").forward(req, resp);
 	    } else {
