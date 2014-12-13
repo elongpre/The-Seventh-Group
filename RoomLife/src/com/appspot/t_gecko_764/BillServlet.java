@@ -59,46 +59,7 @@ public class BillServlet extends HttpServlet{
     
 		    Bill bill = new Bill.Builder(bill_name, total_amount, owner).setGroup(group).setDateDeadline(deadline).build();
 		    // save bill to the Datastore
-<<<<<<< HEAD
-		    datastore.saveBill(bill);
-		    
-		   //  update all those affected, which should be the current user and his/her roommates
-		    ArrayList<String> peeps=group.getMembers();
-		    
-			for(String member:peeps){
-				if(!bill.getOwner().equals(member)){
-				Person roommate=datastore.getPerson(member);
-				if(roommate.getBills()==null)
-				{
-					ArrayList<Long> bills=new ArrayList<Long>();
-					roommate.setBills(bills);
-
-				}
-				roommate.addBill(bill.getId());
-				datastore.savePerson(roommate);
-
-				}
-			}
-	    	
-
-	    String date = req.getParameter("billDate");
-	    System.out.println(date);
-	    String[] splitDate = date.split("/");
-	    Calendar calendar = new GregorianCalendar();
-	    calendar.set(Calendar.YEAR, new Integer(splitDate[2]));
-	    calendar.set(Calendar.MONTH, new Integer(splitDate[0]) - 1);
-	    calendar.set(Calendar.DAY_OF_MONTH, new Integer(splitDate[1]));	    
-	    Date deadline = calendar.getTime();
-	    // calculate amount for each roommate
-	    
-	    // create bill 
-	    Bill bill = new Bill.Builder(bill_name, total_amount, owner).setGroup(group).setDateDeadline(deadline).build();
-	    // save bill to the Datastore
-	    datastore.saveBill(bill);
-	    
-=======
 		    datastore.saveBill(bill);	    
->>>>>>> d549d6fbb638cdd8366d0c0b8a4dca14d83fe1fa
 	    
 	    
 	    resp.sendRedirect("/TaskComplete.html");
