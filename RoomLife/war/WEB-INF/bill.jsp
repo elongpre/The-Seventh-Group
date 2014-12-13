@@ -50,21 +50,44 @@
 						</div>
                		<%		               		
                 	}
+                	if (request.getAttribute("edit_bill") == null){
+               		%>
+        			    <form action="BillEntry" method="POST">
+        			    	<fieldset>
+        			    		<legend>New Bill (split evenly among all roommates)</legend>
+        			    		
+        			    		<label class="field" for="Name">Bill Name:</label>
+        				        <p><input type="text" name="billName"></p>
+        				        <label class="field" for="Amount">Amount:</label>
+        				        <p><input type="text" name="billAmount"></p>
+        				        <label class="field" for="Amount">Due on:</label>
+        					    <p><input type="text" name="billDate" id="datepicker"></p>
+        				        <input type="submit" name="submitBill" value="Submit">
+        			        </fieldset>
+        			    </form>
+       			    <%
+                	} else {
+                		Bill bill = (Bill) request.getAttribute("edit_bill");
+                		pageContext.setAttribute("billName", bill.getName());
+                		pageContext.setAttribute("billAmount", bill.getAmount());
+                		pageContext.setAttribute("billDate", bill.getName());
+					%>
+        			    <form action="BillEntry" method="POST">
+        			    	<fieldset>
+        			    		<legend>Edit Bill (split evenly among all roommates)</legend>
+        			    		
+        			    		<label class="field" for="Name">Bill Name:</label>
+        				        <p><input type="text" name="billName" value="${billName}"></p>
+        				        <label class="field" for="Amount">Amount:</label>
+        				        <p><input type="text" name="billAmount" value="${billAmount}"></p>
+        				        <label class="field" for="Amount">Due on:</label>
+        					    <p><input type="text" name="billDate" id="datepicker"></p>
+        				        <input type="submit" name="submitBill" value="Submit">
+        			        </fieldset>
+        			    </form>
+       			    <%
+                	}
                 %>
-	    
-			    <form action="BillEntry" method="POST">
-			    	<fieldset>
-			    		<legend>New Bill (split evenly among all roommates)</legend>
-			    		
-			    		<label class="field" for="Name">Bill Name:</label>
-				        <p><input type="text" name="billName"></p>
-				        <label class="field" for="Amount">Amount:</label>
-				        <p><input type="text" name="billAmount"></p>
-				        <label class="field" for="Amount">Due on:</label>
-					    <p><input type="text" name="billDate" id="datepicker"></p>
-				        <input type="submit" name="submitBill" value="Submit">
-			        </fieldset>
-			    </form>
 			    
 			    <br>
 			    <br>
