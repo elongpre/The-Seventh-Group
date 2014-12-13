@@ -19,6 +19,15 @@
 
 	    
 		<script src="../../Bootstrap/js/bootstrap.js"></script>
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  		<script>
+  			$(function() {
+    			$( "#datepicker" ).datepicker();
+  			});
+	  	</script>
 	</head>
 	<body>
 		<%@include file="header.jsp" %> 
@@ -32,12 +41,14 @@
 	    
 			    <form action="BillEntry" method="POST">
 			    	<fieldset>
-			    		<legend>New Bill (split evenly)</legend>
+			    		<legend>New Bill (split evenly among all roommates)</legend>
 			    		
 			    		<label class="field" for="Name">Bill Name:</label>
 				        <p><input type="text" name="billName"></p>
 				        <label class="field" for="Amount">Amount:</label>
 				        <p><input type="text" name="billAmount"></p>
+				        <label class="field" for="Amount">Due on:</label>
+					    <p><input type="text" name="billDate" id="datepicker"></p>
 				        <input type="submit" name="submitBill" value="Submit">
 			        </fieldset>
 			    </form>
@@ -55,6 +66,7 @@
 					    <p><input type="text" name="roommate"></p>
 					    <label class="field" for="Amount">Amount:</label>
 					    <p><input type="text" name="debtAmount"></p>
+					    
 				        <input type="submit" name="submitDebt" value="Submit">
 			        </fieldset>
 			    </form>

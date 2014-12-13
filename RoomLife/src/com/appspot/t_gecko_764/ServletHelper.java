@@ -1,6 +1,7 @@
 package com.appspot.t_gecko_764;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,8 @@ public class ServletHelper {
 		DataStore datastore = DataStore.getInstance();
 		String userEmail = person.getEmail();
 		
-		List<Bill> bills = datastore.getBills(person);			
+		List<Bill> bills = datastore.getBills(person);
+		Collections.sort(bills, Collections.reverseOrder());
 		req.setAttribute("BillList", bills);
 
 		List<String> emails = datastore.getGroup(person.getGroup()).getMembers();

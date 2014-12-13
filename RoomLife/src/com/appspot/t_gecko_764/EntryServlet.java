@@ -25,6 +25,10 @@ public class EntryServlet extends HttpServlet{
 		    
 			DataStore datastore = DataStore.getInstance();
 			Person person = datastore.getPerson(user.getEmail());
+<<<<<<< HEAD
+=======
+			String userEmail = person.getEmail();
+>>>>>>> 77808688a1902c6f14cac7c46b9b201c47c1a266
 			
 			ServletHelper.initializeServlet(req, resp, person);
 			

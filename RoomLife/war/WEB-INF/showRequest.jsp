@@ -25,7 +25,7 @@
                 <% 
                 MaintenanceRequest mainReq = (MaintenanceRequest) request.getAttribute("Request");
                 pageContext.setAttribute("req_name", mainReq.getName());
-                pageContext.setAttribute("req_date", mainReq.getDateCreated());
+                pageContext.setAttribute("req_date", new SimpleDateFormat("MMM dd").format(mainReq.getDateCreated()));
                 pageContext.setAttribute("req_location", mainReq.getLocation());
                 pageContext.setAttribute("req_description", mainReq.getDetails());
                 pageContext.setAttribute("req_priority",mainReq.getPriority());
@@ -50,7 +50,7 @@
               	
               	<%
               	String name = (String) request.getAttribute("debtor");
-              	pageContext.setAttribute("name", name);
+              	pageContext.setAttribute("name", name);              	
               	%>
               	<table>
               		<tr>

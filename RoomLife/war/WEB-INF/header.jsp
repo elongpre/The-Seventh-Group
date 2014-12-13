@@ -6,11 +6,7 @@
 <%@ page import="com.google.appengine.api.datastore.*" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
-<html>
-  	<link rel="stylesheet" href="../../Bootstrap/css/bootstrap.css" />
-  	<script src="http://code.jquery.com/jquery.js"></script>
- 	<script src="../../Bootstrap/js/bootstrap.js"></script>
- 	
+<html>  	
  	<div class="page-header">
  		<nav class="navbar navbar-default navbar-static">
  			<div class="container-fluid">

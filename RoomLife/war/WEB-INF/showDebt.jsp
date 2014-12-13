@@ -11,8 +11,8 @@
 	
 	    <!-- Sidebar CSS -->
 	    <link href="../../Bootstrap/css/simple-sidebar.css" rel="stylesheet">
-	    
-		<script src="/Bootstrap/js/bootstrap.js"></script>
+	    <script src="http://code.jquery.com/jquery.js"></script>
+		<script src="../../Bootstrap/js/bootstrap.js"></script>
 	</head>
 	<body>
 		<%@include file="header.jsp" %> 
@@ -98,31 +98,31 @@
 				    		</div>
 					    	<div id="collapse${num}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading${num}">
 					      		<div class="panel-body">
-					      			<button type="button" class="btn btn-primary">
+					      			
 				      				<%
 					      				if ((debt.getBillId() != null) && (debt.getOwner().equals(userEmail))){	
 					      					pageContext.setAttribute("bill_id", debt.getBillId());
 					      				%>	
-					      					<a href="/detailservlet/bill/${bill_id}" style="color: white"> View Bill </a>
+				      						<a class="btn btn-primary" href="/detailservlet/bill/${bill_id}" style="color: white"> View Bill </a>
 					      				<%	
-					      				} else {
-					      					if((debt.getBillId() == null) && (debt.getOwner().equals(userEmail))){
-					      						pageContext.setAttribute("debt_id", debt.getId());
-			      							%>
-												<a href="/payservlet/debt/${debt_id}" style="color: white"> Mark as Paid </a>
-											<%	
-					      						
-					      					} else {
-					      					%>
-												<a href="/home" style="color: white"> Mark as Paid </a>
-											<%
-					      					}
+					      				} else if((debt.getBillId() == null) && (debt.getOwner().equals(userEmail))){
+				      						pageContext.setAttribute("debt_id", debt.getId());
+		      							%>
+											<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Mark as Paid </a>											
+											<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Edit </a>
+										<%						      						
+				      					} else if(debt.getOwner().equals(userEmail)){
+				      					%>
+											<a class="btn btn-primary" href="/home" style="color: white"> Mark as Paid </a>
+										<%
+				      					} else {
+				      					%>
+				      						${fn:escapeXml(debtor)} is the owner, talk to them to edit.
+				      					<% 	
 					      				}
 									%>
-									</button>
-									<button type="button" class="btn btn-primary">
-										Edit
-									</button>
+									
+									
 					    		</div>
 					  		</div>		 
 						</div>
