@@ -105,7 +105,7 @@
 										<ul>${fn:escapeXml(Location)}</ul>
 										<ul>${fn:escapeXml(Details)}</ul>
 										</ul>	
-							%>
+							
 							</ul>
 							<%
 									}
