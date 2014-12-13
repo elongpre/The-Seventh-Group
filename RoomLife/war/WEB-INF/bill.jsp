@@ -38,6 +38,19 @@
         <div id="page-content-wrapper">
         	<div class="container-fluid">
                 <h1>Submit Bills and Debts</h1>
+                <%
+                	String errorMessage = (String) request.getAttribute("error");
+                	if (errorMessage != null){
+                		pageContext.setAttribute("error_message", errorMessage);
+               		%>
+	               		<div class="alert alert-danger" role="alert">
+						  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						  	<span class="sr-only">Error:</span>
+						  	${fn:escapeXml(error_message)}
+						</div>
+               		<%		               		
+                	}
+                %>
 	    
 			    <form action="BillEntry" method="POST">
 			    	<fieldset>
@@ -63,7 +76,7 @@
 				    	<label class="field" for="Name">Debt Name:</label>
 					    <p><input type="text" name="debtName"></p>
 					    <label class="field" for="RoommateName">Roommate:</label>
-					    <p><select>
+					    <p><select name="roommate">
 					    	<%
 					    		List<Person> roommates = (List<Person>) request.getAttribute("roommateNames");
 					    		for (Person mate: roommates){

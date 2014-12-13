@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 public class BillServlet extends HttpServlet{
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
+            throws IOException, ServletException {
     	
     	// obtain current user so the correct data can be pulled from the datastore
 	    UserService userService = UserServiceFactory.getUserService();
@@ -33,9 +34,11 @@ public class BillServlet extends HttpServlet{
 	    
 	    String amount = req.getParameter("billAmount");
 	    if(amount==null || amount.matches("0")){
-	    	resp.sendRedirect("/entry/bill");
+	    	req.setAttribute("error", "There must be a bill amount");
+	    	req.getRequestDispatcher("/entry/bill").forward(req, resp);
 	    } else if(!amount.matches("[0-9]+") || !amount.matches("[0-9]*.[0-9]*") ){
-	    	resp.sendRedirect("/entry/bill");
+	    	req.setAttribute("error", "Bill amount was not a number");
+	    	req.getRequestDispatcher("/entry/bill").forward(req, resp);
 	    } else {
 	    
 

@@ -50,4 +50,8 @@ public class EntryServlet extends HttpServlet{
 					break;
 			}
 		}
+		
+		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
+			this.doGet(req, resp);
+		}
 }

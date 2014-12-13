@@ -24,7 +24,6 @@ public class MaintenanceServlet extends HttpServlet {
     	String priority = req.getParameter("priority");
 	    String place = req.getParameter("place");
 	    String description = req.getParameter("description");
-	    String groupName = req.getParameter("group");
 	    
 	    // get owner(current user) from the datastore
 	    DataStore datastore = DataStore.getInstance();
@@ -33,7 +32,7 @@ public class MaintenanceServlet extends HttpServlet {
 	    
 	    
 	    // construct new maintenance request object using Builder
-	    MaintenanceRequest mainreq = new MaintenanceRequest.Builder(groupName, owner, group).setName(name).setPriority(priority).setLocation(place)
+	    MaintenanceRequest mainreq = new MaintenanceRequest.Builder(name, owner, group).setPriority(priority).setLocation(place)
 	    		.setDetails(description).build();
 	    
 	    

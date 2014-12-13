@@ -15,8 +15,8 @@ public class MaintenanceRequest {
 	private String details;
 	private Date dateCreated;
 	private Date completed;
-	@Index private String owner;
-	private Long group;
+	private String owner;
+	@Index private Long group;
 
 	private MaintenanceRequest(){}
 	
