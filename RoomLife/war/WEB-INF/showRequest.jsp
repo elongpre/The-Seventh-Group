@@ -29,15 +29,14 @@
                 pageContext.setAttribute("req_location", mainReq.getLocation());
                 pageContext.setAttribute("req_description", mainReq.getDetails());
                 pageContext.setAttribute("req_priority",mainReq.getPriority());
-                pageContext.setAttribute("owner", mainReq.getOwner());
                 
                 %>
-                <h1>${fn:escapeXml(owner)}<span style="float:right">Maintenance Request</span></h1> 
+                <h1>${fn:escapeXml(req_name)}<span style="float:right">Maintenance Request</span></h1> 
                
               	<% if(mainReq.getCompleted() == null) {
               		
               	%>
-              		<div>${fn:escapeXml(req_name)} has not been completed</div>
+              		<div>&emsp;&emsp; has not been completed</div>
               	<%
               	} else {
                     pageContext.setAttribute("req_complete", mainReq.getCompleted());
