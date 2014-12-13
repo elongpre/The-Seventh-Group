@@ -2,6 +2,7 @@ package com.appspot.t_gecko_764;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -52,13 +53,19 @@ public class LandLordDetailServlet extends HttpServlet{
 				req.getRequestDispatcher("/WEB-INF/showBuilding.jsp").forward(req, resp);
 			
 			}else
+			if(parameter.equals("mainreq")){
+				id=Long.parseLong(splitPath[length-1],10);
+				MaintenanceRequest manReq = datastore.getMaintenanceRequest(id);
+				Date today= new Date();
+				manReq.setCompleted(today);
+				datastore.saveMaintenanceRequest(manReq);
 				resp.sendRedirect("/home");
-			}
-			
+			}else
+				resp.sendRedirect("/home");
 
 
 		
-					
+		}		
 			
 		
 	

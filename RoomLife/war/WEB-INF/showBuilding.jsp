@@ -104,7 +104,7 @@
 									<% 
 									if(man.getCompleted()==null){
 										%>
-										<ul>Not been completed</ul>
+										<ul><a href="/landlorddetailservlet/mainreq/${id}">Not been completed</a></ul>
 										<%
 									}
 									else{
