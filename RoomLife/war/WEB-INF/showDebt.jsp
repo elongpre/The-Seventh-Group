@@ -105,18 +105,20 @@
 					      				%>	
 				      						<a class="btn btn-primary" href="/detailservlet/bill/${bill_id}" style="color: white"> View Bill </a>
 					      				<%	
-					      				} else {
-					      					if((debt.getBillId() == null) && (debt.getOwner().equals(userEmail))){
-					      						pageContext.setAttribute("debt_id", debt.getId());
-			      							%>
-												<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Mark as Paid </a>											
-												<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Edit </a>
-											<%						      						
-					      					} else {
-					      					%>
-												<a class="btn btn-primary" href="/home" style="color: white"> Mark as Paid </a>
-											<%
-					      					}
+					      				} else if((debt.getBillId() == null) && (debt.getOwner().equals(userEmail))){
+				      						pageContext.setAttribute("debt_id", debt.getId());
+		      							%>
+											<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Mark as Paid </a>											
+											<a class="btn btn-primary" href="/payservlet/debt/${debt_id}" style="color: white"> Edit </a>
+										<%						      						
+				      					} else if(debt.getOwner().equals(userEmail)){
+				      					%>
+											<a class="btn btn-primary" href="/home" style="color: white"> Mark as Paid </a>
+										<%
+				      					} else {
+				      					%>
+				      						${fn:escapeXml(debtor)} is the owner, talk to them to edit.
+				      					<% 	
 					      				}
 									%>
 									

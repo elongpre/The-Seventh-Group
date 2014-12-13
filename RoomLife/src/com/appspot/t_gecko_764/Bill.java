@@ -8,7 +8,7 @@ import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
 @Entity
-public class Bill {
+public class Bill implements Comparable{
 	@Id private Long id;
 	private String name;
 	private double amount;
@@ -20,6 +20,18 @@ public class Bill {
 	private Date datePaid;
 	
 	private Bill(){}
+	
+	@Override
+	public int compareTo(Object o) {
+		Bill b = (Bill) o;
+		if((b.getDatePaid() == null) && (datePaid != null)){
+			return -1;
+		} else if((b.getDatePaid() != null) && (datePaid == null)){
+			return 1;
+		} else {
+			return dateDeadline.compareTo(b.getDateDeadline());
+		}
+	}
 	
 	public Long getId(){
 		return this.id;
@@ -144,6 +156,8 @@ public class Bill {
 			this.datePaid = datePaid;
 			return this;
 		}
-	}	
+	}
+
+		
 	
 }

@@ -7,7 +7,7 @@ import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
 @Entity
-public class Debt {
+public class Debt implements Comparable{
 	@Id private Long id;
 	private String name;
 	private Double amount;
@@ -20,10 +20,15 @@ public class Debt {
 	
 	private Debt(){}
 	
+	@Override
+	public int compareTo(Object o) {
+		Debt d = (Debt) o;
+		return dateCreated.compareTo(d.getDateCreated());
+	}
+	
 	public Long getId(){
 		return id;
 	}
-
 	public Long getBillId() {
 		return billId;
 	}

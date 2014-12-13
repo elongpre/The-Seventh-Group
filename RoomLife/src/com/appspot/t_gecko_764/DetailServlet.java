@@ -2,6 +2,7 @@ package com.appspot.t_gecko_764;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -121,6 +122,7 @@ public class DetailServlet extends HttpServlet{
 				}
 				
 				req.setAttribute("Amount", Math.ceil(balance*100)/100);
+				Collections.sort(debtList, Collections.reverseOrder());
 				req.setAttribute("DebtListz", debtList);
 				req.setAttribute("debtor", name);
 				req.getRequestDispatcher("/WEB-INF/showDebt.jsp").forward(req, resp);
