@@ -14,7 +14,7 @@ public class ServletHelper {
 		String userEmail = person.getEmail();
 		
 		List<Bill> bills = datastore.getBills(person);
-		Collections.sort(bills, Collections.reverseOrder());
+		Collections.sort(bills);
 		req.setAttribute("BillList", bills);
 
 		List<String> emails = datastore.getGroup(person.getGroup()).getMembers();

@@ -9,8 +9,7 @@
     <servlet>
         <servlet-name>maintenanceServlet</servlet-name>
         <servlet-class>com.appspot.t_gecko_764.MaintenanceServlet</servlet-class>
-    </servlet>
-    
+    </servlet>    
     <servlet-mapping>
    	 	<servlet-name>maintenanceServlet</servlet-name>
     	<url-pattern>/entry/mreq</url-pattern>
@@ -20,8 +19,7 @@
  	<servlet>	
      	<servlet-name>billServlet</servlet-name>
      	<servlet-class>com.appspot.t_gecko_764.BillServlet</servlet-class>
-    </servlet>
-    
+    </servlet>    
    	<servlet-mapping>
    	 	<servlet-name>billServlet</servlet-name>
     	<url-pattern>/entry/BillEntry</url-pattern>

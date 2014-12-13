@@ -62,8 +62,19 @@
 			    		
 				    	<label class="field" for="Name">Debt Name:</label>
 					    <p><input type="text" name="debtName"></p>
-					    <label class="field" for="RoommateName">Roommate's Email:</label>
-					    <p><input type="text" name="roommate"></p>
+					    <label class="field" for="RoommateName">Roommate:</label>
+					    <p><select>
+					    	<%
+					    		List<Person> roommates = (List<Person>) request.getAttribute("roommateNames");
+					    		for (Person mate: roommates){
+					    			pageContext.setAttribute("roommate_name", mate.getName());
+					    			pageContext.setAttribute("roommate_email", mate.getEmail());
+					    		%>
+					    			<option value="${roommate_email}">${fn:escapeXml(roommate_name)}</option>					    			
+					    		<%	
+					    		}					    	
+					    	%>
+					    </select></p>
 					    <label class="field" for="Amount">Amount:</label>
 					    <p><input type="text" name="debtAmount"></p>
 					    
